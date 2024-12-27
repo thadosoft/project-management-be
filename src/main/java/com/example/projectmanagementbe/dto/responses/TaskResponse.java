@@ -13,6 +13,10 @@ public class TaskResponse {
 
   private String status;
 
+  private int taskOrder;
+
+  private ProjectResponse project;
+
   private List<AssignmentResponse> assignments;
 
   private LocalDateTime modifiedDate;

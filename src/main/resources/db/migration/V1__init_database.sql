@@ -46,6 +46,7 @@ create table if not exists projects
     id            bigint auto_increment,
     user_id       bigint not null,
     name          varchar(255),
+    description   varchar(255),
     modified_date datetime default current_timestamp on update current_timestamp,
     created_date  datetime default current_timestamp,
 
@@ -58,29 +59,35 @@ CREATE INDEX idx_projects ON projects (name, user_id);
 create table if not exists tasks
 (
     id            bigint auto_increment,
-    project_id    bigint       not null,
+    project_id    bigint      not null,
     status        varchar(50) not null,
+    task_order    int         not null,
     modified_date datetime default current_timestamp on update current_timestamp,
     created_date  datetime default current_timestamp,
 
     primary key (id),
-    foreign key (project_id) references projects (id)
+    foreign key (project_id) references projects (id),
+    constraint unique_project_status unique (project_id, status),
+    constraint unique_project_order unique (project_id, task_order)
 );
 
 create table if not exists assignments
 (
-    id            bigint auto_increment,
-    assigner_id   bigint       not null,
-    receiver_id   bigint       not null,
-    task_id       bigint       not null,
-    title         varchar(100) not null,
-    description   varchar(255) not null,
-    modified_date datetime default current_timestamp on update current_timestamp,
-    created_date  datetime default current_timestamp,
+    id               bigint auto_increment,
+    assigner_id      bigint       not null,
+    receiver_id      bigint       not null,
+    task_id          bigint       not null,
+    title            varchar(100) not null,
+    description      varchar(255) not null,
+    status           varchar(50)  not null,
+    assignment_order int          not null,
+    modified_date    datetime default current_timestamp on update current_timestamp,
+    created_date     datetime default current_timestamp,
 
     primary key (id),
     foreign key (assigner_id) references users (id),
-    foreign key (receiver_id) references users (id)
+    foreign key (receiver_id) references users (id),
+    constraint unique_task_order unique (task_id, assignment_order)
 );
 
 create table if not exists medias

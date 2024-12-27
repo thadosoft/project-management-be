@@ -16,4 +16,8 @@ public class AssignmentUpdateRequest {
   private String title;
 
   private String description;
+
+  private String status;
+
+  private int assignmentOrder;
 }

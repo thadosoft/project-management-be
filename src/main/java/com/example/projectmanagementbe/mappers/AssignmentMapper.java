@@ -20,6 +20,8 @@ public interface AssignmentMapper {
   @Mapping(source = "receiver.role.name", target = "receiver.role")
   AssignmentResponse toAssignmentResponse(AssignmentEntity assignmentEntity);
 
+  List<AssignmentResponse> toAssignmentResponses(List<AssignmentEntity> assignmentEntities);
+
   @Mapping(source = "assignerId", target = "assigner.id")
   @Mapping(source = "receiverId", target = "receiver.id")
   @Mapping(source = "taskId", target = "task.id")

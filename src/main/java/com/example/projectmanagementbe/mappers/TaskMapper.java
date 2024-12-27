@@ -19,6 +19,8 @@ public interface TaskMapper {
   @Mapping(source = "assignments", target = "assignments")
   TaskResponse toTaskResponse(TaskEntity taskEntity);
 
+  List<TaskResponse> toTaskResponses(List<TaskEntity> taskEntities);
+
   @Mapping(source = "projectId", target = "project.id")
   TaskEntity toTaskEntity(TaskCreateRequest taskCreateRequest);
 

@@ -29,6 +29,9 @@ public class TaskEntity extends Auditable {
   @Column(name = "status")
   private String status;
 
+  @Column(name = "task_order")
+  private int taskOrder;
+
   @ManyToOne
   @JoinColumn(name = "project_id")
   private ProjectEntity project;

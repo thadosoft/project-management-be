@@ -15,4 +15,6 @@ public interface AssignmentService {
   void delete(Long id);
 
   AssignmentResponse findById(Long id);
+
+  List<AssignmentResponse> findByProjectId(Long id);
 }

@@ -14,13 +14,11 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
 
-  @Mapping(source = "tasks", target = "tasks")
   ProjectResponse toProjectResponse(ProjectEntity projectEntity);
 
   @Mapping(source = "userId", target = "user.id")
   ProjectEntity toProjectEntity(ProjectCreateRequest projectCreateRequest);
 
-  @Mapping(source = "tasks", target = "tasks")
   ProjectEntity toProjectEntity(ProjectResponse projectResponse);
 
   String toRoleName(RoleEntity roleEntity);

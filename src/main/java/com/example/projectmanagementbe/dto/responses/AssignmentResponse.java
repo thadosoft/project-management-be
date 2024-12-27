@@ -15,6 +15,10 @@ public class AssignmentResponse {
 
   private String description;
 
+  private String status;
+
+  private int assignmentOrder;
+
   private UserResponse assigner;
 
   private UserResponse receiver;

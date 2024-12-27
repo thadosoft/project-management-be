@@ -29,6 +29,9 @@ public class ProjectEntity extends Auditable {
   @Column(name = "name")
   private String name;
 
+  @Column(name = "description")
+  private String description;
+
   @ManyToOne
   @JoinColumn(name = "user_id")
   private UserEntity user;

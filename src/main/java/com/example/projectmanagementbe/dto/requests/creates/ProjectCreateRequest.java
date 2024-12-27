@@ -10,4 +10,6 @@ public class ProjectCreateRequest {
   private Long userId;
 
   private String name;
+
+  private String description;
 }

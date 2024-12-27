@@ -10,4 +10,6 @@ public class TaskUpdateRequest {
   private Long projectId;
 
   private String status;
+
+  private int taskOrder;
 }

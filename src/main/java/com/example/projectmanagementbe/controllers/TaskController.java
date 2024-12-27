@@ -51,4 +51,9 @@ public class TaskController {
   public ResponseEntity<TaskResponse> findById(@PathVariable Long id) {
     return ResponseEntity.ok(taskService.findById(id));
   }
+
+  @GetMapping("/project/{id}")
+  public ResponseEntity<List<TaskResponse>> findByProjectId(@PathVariable Long id) {
+    return ResponseEntity.ok(taskService.findByProjectId(id));
+  }
 }

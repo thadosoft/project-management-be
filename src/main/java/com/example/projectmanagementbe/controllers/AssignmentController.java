@@ -51,4 +51,10 @@ public class AssignmentController {
   public ResponseEntity<AssignmentResponse> findById(@PathVariable Long id) {
     return ResponseEntity.ok(assignmentService.findById(id));
   }
+
+
+  @GetMapping("/project/{id}")
+  public ResponseEntity<List<AssignmentResponse>> findByProjectId(@PathVariable Long id) {
+    return ResponseEntity.ok(assignmentService.findByProjectId(id));
+  }
 }

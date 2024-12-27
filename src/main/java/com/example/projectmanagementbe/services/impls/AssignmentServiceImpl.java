@@ -50,4 +50,9 @@ public class AssignmentServiceImpl implements AssignmentService {
   public AssignmentResponse findById(Long id) {
     return assignmentMapper.toAssignmentResponse(assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found")));
   }
+
+  @Override
+  public List<AssignmentResponse> findByProjectId(Long id) {
+    return assignmentMapper.toAssignmentResponses(assignmentRepository.findByTask_Project_Id(id));
+  }
 }

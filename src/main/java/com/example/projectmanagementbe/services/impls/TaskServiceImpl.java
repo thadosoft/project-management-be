@@ -50,4 +50,9 @@ public class TaskServiceImpl implements TaskService {
   public TaskResponse findById(Long id) {
     return taskMapper.toTaskResponse(taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found")));
   }
+
+  @Override
+  public List<TaskResponse> findByProjectId(Long id) {
+    return taskMapper.toTaskResponses(taskRepository.findByProject_Id(id));
+  }
 }

@@ -11,4 +11,6 @@ public class TaskCreateRequest {
   private Long projectId;
 
   private String status;
+
+  private int taskOrder;
 }

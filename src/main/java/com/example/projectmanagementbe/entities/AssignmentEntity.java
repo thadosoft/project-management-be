@@ -33,6 +33,12 @@ public class AssignmentEntity extends Auditable {
   @Column(name = "description")
   private String description;
 
+  @Column(name = "status")
+  private String status;
+
+  @Column(name = "assignment_order")
+  private int assignmentOrder;
+
   @ManyToOne
   @JoinColumn(name = "assigner_id")
   private UserEntity assigner;

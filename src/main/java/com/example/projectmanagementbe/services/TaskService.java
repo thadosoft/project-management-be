@@ -4,6 +4,7 @@ import com.example.projectmanagementbe.dto.requests.creates.AssignmentCreateRequ
 import com.example.projectmanagementbe.dto.requests.creates.TaskCreateRequest;
 import com.example.projectmanagementbe.dto.requests.updates.TaskUpdateRequest;
 import com.example.projectmanagementbe.dto.responses.TaskResponse;
+import com.example.projectmanagementbe.entities.TaskEntity;
 import java.util.List;
 
 public interface TaskService {
@@ -16,4 +17,6 @@ public interface TaskService {
   void delete(Long id);
 
   TaskResponse findById(Long id);
+
+  List<TaskResponse> findByProjectId(Long id);
 }

@@ -13,9 +13,9 @@ public class ProjectResponse {
 
   private String name;
 
-  private UserResponse user;
+  private String description;
 
-  private List<TaskResponse> tasks;
+  private UserResponse user;
 
   private LocalDateTime modifiedDate;
 
