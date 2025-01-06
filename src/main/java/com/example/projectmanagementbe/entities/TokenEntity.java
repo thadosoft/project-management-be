@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,10 +27,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "tokens", schema = "grow_learn_db")
 public class TokenEntity extends Auditable {
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  @Column(name = "id")
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name = "id", columnDefinition = "CHAR(36)")
+  private String id = UUID.randomUUID().toString();
 
   @Column(name = "token")
   private String token;

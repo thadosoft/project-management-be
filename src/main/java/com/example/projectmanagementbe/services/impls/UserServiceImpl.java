@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void update(Long id, UserUpdateRequest userUpdateRequest) {
+  public void update(String id, UserUpdateRequest userUpdateRequest) {
     UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 
     if (userUpdateRequest.getRoleId() != null) {
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (userRepository.existsById(id)) {
       userRepository.deleteById(id);
     } else {
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public UserResponse findById(Long id) {
+  public UserResponse findById(String id) {
     return userMapper.toUserResponse(userRepository.findById(id)
         .orElseThrow(() -> new ApiRequestException(ErrorCode.USER_NOT_FOUND)));
   }

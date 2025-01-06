@@ -29,7 +29,7 @@ public class MediaServiceImpl implements MediaService {
   }
 
   @Override
-  public void update(Long id, MediaUpdateRequest mediaUpdateRequest) {
+  public void update(String id, MediaUpdateRequest mediaUpdateRequest) {
     MediaEntity mediaEntity = mediaRepository.findById(id).orElseThrow(() -> new RuntimeException("Media not found"));
 
     mediaMapper.toMediaEntity(mediaUpdateRequest, mediaEntity);
@@ -38,7 +38,7 @@ public class MediaServiceImpl implements MediaService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (mediaRepository.existsById(id)) {
       mediaRepository.deleteById(id);
     } else {
@@ -47,7 +47,7 @@ public class MediaServiceImpl implements MediaService {
   }
 
   @Override
-  public MediaResponse findById(Long id) {
+  public MediaResponse findById(String id) {
     return mediaMapper.toMediaResponse(mediaRepository.findById(id).orElseThrow(() -> new RuntimeException("Media not found")));
   }
 }

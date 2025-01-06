@@ -1,8 +1,6 @@
 package com.example.projectmanagementbe.dto.responses;
 
-import com.example.projectmanagementbe.entities.Auditable;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class UserResponse {
 
-  private Long id;
+  private String id;
 
   private String name;
 

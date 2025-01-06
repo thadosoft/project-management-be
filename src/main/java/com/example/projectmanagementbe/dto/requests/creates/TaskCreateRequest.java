@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.dto.requests.creates;
 
 import com.example.projectmanagementbe.dto.responses.UserResponse;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class TaskCreateRequest {
 
-  private Long projectId;
+  private String projectId;
 
   private String status;
 

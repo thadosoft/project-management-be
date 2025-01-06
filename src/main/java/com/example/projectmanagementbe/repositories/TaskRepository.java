@@ -4,7 +4,7 @@ import com.example.projectmanagementbe.entities.TaskEntity;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
+public interface TaskRepository extends JpaRepository<TaskEntity, String> {
 
-  List<TaskEntity> findByProject_Id(Long id);
+  List<TaskEntity> findByProject_Id(String id);
 }

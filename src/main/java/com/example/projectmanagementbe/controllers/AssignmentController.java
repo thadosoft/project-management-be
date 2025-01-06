@@ -36,25 +36,25 @@ public class AssignmentController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody AssignmentUpdateRequest assignmentUpdateRequest) {
+  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody AssignmentUpdateRequest assignmentUpdateRequest) {
     assignmentService.update(id, assignmentUpdateRequest);
     return ResponseEntity.noContent().build();
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
+  public ResponseEntity<Void> delete(@PathVariable String id) {
     assignmentService.delete(id);
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<AssignmentResponse> findById(@PathVariable Long id) {
+  public ResponseEntity<AssignmentResponse> findById(@PathVariable String id) {
     return ResponseEntity.ok(assignmentService.findById(id));
   }
 
 
   @GetMapping("/project/{id}")
-  public ResponseEntity<List<AssignmentResponse>> findByProjectId(@PathVariable Long id) {
+  public ResponseEntity<List<AssignmentResponse>> findByProjectId(@PathVariable String id) {
     return ResponseEntity.ok(assignmentService.findByProjectId(id));
   }
 }

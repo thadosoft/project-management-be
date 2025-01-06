@@ -29,7 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public void update(Long id, ProjectUpdateRequest projectUpdateRequest) {
+  public void update(String id, ProjectUpdateRequest projectUpdateRequest) {
     ProjectEntity projectEntity = projectRepository.findById(id).orElseThrow(() -> new RuntimeException("Project not found"));
 
     projectMapper.toProjectEntity(projectUpdateRequest, projectEntity);
@@ -38,7 +38,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (projectRepository.existsById(id)) {
       projectRepository.deleteById(id);
     } else {
@@ -47,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public ProjectResponse findById(Long id) {
+  public ProjectResponse findById(String id) {
     return projectMapper.toProjectResponse(projectRepository.findById(id).orElseThrow(() -> new RuntimeException("Project not found")));
   }
 }

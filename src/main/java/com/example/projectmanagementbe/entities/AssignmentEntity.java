@@ -8,9 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.List;
+import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,10 +22,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "assignments", schema = "project_management_db")
 public class AssignmentEntity extends Auditable {
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
-  @Column(name = "id")
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name = "id", columnDefinition = "CHAR(36)")
+  private String id = UUID.randomUUID().toString();
 
   @Column(name = "title")
   private String title;

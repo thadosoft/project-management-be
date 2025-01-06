@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.dto.requests.creates;
 
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class ProjectCreateRequest {
 
-  private Long userId;
+  private String userId;
 
   private String name;
 

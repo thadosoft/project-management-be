@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class MediaUpdateRequest {
 
-  private Long assignmentId;
+  private String assignmentId;
 
   private MediaType type;
 

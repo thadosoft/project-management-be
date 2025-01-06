@@ -29,7 +29,7 @@ public class TaskServiceImpl implements TaskService {
   }
 
   @Override
-  public void update(Long id, TaskUpdateRequest taskUpdateRequest) {
+  public void update(String id, TaskUpdateRequest taskUpdateRequest) {
     TaskEntity taskEntity = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
 
     taskMapper.toTaskEntity(taskUpdateRequest, taskEntity);
@@ -38,7 +38,7 @@ public class TaskServiceImpl implements TaskService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (taskRepository.existsById(id)) {
       taskRepository.deleteById(id);
     } else {
@@ -47,12 +47,12 @@ public class TaskServiceImpl implements TaskService {
   }
 
   @Override
-  public TaskResponse findById(Long id) {
+  public TaskResponse findById(String id) {
     return taskMapper.toTaskResponse(taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found")));
   }
 
   @Override
-  public List<TaskResponse> findByProjectId(Long id) {
+  public List<TaskResponse> findByProjectId(String id) {
     return taskMapper.toTaskResponses(taskRepository.findByProject_Id(id));
   }
 }

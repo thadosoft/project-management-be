@@ -10,9 +10,9 @@ public interface ProjectService {
 
   void create(ProjectCreateRequest projectCreateRequest);
 
-  void update(Long id, ProjectUpdateRequest ProjectUpdateRequest);
+  void update(String id, ProjectUpdateRequest ProjectUpdateRequest);
 
-  void delete(Long id);
+  void delete(String id);
 
-  ProjectResponse findById(Long id);
+  ProjectResponse findById(String id);
 }

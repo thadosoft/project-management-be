@@ -2,6 +2,7 @@ package com.example.projectmanagementbe.dto.responses;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class AssignmentResponse {
 
-  private Long id;
+  private String id;
 
   private String title;
 
@@ -18,6 +19,8 @@ public class AssignmentResponse {
   private String status;
 
   private int assignmentOrder;
+
+  private TaskResponse task;
 
   private UserResponse assigner;
 

@@ -10,11 +10,11 @@ public interface AssignmentService {
 
   void create(AssignmentCreateRequest assignmentCreateRequest);
 
-  void update(Long id, AssignmentUpdateRequest AssignmentUpdateRequest);
+  void update(String id, AssignmentUpdateRequest AssignmentUpdateRequest);
 
-  void delete(Long id);
+  void delete(String id);
 
-  AssignmentResponse findById(Long id);
+  AssignmentResponse findById(String id);
 
-  List<AssignmentResponse> findByProjectId(Long id);
+  List<AssignmentResponse> findByProjectId(String id);
 }

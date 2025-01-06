@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ProjectUpdateRequest {
 
-  private Long userId;
+  private String userId;
 
   private String name;
 

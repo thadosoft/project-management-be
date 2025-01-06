@@ -16,7 +16,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
 
-  @Mapping(source = "assignments", target = "assignments")
   TaskResponse toTaskResponse(TaskEntity taskEntity);
 
   List<TaskResponse> toTaskResponses(List<TaskEntity> taskEntities);
@@ -24,13 +23,12 @@ public interface TaskMapper {
   @Mapping(source = "projectId", target = "project.id")
   TaskEntity toTaskEntity(TaskCreateRequest taskCreateRequest);
 
-  @Mapping(source = "assignments", target = "assignments")
   TaskEntity toTaskEntity(TaskResponse taskResponse);
+
+  @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  void toTaskEntity(TaskUpdateRequest taskUpdateRequest, @MappingTarget TaskEntity taskEntity);
 
   String toRoleName(RoleEntity roleEntity);
 
   RoleEntity toRoleEntity(String value);
-
-  @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-  void toTaskEntity(TaskUpdateRequest taskUpdateRequest, @MappingTarget TaskEntity taskEntity);
 }

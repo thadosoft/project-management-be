@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class TaskUpdateRequest {
 
-  private Long projectId;
+  private String projectId;
 
   private String status;
 

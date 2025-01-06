@@ -10,9 +10,9 @@ public interface MediaService {
 
   void create(MediaCreateRequest mediaCreateRequest);
 
-  void update(Long id, MediaUpdateRequest MediaUpdateRequest);
+  void update(String id, MediaUpdateRequest MediaUpdateRequest);
 
-  void delete(Long id);
+  void delete(String id);
 
-  MediaResponse findById(Long id);
+  MediaResponse findById(String id);
 }

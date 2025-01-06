@@ -29,7 +29,7 @@ public class AssignmentServiceImpl implements AssignmentService {
   }
 
   @Override
-  public void update(Long id, AssignmentUpdateRequest assignmentUpdateRequest) {
+  public void update(String id, AssignmentUpdateRequest assignmentUpdateRequest) {
     AssignmentEntity assignmentEntity = assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found"));
 
     assignmentMapper.toAssignmentEntity(assignmentUpdateRequest, assignmentEntity);
@@ -38,7 +38,7 @@ public class AssignmentServiceImpl implements AssignmentService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (assignmentRepository.existsById(id)) {
       assignmentRepository.deleteById(id);
     } else {
@@ -47,12 +47,12 @@ public class AssignmentServiceImpl implements AssignmentService {
   }
 
   @Override
-  public AssignmentResponse findById(Long id) {
+  public AssignmentResponse findById(String id) {
     return assignmentMapper.toAssignmentResponse(assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found")));
   }
 
   @Override
-  public List<AssignmentResponse> findByProjectId(Long id) {
+  public List<AssignmentResponse> findByProjectId(String id) {
     return assignmentMapper.toAssignmentResponses(assignmentRepository.findByTask_Project_Id(id));
   }
 }

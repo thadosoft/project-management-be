@@ -29,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
-  public void update(Long id, RoleUpdateRequest roleUpdateRequest) {
+  public void update(String id, RoleUpdateRequest roleUpdateRequest) {
     RoleEntity roleEntity = roleRepository.findById(id).orElseThrow(() -> new RuntimeException("Role not found"));
 
     roleMapper.toRoleEntity(roleUpdateRequest, roleEntity);
@@ -38,7 +38,7 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
-  public void delete(Long id) {
+  public void delete(String id) {
     if (roleRepository.existsById(id)) {
       roleRepository.deleteById(id);
     } else {
@@ -47,7 +47,7 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
-  public RoleResponse findById(Long id) {
+  public RoleResponse findById(String id) {
     return roleMapper.toRoleResponse(roleRepository.findById(id).orElseThrow(() -> new RuntimeException("Role not found")));
   }
 }

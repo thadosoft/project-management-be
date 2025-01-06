@@ -6,6 +6,7 @@ import com.example.projectmanagementbe.dto.responses.AssignmentResponse;
 import com.example.projectmanagementbe.dto.responses.MediaResponse;
 import com.example.projectmanagementbe.entities.AssignmentEntity;
 import com.example.projectmanagementbe.entities.MediaEntity;
+import com.example.projectmanagementbe.entities.RoleEntity;
 import java.util.List;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
@@ -33,4 +34,8 @@ public interface AssignmentMapper {
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void toAssignmentEntity(AssignmentUpdateRequest assignmentUpdateRequest, @MappingTarget AssignmentEntity assignmentEntity);
+
+  String toRoleName(RoleEntity roleEntity);
+
+  RoleEntity toRoleEntity(String value);
 }

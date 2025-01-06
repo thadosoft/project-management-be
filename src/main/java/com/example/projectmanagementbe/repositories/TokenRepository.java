@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface TokenRepository extends JpaRepository<TokenEntity, Long> {
+public interface TokenRepository extends JpaRepository<TokenEntity, String> {
 
   @Query("""
       select t from TokenEntity t inner join UserEntity u on t.user.id = u.id
       where u.id = :userId and (t.expired = false or t.revoked = false)
       """)
-  List<TokenEntity> findAllValidTokensByUser(Long userId);
+  List<TokenEntity> findAllValidTokensByUser(String userId);
 
   Optional<TokenEntity> findByToken(String token);
 }

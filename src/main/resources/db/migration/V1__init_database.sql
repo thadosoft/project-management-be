@@ -1,6 +1,6 @@
 create table if not exists roles
 (
-    id            bigint auto_increment,
+    id            char(36),
     name          varchar(50) not null unique,
     modified_date datetime default current_timestamp on update current_timestamp,
     created_date  datetime default current_timestamp,
@@ -10,8 +10,8 @@ create table if not exists roles
 
 create table if not exists users
 (
-    id            bigint auto_increment,
-    role_id       bigint       not null,
+    id            char(36),
+    role_id       char(36)     not null,
     name          varchar(50)  not null,
     email         varchar(50)  not null unique,
     username      varchar(50)  not null unique,
@@ -28,8 +28,8 @@ CREATE INDEX idx_users ON users (name, username, email);
 
 create table if not exists tokens
 (
-    id            bigint auto_increment,
-    user_id       bigint          not null,
+    id            char(36),
+    user_id       char(36)        not null,
     token         varchar(255)    not null,
     token_type    enum ('BEARER') not null,
     expired       boolean         not null,
@@ -43,8 +43,8 @@ create table if not exists tokens
 
 create table if not exists projects
 (
-    id            bigint auto_increment,
-    user_id       bigint not null,
+    id            char(36),
+    user_id       char(36) not null,
     name          varchar(255),
     description   varchar(255),
     modified_date datetime default current_timestamp on update current_timestamp,
@@ -58,8 +58,8 @@ CREATE INDEX idx_projects ON projects (name, user_id);
 
 create table if not exists tasks
 (
-    id            bigint auto_increment,
-    project_id    bigint      not null,
+    id            char(36),
+    project_id    char(36)    not null,
     status        varchar(50) not null,
     task_order    int         not null,
     modified_date datetime default current_timestamp on update current_timestamp,
@@ -73,10 +73,10 @@ create table if not exists tasks
 
 create table if not exists assignments
 (
-    id               bigint auto_increment,
-    assigner_id      bigint       not null,
-    receiver_id      bigint       not null,
-    task_id          bigint       not null,
+    id               char(36),
+    assigner_id      char(36)     not null,
+    receiver_id      char(36)     not null,
+    task_id          char(36)     not null,
     title            varchar(100) not null,
     description      varchar(255) not null,
     status           varchar(50)  not null,
@@ -92,8 +92,8 @@ create table if not exists assignments
 
 create table if not exists medias
 (
-    id            bigint auto_increment,
-    assignment_id bigint                  not null,
+    id            char(36),
+    assignment_id char(36)                not null,
     type          enum ('IMAGE', 'VIDEO') not null,
     path          varchar(255)            not null,
     modified_date datetime default current_timestamp on update current_timestamp,

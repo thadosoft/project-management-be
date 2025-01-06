@@ -7,12 +7,6 @@ import lombok.Setter;
 @Setter
 public class AssignmentCreateRequest {
 
-  private Long assignerId;
-
-  private Long receiverId;
-
-  private Long taskId;
-
   private String title;
 
   private String description;
@@ -20,4 +14,10 @@ public class AssignmentCreateRequest {
   private String status;
 
   private int assignmentOrder;
+
+  private String taskId;
+
+  private String assignerId;
+
+  private String receiverId;
 }

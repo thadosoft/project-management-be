@@ -36,19 +36,19 @@ public class ProjectController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody ProjectUpdateRequest projectUpdateRequest) {
+  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody ProjectUpdateRequest projectUpdateRequest) {
     projectService.update(id, projectUpdateRequest);
     return ResponseEntity.noContent().build();
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
+  public ResponseEntity<Void> delete(@PathVariable String id) {
     projectService.delete(id);
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ProjectResponse> findById(@PathVariable Long id) {
+  public ResponseEntity<ProjectResponse> findById(@PathVariable String id) {
     return ResponseEntity.ok(projectService.findById(id));
   }
 }

@@ -7,9 +7,9 @@ import java.util.List;
 public interface UserService {
   List<UserResponse> findAll();
 
-  void update(Long id, UserUpdateRequest UserUpdateRequest);
+  void update(String id, UserUpdateRequest UserUpdateRequest);
 
-  void delete(Long id);
+  void delete(String id);
 
-  UserResponse findById(Long id);
+  UserResponse findById(String id);
 }

@@ -36,19 +36,19 @@ public class MediaController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody MediaUpdateRequest mediaUpdateRequest) {
+  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody MediaUpdateRequest mediaUpdateRequest) {
     mediaService.update(id, mediaUpdateRequest);
     return ResponseEntity.noContent().build();
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
+  public ResponseEntity<Void> delete(@PathVariable String id) {
     mediaService.delete(id);
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<MediaResponse> findById(@PathVariable Long id) {
+  public ResponseEntity<MediaResponse> findById(@PathVariable String id) {
     return ResponseEntity.ok(mediaService.findById(id));
   }
 }

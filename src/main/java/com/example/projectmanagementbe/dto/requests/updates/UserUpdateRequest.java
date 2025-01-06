@@ -17,5 +17,5 @@ public class UserUpdateRequest {
 
   private String phoneNumber;
 
-  private Long roleId;
+  private String roleId;
 }

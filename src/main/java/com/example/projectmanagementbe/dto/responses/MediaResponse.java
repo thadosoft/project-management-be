@@ -2,7 +2,7 @@ package com.example.projectmanagementbe.dto.responses;
 
 import com.example.projectmanagementbe.enums.MediaType;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class MediaResponse {
 
-  private Long id;
+  private String id;
 
   private MediaType type;
 
