@@ -67,8 +67,7 @@ create table if not exists tasks
 
     primary key (id),
     foreign key (project_id) references projects (id),
-    constraint unique_project_status unique (project_id, status),
-    constraint unique_project_order unique (project_id, task_order)
+    constraint unique_project_status unique (project_id, status)
 );
 
 create table if not exists assignments
@@ -86,8 +85,7 @@ create table if not exists assignments
 
     primary key (id),
     foreign key (assigner_id) references users (id),
-    foreign key (receiver_id) references users (id),
-    constraint unique_task_order unique (task_id, assignment_order)
+    foreign key (receiver_id) references users (id)
 );
 
 create table if not exists medias

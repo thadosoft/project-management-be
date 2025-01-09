@@ -9,8 +9,10 @@ import com.example.projectmanagementbe.repositories.TaskRepository;
 import com.example.projectmanagementbe.services.TaskService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
@@ -30,11 +32,39 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public void update(String id, TaskUpdateRequest taskUpdateRequest) {
-    TaskEntity taskEntity = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+    if (taskRepository.existsByTaskOrderAndProject_Id(taskUpdateRequest.getNewTaskOrder(), taskUpdateRequest.getProjectId())) {
+      List<TaskEntity> tasks = taskRepository.findByProject_Id(taskUpdateRequest.getProjectId());
+      int newTaskOrder = taskUpdateRequest.getNewTaskOrder();
+      int oldTaskOrder = taskUpdateRequest.getOldTaskOrder();
 
-    taskMapper.toTaskEntity(taskUpdateRequest, taskEntity);
+      if (oldTaskOrder > newTaskOrder) {
+        for (TaskEntity task : tasks) {
+          if (task.getId().equals(id)) {
+            task.setTaskOrder(newTaskOrder);
+          } else if (task.getTaskOrder() >= newTaskOrder &&
+              task.getTaskOrder() < oldTaskOrder) {
+            task.setTaskOrder(task.getTaskOrder() + 1);
+          }
+        }
+      } else {
+        for (TaskEntity task : tasks) {
+          if (task.getId().equals(id)) {
+            task.setTaskOrder(newTaskOrder);
+          } else if (task.getTaskOrder() <= newTaskOrder &&
+              task.getTaskOrder() > oldTaskOrder) {
+            task.setTaskOrder(task.getTaskOrder() - 1);
+          }
+        }
+      }
 
-    taskRepository.save(taskEntity);
+      taskRepository.saveAll(tasks);
+    } else {
+      TaskEntity taskEntity = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+      taskMapper.toTaskEntity(taskUpdateRequest, taskEntity);
+
+      taskRepository.save(taskEntity);
+    }
+
   }
 
   @Override
