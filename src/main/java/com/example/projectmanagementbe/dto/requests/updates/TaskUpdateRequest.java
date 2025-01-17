@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class TaskUpdateRequest {
 
+  private String projectId;
+
   private String status;
 
   private int newTaskOrder;

@@ -12,8 +12,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-  //  @Mapping(source = "role.name", target = "role")
-  @Mapping(target = "role", expression = "java(userEntity.getRole() != null ? userEntity.getRole().getName() : null)")
+    @Mapping(source = "role.name", target = "role")
   UserResponse toUserResponse(UserEntity userEntity);
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

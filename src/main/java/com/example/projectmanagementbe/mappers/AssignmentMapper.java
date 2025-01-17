@@ -32,6 +32,7 @@ public interface AssignmentMapper {
   @Mapping(source = "assigner.role", target = "assigner.role.name")
   AssignmentEntity toAssignmentEntity(AssignmentResponse assignmentResponse);
 
+  @Mapping(source = "newAssignmentOrder", target = "assignmentOrder")
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void toAssignmentEntity(AssignmentUpdateRequest assignmentUpdateRequest, @MappingTarget AssignmentEntity assignmentEntity);
 

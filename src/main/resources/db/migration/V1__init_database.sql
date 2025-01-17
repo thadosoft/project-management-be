@@ -85,7 +85,8 @@ create table if not exists assignments
 
     primary key (id),
     foreign key (assigner_id) references users (id),
-    foreign key (receiver_id) references users (id)
+    foreign key (receiver_id) references users (id),
+    foreign key (task_id) references tasks (id)
 );
 
 create table if not exists medias

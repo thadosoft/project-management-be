@@ -7,8 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TaskRepository extends JpaRepository<TaskEntity, String> {
 
   List<TaskEntity> findByProject_Id(String id);
-
-  boolean existsByTaskOrderAndProject_Id(int taskOrder, String projectId);
-
-  TaskEntity findByTaskOrderAndProject_Id(int taskOrder, String id);
 }
