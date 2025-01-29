@@ -1,14 +1,8 @@
--- Insert into roles
-INSERT INTO roles (id, name)
-VALUES ('7687bad7-2a46-45cf-8d02-d4bbf86cebd1', 'Admin'),
-       ('698bd0bc-0fba-4af7-a9a0-c1a41d05bd1b', 'Manager'),
-       ('9310f021-5d17-4823-9354-b9cfce5a3cbd', 'User');
-
 -- Insert into users
-INSERT INTO users (id, role_id, name, email, username, password, phone_number)
-VALUES ('a47108bd-e6cc-413c-8394-9304d24b152b', '7687bad7-2a46-45cf-8d02-d4bbf86cebd1', 'Alice Admin', 'alice.admin@example.com', 'alice_admin', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567890'),
-       ('8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', '698bd0bc-0fba-4af7-a9a0-c1a41d05bd1b', 'Bob Manager', 'bob.manager@example.com', 'bob_manager', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567891'),
-       ('c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', '9310f021-5d17-4823-9354-b9cfce5a3cbd', 'Charlie User', 'charlie.user@example.com', 'charlie_user', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567892');
+INSERT INTO users (id, role, name, email, username, password, phone_number)
+VALUES ('a47108bd-e6cc-413c-8394-9304d24b152b', 'ADMIN', 'Alice Admin', 'alice.admin@example.com', 'alice_admin', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567890'),
+       ('8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'USER', 'Bob Manager', 'bob.manager@example.com', 'bob_manager', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567891'),
+       ('c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', 'USER', 'Charlie User', 'charlie.user@example.com', 'charlie_user', '$2a$10$0BJvu.L1HBG6bJcUpnlI5eV8IYgx5I2XSmu4wcHqJl.NaWoTkQyp6', '1234567892');
 
 -- Insert into projects
 INSERT INTO projects (id, user_id, name, description)
@@ -28,11 +22,11 @@ VALUES ('804575a5-4b0d-4509-b8f2-a7d81d6a2262', '721588e9-6f2b-4766-a122-ef1034b
        ('7882b62b-8c31-4350-a506-f6d3cf12ec73', 'd927b674-ae8f-4f4e-bde1-1754041fc2b0', 'Test', 5);
 
 -- Insert into assignments
-INSERT INTO assignments (id, assigner_id, receiver_id, task_id, title, description, status, assignment_order)
-VALUES ('a2c68113-3205-45b6-b2d2-1c62286512c9', 'a47108bd-e6cc-413c-8394-9304d24b152b', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', '804575a5-4b0d-4509-b8f2-a7d81d6a2262', 'Initial Setup', 'Setup the environment for Project A', 'Pending', 1),
-       ('fc5b94da-184d-4917-96f1-d022cbcb09d2', 'a47108bd-e6cc-413c-8394-9304d24b152b', 'c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', '86f60016-f7b1-4ca4-829c-d3059c3e3c65', 'Complete Module', 'Complete module implementation', 'In Progress', 1),
-       ('dd478660-6b2a-4c68-a6c7-645e5e7b724c', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', '0c38c1c9-df2b-43e0-8594-13870f5b6d6b', 'Review Code', 'Review the submitted code', 'Completed', 1),
-       ('37b4a6a8-b8e3-4a0f-8e43-1c5fb5ec8e8a', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'a47108bd-e6cc-413c-8394-9304d24b152b', '2e276209-2e19-44d5-8410-204d6b79b52d', 'Update Documentation', 'Update the documentation for the project', 'Test', 1);
+INSERT INTO assignments (id, assigner_id, receiver_id, task_id, title, description, assignment_order)
+VALUES ('a2c68113-3205-45b6-b2d2-1c62286512c9', 'a47108bd-e6cc-413c-8394-9304d24b152b', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', '804575a5-4b0d-4509-b8f2-a7d81d6a2262', 'Initial Setup', 'Setup the environment for Project A', 1),
+       ('fc5b94da-184d-4917-96f1-d022cbcb09d2', 'a47108bd-e6cc-413c-8394-9304d24b152b', 'c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', '86f60016-f7b1-4ca4-829c-d3059c3e3c65', 'Complete Module', 'Complete module implementation', 1),
+       ('dd478660-6b2a-4c68-a6c7-645e5e7b724c', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'c01369c5-8d10-4bf0-98bb-20ee7f71a8e0', '0c38c1c9-df2b-43e0-8594-13870f5b6d6b', 'Review Code', 'Review the submitted code', 1),
+       ('37b4a6a8-b8e3-4a0f-8e43-1c5fb5ec8e8a', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'a47108bd-e6cc-413c-8394-9304d24b152b', '2e276209-2e19-44d5-8410-204d6b79b52d', 'Update Documentation', 'Update the documentation for the project', 1);
 
 -- Insert into medias
 INSERT INTO medias (id, assignment_id, type, path)
