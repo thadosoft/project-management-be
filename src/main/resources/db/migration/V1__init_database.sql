@@ -30,7 +30,7 @@ create table if not exists projects
 (
     id           char(36),
     user_id      char(36)     not null,
-    name         varchar(255) not null,
+    name         varchar(255) not null unique,
     description  varchar(255) null,
     entry_by     char(36)     null,
     entry_date   datetime default current_timestamp,
@@ -83,15 +83,18 @@ create table if not exists medias
 (
     id            char(36),
     assignment_id char(36)     not null,
+    name          varchar(100) not null,
     type          varchar(50)  not null,
     path          varchar(255) not null,
+    size          bigint       not null,
     entry_by      char(36)     null,
     entry_date    datetime default current_timestamp,
     updated_by    char(36)     null,
     updated_date  datetime default current_timestamp on update current_timestamp,
 
     primary key (id),
-    foreign key (assignment_id) references assignments (id)
+    foreign key (assignment_id) references assignments (id),
+    constraint unique_assignment_name unique (assignment_id, name)
 );
 
 CREATE INDEX idx_medias ON medias (path, type)

@@ -29,7 +29,7 @@ VALUES ('a2c68113-3205-45b6-b2d2-1c62286512c9', 'a47108bd-e6cc-413c-8394-9304d24
        ('37b4a6a8-b8e3-4a0f-8e43-1c5fb5ec8e8a', '8843b7b1-2b84-4dcd-9ded-5359e5e1bcc5', 'a47108bd-e6cc-413c-8394-9304d24b152b', '2e276209-2e19-44d5-8410-204d6b79b52d', 'Update Documentation', 'Update the documentation for the project', 1);
 
 -- Insert into medias
-INSERT INTO medias (id, assignment_id, type, path)
-VALUES ('f874e1d6-c3b7-41a3-8e51-4a94d77dc834', 'a2c68113-3205-45b6-b2d2-1c62286512c9', 'IMAGE', '/images/setup.png'),
-       ('3ddc3e65-3c99-4c6b-a4cd-3808d0bdfe3b', 'fc5b94da-184d-4917-96f1-d022cbcb09d2', 'VIDEO', '/videos/feature.mp4'),
-       ('b1a28b13-7696-43f3-88f8-87118dcac689', 'dd478660-6b2a-4c68-a6c7-645e5e7b724c', 'IMAGE', '/images/review.png');
+INSERT INTO medias (id, assignment_id, type, path, name, size)
+VALUES ('f874e1d6-c3b7-41a3-8e51-4a94d77dc834', 'a2c68113-3205-45b6-b2d2-1c62286512c9', 'IMAGE', '/images/setup.png', 'qua', 12345),
+       ('3ddc3e65-3c99-4c6b-a4cd-3808d0bdfe3b', 'fc5b94da-184d-4917-96f1-d022cbcb09d2', 'VIDEO', '/videos/feature.mp4', 'la`', 54321),
+       ('b1a28b13-7696-43f3-88f8-87118dcac689', 'dd478660-6b2a-4c68-a6c7-645e5e7b724c', 'IMAGE', '/images/review.png', 'chan', 67890);

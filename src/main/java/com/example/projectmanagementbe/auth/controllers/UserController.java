@@ -3,7 +3,6 @@ package com.example.projectmanagementbe.auth.controllers;
 import com.example.projectmanagementbe.api.models.dto.requests.UserRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.UserResponse;
 import com.example.projectmanagementbe.api.services.IUserService;
-import com.example.projectmanagementbe.auth.models.dto.requests.RegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

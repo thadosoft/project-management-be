@@ -1,6 +1,6 @@
 package com.example.projectmanagementbe.auth.models;
 
-import com.example.projectmanagementbe.api.models.Assignment;
+import com.example.projectmanagementbe.api.models.project.Assignment;
 import com.example.projectmanagementbe.auth.enums.UserRole;
 import com.example.projectmanagementbe.auth.utils.validator.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
