@@ -39,6 +39,9 @@ dependencies {
 
 	implementation("jakarta.validation:jakarta.validation-api:3.1.0")
 
+	implementation("mysql:mysql-connector-java:8.0.28")
+
+
 	runtimeOnly("com.mysql:mysql-connector-j")
 
 	compileOnly("org.projectlombok:lombok:1.18.36")

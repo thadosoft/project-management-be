@@ -40,9 +40,9 @@ public class AssignmentController {
     return ResponseEntity.noContent().build();
   }
 
-  @DeleteMapping("/{id}")
-  public ResponseEntity<Void> delete(@PathVariable String id) {
-    assignmentService.delete(id);
+  @DeleteMapping("/{fileName}")
+  public ResponseEntity<Void> delete(@PathVariable String fileName) {
+    assignmentService.delete(fileName);
     return ResponseEntity.noContent().build();
   }
 
