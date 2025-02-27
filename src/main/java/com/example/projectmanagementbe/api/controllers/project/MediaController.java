@@ -66,5 +66,5 @@ public class MediaController {
   public ResponseEntity<Void> delete(@RequestBody MediaRequest mediaRequest) throws IOException {
     mediaService.delete(mediaRequest);
     return ResponseEntity.noContent().build();
-  }
+  } 
 }

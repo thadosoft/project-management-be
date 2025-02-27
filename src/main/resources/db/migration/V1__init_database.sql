@@ -66,7 +66,7 @@ create table if not exists assignments
     receiver_id      char(36)     not null,
     task_id          char(36)     not null,
     title            varchar(100) not null,
-    description      varchar(255) null,
+    description      text         null,
     assignment_order int          not null check (assignment_order >= 1),
     entry_by         char(36)     null,
     entry_date       datetime default current_timestamp,
