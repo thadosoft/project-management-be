@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 public class ApiException {
 
   private final String message;
+
   private final int httpCode;
+
   private final ZonedDateTime timestamp;
 }

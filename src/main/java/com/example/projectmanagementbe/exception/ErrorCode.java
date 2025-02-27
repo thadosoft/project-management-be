@@ -12,8 +12,11 @@ public enum ErrorCode {
   UNAUTHORIZED("004", "Unauthorized"),
   USER_EXISTING("005", "User is existing"),
   ROLE_NOT_FOUND("006", "Role not found"),
+  MODULE_NOT_FOUND("007", "Module not found"),
+  REFERENCE_PROFILE_NOT_FOUND("008", "Reference profile not found"),
   ;
 
   private final String code;
+
   private final String message;
 }
