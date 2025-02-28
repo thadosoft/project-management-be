@@ -2,6 +2,7 @@ package com.example.projectmanagementbe.api.services.impls.referenceProfile;
 
 import com.example.projectmanagementbe.api.mappers.referenceProfile.ReferenceProfileMapper;
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.ReferenceProfileRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Update.UpdateReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceFile;
@@ -39,6 +40,12 @@ public class ReferenceProfileServiceImpl implements IReferenceProfileService {
     List<ReferenceProfileResponse> bearingResponses = referenceProfiles.getContent().stream().map(referenceProfileMapper::mapReferenceProfileResponse).collect(Collectors.toList());
 
     return new PageImpl<>(bearingResponses, request, referenceProfiles.getTotalElements());
+  }
+
+  @Override
+  public Page<ReferenceProfileResponse> searchByParams(SearchReferenceProfileRequest searchReferenceProfileRequest, Pageable pageable) {
+    return referenceProfileRepository
+        .searchByNameAndDate(searchReferenceProfileRequest.getName(), searchReferenceProfileRequest.getStartDate(), searchReferenceProfileRequest.getEndDate(), pageable).map(referenceProfileMapper::mapReferenceProfileResponse);
   }
 
   @Override

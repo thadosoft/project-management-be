@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.api.controllers.referenceProfile;
 
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.ReferenceProfileRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Update.UpdateReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.services.referenceProfile.IReferenceProfileService;
@@ -28,6 +29,11 @@ public class ReferenceProfileController {
   @GetMapping
   public ResponseEntity<Page<ReferenceProfileResponse>> findAll(Pageable pageable) {
     return ResponseEntity.ok(profileService.findAll(pageable));
+  }
+
+  @PostMapping("/search")
+  public Page<ReferenceProfileResponse> search(@RequestBody SearchReferenceProfileRequest searchReferenceProfileRequest, Pageable pageable) {
+    return profileService.searchByParams(searchReferenceProfileRequest, pageable);
   }
 
   @PostMapping
