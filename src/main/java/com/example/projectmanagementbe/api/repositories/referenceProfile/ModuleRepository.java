@@ -4,7 +4,6 @@ import com.example.projectmanagementbe.api.models.referenceProfile.Modules;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ModuleRepository extends JpaRepository<Modules, String> {
+public interface ModuleRepository extends JpaRepository<Modules, Long> {
 
-  Optional<Modules> findById(Long id);
 }

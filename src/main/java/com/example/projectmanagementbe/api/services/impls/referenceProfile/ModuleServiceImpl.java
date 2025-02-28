@@ -11,9 +11,11 @@ import com.example.projectmanagementbe.api.repositories.referenceProfile.ModuleR
 import com.example.projectmanagementbe.api.services.referenceProfile.IModuleService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
 import com.example.projectmanagementbe.exception.ErrorCode;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,6 +39,7 @@ public class ModuleServiceImpl implements IModuleService {
   }
 
   @Override
+  @Transactional
   public void update(Long id, ModuleRequest moduleRequest) {
     Modules module = moduleRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.REFERENCE_PROFILE_NOT_FOUND.toString()));
@@ -48,15 +51,15 @@ public class ModuleServiceImpl implements IModuleService {
 
   @Override
   public void delete(Long id) {
-    if (moduleRepository.existsById(String.valueOf(id))) {
-      moduleRepository.deleteById(String.valueOf(id));
-    } else {
+    try {
+      moduleRepository.deleteById(id);
+    } catch (EmptyResultDataAccessException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.MODULE_NOT_FOUND.toString());
     }
   }
 
   @Override
   public ModuleResponse findById(Long id) {
-    return moduleMapper.mapModuleResponse(moduleRepository.findById(id).orElseThrow(() -> new ApiRequestException(ErrorCode.USER_NOT_FOUND)));
+    return moduleMapper.mapModuleResponse(moduleRepository.findById(id).orElseThrow(() -> new ApiRequestException(ErrorCode.MODULE_NOT_FOUND)));
   }
 }
