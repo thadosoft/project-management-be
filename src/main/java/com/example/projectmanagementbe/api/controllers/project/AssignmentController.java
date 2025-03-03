@@ -29,9 +29,8 @@ public class AssignmentController {
   }
 
   @PostMapping
-  public ResponseEntity<Void> create(@RequestBody AssignmentRequest assignmentRequest) {
-    assignmentService.create(assignmentRequest);
-    return ResponseEntity.status(HttpStatus.CREATED).build();
+  public ResponseEntity<AssignmentResponse> create(@RequestBody AssignmentRequest assignmentRequest) {
+    return ResponseEntity.ok(assignmentService.create(assignmentRequest));
   }
 
   @PutMapping("/{id}")
@@ -40,9 +39,9 @@ public class AssignmentController {
     return ResponseEntity.noContent().build();
   }
 
-  @DeleteMapping("/{fileName}")
-  public ResponseEntity<Void> delete(@PathVariable String fileName) {
-    assignmentService.delete(fileName);
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> delete(@PathVariable String id) {
+    assignmentService.delete(id);
     return ResponseEntity.noContent().build();
   }
 

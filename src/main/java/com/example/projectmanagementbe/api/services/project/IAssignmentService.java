@@ -7,7 +7,7 @@ import java.util.List;
 public interface IAssignmentService {
   List<AssignmentResponse> findAll();
 
-  void create(AssignmentRequest assignmentRequest);
+  AssignmentResponse create(AssignmentRequest assignmentRequest);
 
   void update(String id, AssignmentRequest AssignmentRequest);
 

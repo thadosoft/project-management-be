@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.api.models.project;
 
 import com.example.projectmanagementbe.api.models.Base;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -35,6 +36,6 @@ public class Task extends Base {
   @JoinColumn(name = "project_id")
   private Project project;
 
-  @OneToMany(mappedBy = "task")
+  @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
   private List<Assignment> assignments;
 }

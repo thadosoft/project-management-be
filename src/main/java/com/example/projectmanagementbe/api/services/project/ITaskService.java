@@ -7,7 +7,7 @@ import java.util.List;
 public interface ITaskService {
   List<TaskResponse> findAll();
 
-  void create(TaskRequest taskRequest);
+  TaskResponse create(TaskRequest taskRequest);
 
   void update(String id, TaskRequest TaskRequest);
 

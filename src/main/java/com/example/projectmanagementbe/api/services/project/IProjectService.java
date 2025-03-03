@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProjectService {
   List<ProjectResponse> findAll();
 
-  void create(ProjectRequest projectRequest) throws IOException;
+  ProjectResponse create(ProjectRequest projectRequest) throws IOException;
 
   void update(String id, ProjectRequest ProjectRequest);
 

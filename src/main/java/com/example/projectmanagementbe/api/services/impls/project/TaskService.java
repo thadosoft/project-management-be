@@ -25,8 +25,8 @@ public class TaskService implements ITaskService {
   }
 
   @Override
-  public void create(TaskRequest taskRequest) {
-    taskRepository.save(taskMapper.toTaskEntity(taskRequest));
+  public TaskResponse create(TaskRequest taskRequest) {
+    return taskMapper.toTaskResponse(taskRepository.save(taskMapper.toTaskEntity(taskRequest)));
   }
 
   @Override

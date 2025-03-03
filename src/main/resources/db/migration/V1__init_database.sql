@@ -63,7 +63,7 @@ create table if not exists assignments
 (
     id               char(36),
     assigner_id      char(36)     not null,
-    receiver_id      char(36)     not null,
+    receiver_id      char(36)     ,
     task_id          char(36)     not null,
     title            varchar(100) not null,
     description      text         null,

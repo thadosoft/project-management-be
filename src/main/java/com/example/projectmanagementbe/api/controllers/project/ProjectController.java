@@ -30,9 +30,8 @@ public class ProjectController {
   }
 
   @PostMapping
-  public ResponseEntity<Void> create(@RequestBody ProjectRequest projectRequest) throws IOException {
-    projectService.create(projectRequest);
-    return ResponseEntity.status(HttpStatus.CREATED).build();
+  public ResponseEntity<ProjectResponse> create(@RequestBody ProjectRequest projectRequest) throws IOException {
+    return ResponseEntity.ok(projectService.create(projectRequest));
   }
 
   @PutMapping("/{id}")

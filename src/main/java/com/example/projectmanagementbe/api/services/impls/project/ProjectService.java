@@ -28,13 +28,13 @@ public class ProjectService implements IProjectService {
   }
 
   @Override
-  public void create(ProjectRequest projectRequest) throws IOException {
+  public ProjectResponse create(ProjectRequest projectRequest) throws IOException {
     if (projectRepository.findByName(projectRequest.getName()).isPresent()) {
       throw new RuntimeException("Project name already exists");
     }
 
     Files.createDirectories(Path.of(storageConfig.getDirectory()).resolve(projectRequest.getName()));
-    projectRepository.save(projectMapper.toProjectEntity(projectRequest));
+    return projectMapper.toProjectResponse(projectRepository.save(projectMapper.toProjectEntity(projectRequest)));
   }
 
   @Override

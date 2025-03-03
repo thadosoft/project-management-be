@@ -8,6 +8,8 @@ import com.example.projectmanagementbe.api.mappers.project.AssignmentMapper;
 import com.example.projectmanagementbe.api.repositories.project.AssignmentRepository;
 import com.example.projectmanagementbe.api.repositories.project.TaskRepository;
 import com.example.projectmanagementbe.api.services.project.IAssignmentService;
+import com.example.projectmanagementbe.auth.models.User;
+import com.example.projectmanagementbe.auth.repositories.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class AssignmentService implements IAssignmentService {
   private final AssignmentRepository assignmentRepository;
   private final AssignmentMapper assignmentMapper;
   private final TaskRepository taskRepository;
+  private final UserRepository userRepository;
 
   @Override
   public List<AssignmentResponse> findAll() {
@@ -26,8 +29,36 @@ public class AssignmentService implements IAssignmentService {
   }
 
   @Override
-  public void create(AssignmentRequest assignmentRequest) {
-    assignmentRepository.save(assignmentMapper.toAssignmentEntity(assignmentRequest));
+  public AssignmentResponse create(AssignmentRequest assignmentRequest) {
+//    Assignment assignment = assignmentMapper.toAssignmentEntity(assignmentRequest);
+//    assignment.setAssigner(userRepository.findById(assignmentRequest.getAssignerId()).orElseThrow(() -> new RuntimeException("Assigner not found")));
+//    if (assignmentRequest.getReceiverId() != null) {
+//      assignment.setReceiver(userRepository.findById(assignmentRequest.getReceiverId()).orElseThrow(() -> new RuntimeException("Receiver not found")));
+//    }
+//
+//    return assignmentMapper.toAssignmentResponse(assignmentRepository.save(assignment));
+
+    Assignment assignment = new Assignment();
+
+    User assigner = userRepository.findById(assignmentRequest.getAssignerId())
+        .orElseThrow(() -> new RuntimeException("Assigner not found"));
+    assignment.setAssigner(assigner);
+
+    if (assignmentRequest.getReceiverId() != null) {
+      User receiver = userRepository.findById(assignmentRequest.getReceiverId())
+          .orElseThrow(() -> new RuntimeException("Receiver not found"));
+      assignment.setReceiver(receiver);
+    }
+
+    Task task = taskRepository.findById(assignmentRequest.getTaskId())
+        .orElseThrow(() -> new RuntimeException("Task not found"));
+    assignment.setTask(task);
+
+    assignment.setTitle(assignmentRequest.getTitle());
+    assignment.setDescription(assignmentRequest.getDescription());
+    assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
+
+    return assignmentMapper.toAssignmentResponse(assignmentRepository.save(assignment));
   }
 
   @Override
