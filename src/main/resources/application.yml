@@ -1,3 +1,9 @@
+web-config:
+  cors:
+    allowed:
+      origins: http://localhost:5173
+      methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/project_management_db
@@ -7,7 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
@@ -19,6 +25,13 @@ spring:
     user: root
     password: root
     baseline-version: 0
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+storage:
+  directory: "D:\\STORAGE"
+  max-size: "100MB"
 
 application:
   security:

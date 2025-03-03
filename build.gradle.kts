@@ -37,6 +37,11 @@ dependencies {
 	implementation("org.springframework.security:spring-security-web:6.4.1")
 	implementation("org.springframework.security:spring-security-config:6.4.1")
 
+	implementation("jakarta.validation:jakarta.validation-api:3.1.0")
+
+	implementation("mysql:mysql-connector-java:8.0.28")
+
+
 	runtimeOnly("com.mysql:mysql-connector-j")
 
 	compileOnly("org.projectlombok:lombok:1.18.36")
