@@ -9,15 +9,7 @@ public class ReferenceLinkResponse {
 
   private Long id;
 
-  private Long referenceProfileId;
+  private String link;
 
-  private byte[] fileData;
-
-  private String fileName;
-
-  private String fileType;
-
-  private Long fileSize;
-
-  private String fileUrl;
+  private String description;
 }

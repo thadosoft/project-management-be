@@ -1,9 +1,5 @@
 package com.example.projectmanagementbe.api.models.dto.requests.referenceProfile;
 
-import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
-import jakarta.persistence.Column;
-import jakarta.persistence.Lob;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +7,7 @@ import lombok.Setter;
 @Setter
 public class ReferenceLinkRequest {
 
-  private Long referenceProfileId;
+  private String link;
 
-  private byte[] fileData;
-
-  private String fileName;
-
-  private String fileType;
-
-  private Long fileSize;
-
-  private String fileUrl;
+  private String description;
 }
