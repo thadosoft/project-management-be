@@ -58,4 +58,10 @@ public class ReferenceProfileController {
   public ResponseEntity<ReferenceProfileResponse> findById(@PathVariable Long id) {
     return ResponseEntity.ok(profileService.findById(id));
   }
+
+  @GetMapping("/module/{id}")
+  public ResponseEntity<ReferenceProfileResponse> findByModuleId(@PathVariable Long id) {
+    return ResponseEntity.ok(profileService.findByModuleId(id));
+  }
+
 }

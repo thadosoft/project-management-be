@@ -5,13 +5,16 @@ import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Update.UpdateReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
+import com.example.projectmanagementbe.api.models.referenceProfile.Modules;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceFile;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceLink;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
+import com.example.projectmanagementbe.api.repositories.referenceProfile.ModuleRepository;
 import com.example.projectmanagementbe.api.repositories.referenceProfile.ReferenceProfileRepository;
 import com.example.projectmanagementbe.api.services.referenceProfile.IReferenceProfileService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
 import com.example.projectmanagementbe.exception.ErrorCode;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class ReferenceProfileServiceImpl implements IReferenceProfileService {
 
+  private final ModuleRepository moduleRepository;
   private final ReferenceProfileRepository referenceProfileRepository;
   private final ReferenceProfileMapper referenceProfileMapper;
 
@@ -50,11 +54,27 @@ public class ReferenceProfileServiceImpl implements IReferenceProfileService {
 
   @Override
   public void create(ReferenceProfileRequest referenceProfileRequest) {
-    ReferenceProfile referenceProfile = referenceProfileMapper.mapReferenceProfile(referenceProfileRequest);
+    ReferenceProfile referenceProfile = new ReferenceProfile();
+    referenceProfile.setName(referenceProfileRequest.getName());
+    referenceProfile.setDescription(referenceProfileRequest.getDescription());
 
-    referenceProfile.getReferenceFiles().forEach(file -> file.setReferenceProfile(referenceProfile));
-    referenceProfile.getReferenceLinks().forEach(link -> link.setReferenceProfile(referenceProfile));
+    List<ReferenceFile> files = referenceProfileRequest.getReferenceFiles().stream().map(file -> {
+      ReferenceFile referenceFile = new ReferenceFile();
+      referenceFile.setFileName(file.getOriginalFilename());
+      referenceFile.setFileType(file.getContentType());
+      referenceFile.setFileSize(file.getSize());
 
+      try {
+        referenceFile.setFileData(file.getBytes());
+      } catch (IOException e) {
+        throw new RuntimeException("Lỗi khi đọc file", e);
+      }
+
+      referenceFile.setReferenceProfile(referenceProfile);
+      return referenceFile;
+    }).collect(Collectors.toList());
+
+    referenceProfile.setReferenceFiles(files);
     referenceProfileRepository.save(referenceProfile);
   }
 
@@ -89,5 +109,11 @@ public class ReferenceProfileServiceImpl implements IReferenceProfileService {
   @Override
   public ReferenceProfileResponse findById(Long id) {
     return referenceProfileMapper.mapReferenceProfileResponse(referenceProfileRepository.findById(id).orElseThrow(() -> new ApiRequestException(ErrorCode.REFERENCE_PROFILE_NOT_FOUND)));
+  }
+
+  @Override
+  public ReferenceProfileResponse findByModuleId(Long moduleId) {
+    Modules modules = moduleRepository.findById(moduleId).get();
+    return referenceProfileMapper.mapReferenceProfileResponse(referenceProfileRepository.findByModule(modules));
   }
 }

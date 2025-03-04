@@ -20,4 +20,5 @@ public interface IReferenceProfileService {
   void delete(Long id);
 
   ReferenceProfileResponse findById(Long id);
+  ReferenceProfileResponse findByModuleId(Long moduleId);
 }
