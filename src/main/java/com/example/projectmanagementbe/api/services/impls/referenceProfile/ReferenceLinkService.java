@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ReferenceLinkService implements IProfileReferenceLink {
 
-  private final ReferenceLinkMapper referenceLinkMapper;
   private final ReferenceLinkRepository referenceLinkRepository;
   private final ReferenceProfileRepository referenceProfileRepository;
 

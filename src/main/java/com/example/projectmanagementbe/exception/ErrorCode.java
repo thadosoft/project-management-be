@@ -17,6 +17,7 @@ public enum ErrorCode {
   INVENTORY_CATEGORY_NOT_FOUND("009", "Inventory category not found"),
   INVENTORY_ITEM_NOT_FOUND("010", "Inventory item not found"),
   INVENTORY_TRANSACTION_NOT_FOUND("010", "Inventory transaction item not found"),
+  EMPLOYEE_NOT_FOUND("011", "Employee not found"),
 
   ;
 
