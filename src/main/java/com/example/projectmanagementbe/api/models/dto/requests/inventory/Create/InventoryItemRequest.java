@@ -1,7 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.requests.inventory.Create;
 
 import java.math.BigDecimal;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,5 +26,5 @@ public class InventoryItemRequest {
 
   private BigDecimal sellingPrice;
 
-  private List<InventoryTransactionRequest> inventoryTransactions;
+  private String status;
 }

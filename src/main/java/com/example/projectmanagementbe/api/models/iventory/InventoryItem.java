@@ -67,4 +67,8 @@ public class InventoryItem  extends Auditable {
 
   @OneToMany(mappedBy = "item")
   private List<InventoryTransaction> inventoryTransactions;
+
+  @Size(max = 50)
+  @Column(name = "status")
+  private String status;
 }
