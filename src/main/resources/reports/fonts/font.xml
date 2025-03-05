@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+  <fontFamily name="Arial">
+    <normal><![CDATA[reports/fonts/vn-arial/ARIAL.TTF]]></normal>
+    <bold><![CDATA[reports/fonts/vn-arial/ARIALBD.TTF]]></bold>
+    <italic><![CDATA[reports/fonts/vn-arial/ARIALI.TTF]]></italic>
+    <boldItalic><![CDATA[reports/fonts/vn-arial/ARIALBI.TTF]]></boldItalic>
+    <pdfEncoding><![CDATA[Identity-H]]></pdfEncoding>
+    <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    <exportFonts/>
+  </fontFamily>
+
+  <fontFamily name="Arial Unicode MS">
+    <normal><![CDATA[reports/fonts/vn-arial-unicode-ms/arial-unicode-ms.ttf]]></normal>
+    <bold><![CDATA[reports/fonts/vn-arial-unicode-ms/Arial-Unicode-Bold.TTF]]></bold>
+    <italic><![CDATA[reports/fonts/vn-arial-unicode-ms/Arial-Unicode-Italic.TTF]]></italic>
+    <boldItalic><![CDATA[reports/fonts/vn-arial-unicode-ms/Arial-Unicode-Bold-Italic.TTF]]></boldItalic>
+    <pdfEncoding><![CDATA[Identity-H]]></pdfEncoding>
+    <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    <exportFonts/>
+  </fontFamily>
+</fontFamilies>
+

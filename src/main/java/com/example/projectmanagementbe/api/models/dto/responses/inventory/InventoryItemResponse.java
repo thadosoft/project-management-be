@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.responses.inventory;
 
+import com.example.projectmanagementbe.api.models.iventory.InventoryCategory;
 import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +11,11 @@ public class InventoryItemResponse {
 
   private Long id;
 
+  private String name;
+
   private String sku;
 
-  private Long inventoryCategoryId;
+  private InventoryCategory inventoryCategory;
 
   private String unit;
 

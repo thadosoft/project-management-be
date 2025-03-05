@@ -5,6 +5,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.Employee.SearchEm
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.Employee.EmployeeResponse;
 import java.util.List;
+import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,4 +22,6 @@ public interface IEmployeeService {
   void delete(Long id);
 
   EmployeeResponse findById(Long id);
+
+  Map<String, Object> loadData(Long id);
 }

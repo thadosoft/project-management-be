@@ -6,10 +6,14 @@ import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.
 import com.example.projectmanagementbe.api.models.dto.responses.Employee.EmployeeResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.services.Employee.IEmployeeService;
+import com.example.projectmanagementbe.api.services.File.ExportFileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +29,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class EmployeeController {
 
+  public static final String TEMPLATE_PATH = "src/main/resources/reports/templates/EmploymentContract.jrxml";
   private final IEmployeeService employeeService;
+  private final ExportFileService exportFileService;
 
   @GetMapping
   public ResponseEntity<Page<EmployeeResponse>> findAll(Pageable pageable) {
@@ -59,5 +65,39 @@ public class EmployeeController {
   @PostMapping("/search")
   public Page<EmployeeResponse> search(@RequestBody SearchEmployeeRequest searchReferenceProfileRequest, Pageable pageable) {
     return employeeService.searchByParams(searchReferenceProfileRequest, pageable);
+  }
+
+  @GetMapping("/printPDF/{id}")
+  public ResponseEntity<byte[]> downloadPDF(@PathVariable("id") Long id) {
+
+    var parameters = employeeService.loadData(id);
+
+    System.out.println("pârmamara----" + parameters);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_PDF);
+    headers.setContentDisposition(
+        ContentDisposition.builder("attachment")
+            .filename("report.pdf")
+            .build()
+    );
+
+    var pdfBytes = exportFileService.exportPdfReport(TEMPLATE_PATH, parameters);
+
+    return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
+  }
+
+  @GetMapping("/printExcel/{id}")
+  public ResponseEntity<byte[]> downloadExcel(@PathVariable("id") Long id) {
+    var parameters = employeeService.loadData(id);
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_PDF);
+    headers.setContentDisposition(
+        ContentDisposition.builder("attachment")
+            .filename("report.pdf")
+            .build()
+    );
+    var pdfBytes = exportFileService.exportExcelReport(TEMPLATE_PATH, parameters);
+    return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
   }
 }

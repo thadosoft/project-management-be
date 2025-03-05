@@ -11,7 +11,10 @@ import com.example.projectmanagementbe.api.repositories.Employee.EmployeeReposit
 import com.example.projectmanagementbe.api.services.Employee.IEmployeeService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
 import com.example.projectmanagementbe.exception.ErrorCode;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -76,5 +79,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
   @Override
   public EmployeeResponse findById(Long id) {
     return mapper.mapEmployeeResponse(employeeRepository.findById(id).orElseThrow(() -> new ApiRequestException(ErrorCode.EMPLOYEE_NOT_FOUND)));
+  }
+
+  @Override
+  public Map<String, Object> loadData(Long id) {
+    Optional<Employee> employmentContract = employeeRepository.findById(id);
+    if (employmentContract.isPresent()) {
+      var parameters = new HashMap<String, Object>();
+      return parameters;
+    } else {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.CONTRACT_NOT_FOUND.toString());
+    }
   }
 }
