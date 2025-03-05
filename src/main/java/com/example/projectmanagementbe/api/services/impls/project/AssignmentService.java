@@ -144,6 +144,7 @@ public class AssignmentService implements IAssignmentService {
       assignment.setTask(task);
 
       assignment.setTitle(assignmentRequest.getTitle());
+      assignment.setDescription(assignmentRequest.getDescription());
       assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
 
       assignmentRepository.save(assignment);
