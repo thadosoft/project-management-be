@@ -24,6 +24,9 @@ public interface AssignmentMapper {
 
   Assignment toAssignmentEntity(AssignmentResponse assignmentResponse);
 
+  @Mapping(source = "assignerId", target = "assigner.id")
+  @Mapping(source = "receiverId", target = "receiver.id")
+  @Mapping(source = "taskId", target = "task.id")
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void toAssignmentEntity(AssignmentRequest assignmentRequest, @MappingTarget Assignment assignment);
 }

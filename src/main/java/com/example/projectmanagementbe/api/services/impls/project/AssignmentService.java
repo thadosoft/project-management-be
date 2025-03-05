@@ -128,7 +128,23 @@ public class AssignmentService implements IAssignmentService {
       }
     } else {
       Assignment assignment = assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found"));
-      assignmentMapper.toAssignmentEntity(assignmentRequest, assignment);
+
+      User assigner = userRepository.findById(assignmentRequest.getAssignerId())
+          .orElseThrow(() -> new RuntimeException("Assigner not found"));
+      assignment.setAssigner(assigner);
+
+      if (assignmentRequest.getReceiverId() != null) {
+        User receiver = userRepository.findById(assignmentRequest.getReceiverId())
+            .orElseThrow(() -> new RuntimeException("Receiver not found"));
+        assignment.setReceiver(receiver);
+      }
+
+      Task task = taskRepository.findById(assignmentRequest.getTaskId())
+          .orElseThrow(() -> new RuntimeException("Task not found"));
+      assignment.setTask(task);
+
+      assignment.setTitle(assignmentRequest.getTitle());
+      assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
 
       assignmentRepository.save(assignment);
     }
