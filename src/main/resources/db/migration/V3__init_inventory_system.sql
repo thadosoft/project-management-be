@@ -14,12 +14,13 @@ CREATE TABLE inventory_item
     name                  VARCHAR(255)        NOT NULL,
     sku                   VARCHAR(255) UNIQUE NOT NULL,
     inventory_category_id BIGINT,
-    unit                  VARCHAR(50)         NOT NULL,
+    unit                  VARCHAR(50) NULL,
     quantity_in_stock     INT       DEFAULT 0,
     reorder_level         INT       DEFAULT 0, -- mức tồn kho tối thiểu khi đạt đến => bổ sung tránh thiếu vật tư
     location              VARCHAR(255) NULL,
     purchase_price        DECIMAL(10, 2) NULL,
     selling_price         DECIMAL(10, 2) NULL,
+    status                VARCHAR(50),
     created_at            TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at            TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (inventory_category_id) REFERENCES inventory_category (id)

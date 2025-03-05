@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.repositories.referenceProfile;
 
+import com.example.projectmanagementbe.api.models.referenceProfile.Modules;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
 import java.time.LocalDateTime;
 import org.springframework.data.domain.Page;
@@ -19,4 +20,6 @@ public interface ReferenceProfileRepository extends JpaRepository<ReferenceProfi
       @Param("endDate") LocalDateTime endDate,
       Pageable pageable
   );
+
+  ReferenceProfile findByModule(Modules id);
 }

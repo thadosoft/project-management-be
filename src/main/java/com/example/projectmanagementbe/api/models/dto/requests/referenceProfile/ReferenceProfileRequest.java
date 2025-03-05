@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -12,11 +13,11 @@ public class ReferenceProfileRequest {
 
   private String name;
 
-  private Modules module;
+  private Long module;
 
   private String description;
 
-  private List<ReferenceFileRequest> referenceFiles = new ArrayList<>();
+  private List<MultipartFile> referenceFiles = new ArrayList<>();
 
   private List<ReferenceLinkRequest> referenceLinks = new ArrayList<>();
 }

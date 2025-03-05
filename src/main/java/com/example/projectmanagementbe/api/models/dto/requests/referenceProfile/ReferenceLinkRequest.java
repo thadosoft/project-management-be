@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class ReferenceLinkRequest {
 
+  private Long referenceProfile;
+
   private String link;
 
   private String description;
