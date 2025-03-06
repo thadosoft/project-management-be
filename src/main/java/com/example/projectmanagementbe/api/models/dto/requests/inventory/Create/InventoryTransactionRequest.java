@@ -1,6 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.requests.inventory.Create;
 
-import java.time.Instant;
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,7 @@ public class InventoryTransactionRequest {
 
   private Integer quantity;
 
-  private Instant transactionDate;
+  private Date transactionDate;
 
   private String reason;
 

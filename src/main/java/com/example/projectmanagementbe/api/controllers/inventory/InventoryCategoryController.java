@@ -1,7 +1,6 @@
 package com.example.projectmanagementbe.api.controllers.inventory;
 
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Create.InventoryCategoryRequest;
-import com.example.projectmanagementbe.api.models.dto.requests.inventory.Search.SearchInventoryCategoryRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.UpdateInventoryCategoryRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryCategoryResponse;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryCategoryService;

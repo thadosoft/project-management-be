@@ -33,6 +33,7 @@ spring:
     multipart:
       max-file-size: 1024MB
       max-request-size: 1024MB
+      enabled: true
 storage:
   directory: "D:\\STORAGE"
   max-size: "100MB"

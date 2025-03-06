@@ -1,0 +1,12 @@
+INSERT INTO users (`id`, `role`, `name`, `email`, `username`, `password`, `phone_number`) VALUES ('5b850232-fe70-43cf-b997-4b5e8ecb5a6c', 'ADMIN', 'admin', 'admin@gmail.com', 'admin', '$2a$10$aMor17HeD1sJpb2gZXSiQe6.c0T4RcYIrMT8svImEDbpueDbs37Ue', '0987654321');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (1, 'Admin', 1, 'Hệ thống', '2025-03-03 17:50:35', '2025-03-04 11:26:22');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (2, 'Authorise', 2, 'Duyệt chứng từ', '2025-03-04 11:25:57', '2025-03-04 11:26:26');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (3, 'BI', 3, 'Phân tích', '2025-03-04 11:26:18', '2025-03-04 11:26:27');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (4, 'Finance', 4, 'Duyệt chứng từ', '2025-03-04 11:26:37', '2025-03-04 11:26:37');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (5, 'Technical', 5, 'Kỹ thuật', '2025-03-04 11:27:13', '2025-03-04 11:27:13');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (6, 'OFM', 6, 'Hành chánh', '2025-03-04 11:27:23', '2025-03-04 11:27:23');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (7, 'Payable', 7, 'Phải trả', '2025-03-04 11:27:31', '2025-03-04 11:27:31');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (8, 'Purchase', 8, 'Mua hàng', '2025-03-04 11:27:46', '2025-03-04 11:27:46');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (9, 'Operation', 9, 'Kinh doanh', '2025-03-04 11:27:52', '2025-03-04 11:27:52');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (10, 'Sale', 10, 'Bán hàng', '2025-03-04 11:28:07', '2025-03-04 11:28:07');
+INSERT INTO reference_profile (`id`, `name`, `module_id`, `description`, `created_at`, `updated_at`) VALUES (11, 'Inventory', 11, 'Kho', '2025-03-04 11:28:14', '2025-03-04 11:28:14');

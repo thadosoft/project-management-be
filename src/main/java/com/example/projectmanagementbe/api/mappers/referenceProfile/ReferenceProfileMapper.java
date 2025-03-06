@@ -5,6 +5,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Update.UpdateReferenceLinkRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Update.UpdateReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
+import com.example.projectmanagementbe.api.models.referenceProfile.Modules;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceFile;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceLink;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
@@ -19,6 +20,10 @@ public interface ReferenceProfileMapper {
   ReferenceProfileResponse mapReferenceProfileResponse(ReferenceProfile referenceProfile);
 
   ReferenceProfile mapReferenceProfile(ReferenceProfileRequest referenceProfileRequest);
+
+  ReferenceProfile mapReferenceProfile(Long id);
+
+  Modules map(Long id);
 
   void updateReferenceProfile(UpdateReferenceProfileRequest dto, @MappingTarget ReferenceProfile entity);
 

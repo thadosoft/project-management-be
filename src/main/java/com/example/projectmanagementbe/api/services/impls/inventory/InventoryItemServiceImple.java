@@ -2,16 +2,26 @@ package com.example.projectmanagementbe.api.services.impls.inventory;
 
 import com.example.projectmanagementbe.api.mappers.inventory.InventoryItemMapper;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Create.InventoryItemRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.inventory.Search.SearchMaterialRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.UpdateInventoryItemRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
+import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
+import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
 import com.example.projectmanagementbe.api.repositories.inventory.InventoryItemRepository;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryItemService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
 import com.example.projectmanagementbe.exception.ErrorCode;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,6 +36,17 @@ public class InventoryItemServiceImple implements IInventoryItemService {
   @Override
   public List<InventoryItemResponse> findAll() {
     return inventoryItemRepository.findAll().stream().map(inventoryItemMapper::mapInventoryItemResponse).toList();
+  }
+
+  @Override
+  public Page<InventoryItemResponse> searchByParams(SearchMaterialRequest request, Pageable pageable) {
+    Pageable pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "createdAt"));
+
+    Page<InventoryItem> referenceProfiles = inventoryItemRepository.searchByNameAndSku(request.getName(), request.getSku(), pageable);
+
+    List<InventoryItemResponse> bearingResponses = referenceProfiles.getContent().stream().map(inventoryItemMapper::mapInventoryItemResponse).collect(Collectors.toList());
+
+    return new PageImpl<>(bearingResponses, pageRequest, referenceProfiles.getTotalElements());
   }
 
   @Override

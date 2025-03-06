@@ -1,0 +1,960 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="HDLD_TDS" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="Dataset1" uuid="6b1327e9-8336-46ba-ba15-1a0eed2ef6d6">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<query language="sql"><![CDATA[]]></query>
+	</dataset>
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<title height="156" splitType="Stretch">
+		<element kind="staticText" uuid="2a3e4974-6f62-42bb-ba5c-4991a872bd65" x="0" y="40" width="555" height="20" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="b165abc5-5bb5-4f50-be6f-f6fa48e4ee62" x="0" y="62" width="555" height="18" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Độc lập - Tự do - Hạnh phúc]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="18f3e626-8423-4349-89d4-b5857702177f" x="0" y="80" width="555" height="17" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Center" vTextAlign="Top">
+			<text><![CDATA[------o0o-------]]></text>
+		</element>
+		<element kind="staticText" uuid="b761b774-1a18-4d04-96df-0b5e8e83f73f" x="0" y="97" width="555" height="42" fontName="Arial Unicode MS" fontSize="26.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[HỢP ĐỒNG LAO ĐỘNG]]></text>
+		</element>
+		<element kind="staticText" uuid="8a0a0d39-6834-461f-8207-b21297e3a617" x="-1" y="139" width="556" height="17" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Center" vTextAlign="Top">
+			<text><![CDATA[Ngày …. Tháng ….. Năm .....]]></text>
+		</element>
+	</title>
+	<detail>
+		<band height="609" splitType="Stretch">
+			<element kind="staticText" uuid="e75b86fd-26a5-4d6f-9951-28a9ac442190" x="0" y="20" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Chúng tôi, một bên là]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="269bee04-5853-4e33-8f4c-1d0f3345ea8b" x="150" y="20" width="220" height="20" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Ông NGUYỄN HOÀNG MINH]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="6ae6c249-b987-4d44-8b02-0703d8580542" x="0" y="40" width="130" height="21" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Chức vụ            ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="fc882126-e3cc-49db-ba9a-bc79c99fe660" x="150" y="40" width="405" height="21" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Tổng Giám Đốc]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a75fab23-8116-4087-82a0-b8d6b79d4a3a" x="0" y="61" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Đại diện cho]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="112e619f-3e98-4eeb-bde7-a6f1eea519fe" x="150" y="61" width="405" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[CÔNG TY CP CÔNG NGHỆ THADOSOFT]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="34d659b3-50c4-4b35-935b-9073b9665540" x="0" y="81" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Điện thoại]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5f801dd5-5575-4a8c-8d78-30edd930b68d" x="150" y="81" width="405" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[(+84) 377 877 058]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5151d8a6-dd76-48eb-9739-19b7b4bb0595" x="0" y="150" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Và một bên là]]></text>
+			</element>
+			<element kind="textField" uuid="ea3fa441-65f5-4ed2-bf63-d222d4937446" x="150" y="150" width="220" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c74806ec-ea17-45a8-991f-147453937262" x="0" y="170" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Sinh ngày]]></text>
+			</element>
+			<element kind="textField" uuid="d5f43b7c-80b2-49d4-8f07-e84998e92576" x="150" y="170" width="405" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d6b1e70b-1af2-4933-a1bf-b2b73f670c07" x="0" y="190" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Địa chỉ thường trú]]></text>
+			</element>
+			<element kind="textField" uuid="767b585a-8f2b-4503-ad57-684c75c3cb10" x="150" y="190" width="404" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[""]]></expression>
+			</element>
+			<element kind="staticText" uuid="c9b99b5d-2408-4d2f-8161-8a9532994b6d" x="0" y="210" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Chỗ ở hiện tại	]]></text>
+			</element>
+			<element kind="textField" uuid="3166d4b6-7798-4982-b763-d8a8d57738ca" x="150" y="210" width="404" height="20" fontName="Arial Unicode MS" fontSize="12.0">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a01ab9ab-4b71-432b-813d-c1b77196e37f" x="0" y="230" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Số CMND/CCCD       ]]></text>
+			</element>
+			<element kind="textField" uuid="e623ad19-872f-4947-b1dc-a30d54ed2f84" x="150" y="230" width="404" height="20" fontName="Arial Unicode MS" fontSize="12.0">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="textField" uuid="ddaf3373-82ae-425b-9185-218c044fb4aa" x="150" y="250" width="404" height="20" fontName="Arial Unicode MS" fontSize="12.0">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="staticText" uuid="94c639b8-f356-4981-8381-5154bb2729cb" x="0" y="250" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Cấp ngày]]></text>
+			</element>
+			<element kind="staticText" uuid="1d85dbcc-3a33-4643-9131-9e47d7dd9626" x="30" y="356" width="525" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Loại hợp đồng lao động:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4b2932a2-ec65-490d-bfb6-0077d043f6c2" x="480" y="20" width="75" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Việt Nam]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="03d4711a-6e57-4ae4-9a9d-966cde16738e" x="370" y="20" width="110" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="10"/>
+				<text><![CDATA[Quốc tịch:]]></text>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="ac0eec51-3a4e-4d71-8e05-a79c22b7488a" x="130" y="20" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c59252e0-44da-4283-abc7-2f5a7ed0fe8a" x="130" y="40" width="20" height="21" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="2dc15f97-2833-4428-a1b3-0d8c98cd1851" x="130" y="61" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="776819c0-cff9-40e5-9877-fd60b98e875b" x="130" y="81" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="801f2752-af8e-4276-830c-0454e3f2c826" x="0" y="101" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Địa chỉ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b7b9f3de-b24b-434f-a821-84ae69e79d09" x="130" y="101" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="fba63149-a861-4e95-9c76-8f2df208e6df" x="150" y="101" width="405" height="49" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Tầng 2, Nhà Số 30 Đường Số 1, Khu Nhà Ở Hưng Phú, Khu Phố 1, Phường Tam Phú, Thành Phố Thủ Đức, Tp Hồ Chí Minh]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="05a04fa9-d95e-41a8-91f0-3138e94e16ee" x="130" y="150" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3f94b055-2dbe-4252-b2a1-7a7076202406" x="130" y="170" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="26ecd2f1-4bcd-4d7a-85dc-ee186f648433" x="130" y="190" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9867c326-5125-43b7-83c6-6031fe953562" x="130" y="210" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e183d328-21f6-408a-9223-21d9e7a58696" x="130" y="230" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="6268a0eb-7330-4cec-b618-e09bfc2b1608" x="130" y="250" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="textField" uuid="63af0de6-c278-432b-8d8f-f47fe93fb235" x="150" y="270" width="404" height="20" fontName="Arial Unicode MS" fontSize="12.0">
+				<expression><![CDATA[""]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e425fad9-7174-472c-bfa6-4d849bd568c3" x="0" y="270" width="130" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Nơi cấp]]></text>
+			</element>
+			<element kind="staticText" uuid="6b6eb10a-0337-47ad-8e8d-136fb22427be" x="130" y="270" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d42d8059-3945-4985-9376-5c7eed3777bf" x="370" y="150" width="110" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="10"/>
+				<text><![CDATA[Quốc tịch:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="dddc8f2f-3464-43b8-b0af-9f1d82674ee4" x="480" y="150" width="75" height="20" fontName="Arial Unicode MS" fontSize="12.0" vTextAlign="Middle">
+				<text><![CDATA[Việt Nam]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="1ab4600d-c089-4a17-bdb7-4507eb51be4c" x="0" y="295" width="555" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Thỏa thuận ký hợp đồng lao động và cam kết làm đúng những điều khoản sau đây]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="bb16dfc2-0bea-48a7-a5ec-40d4bd901a7b" x="0" y="330" width="555" height="26" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<text><![CDATA[ĐIỀU 1: THỜI HẠN VÀ CÔNG VIỆC HỢP ĐỒNG ]]></text>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="f9c4d39f-93e3-4666-9393-c57077202b30" x="30" y="386" width="526" height="34" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Có thời hạn, Xác định thời hạn 1 năm. Có hiệu lực từ ngày ….. tháng ….. năm ….. đến ngày …… tháng ….. năm …..]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e9efa3cb-5be0-42e6-a6a2-4a8ad56fdc84" x="0" y="356" width="30" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[1.1.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5886d4f8-b6a8-4815-b728-22084cd1ea14" x="0" y="420" width="30" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[1.2.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c96ff8b7-0d9d-4f8d-8b2d-bb2fb1480614" x="30" y="420" width="525" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Địa điểm làm việc]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d39ac2e6-56cd-4aee-b6f9-f31b85c3d277" x="30" y="450" width="526" height="34" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Trong và ngoài trụ sở của CÔNG TY CỔ PHẦN CÔNG NGHỆ THADOSOFT  (“Công ty”), tùy theo yêu cầu và trách nhiệm công việc.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8d30c39f-bde2-4b17-8800-224e09ed9634" x="0" y="484" width="30" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[1.3.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="23b6ccd4-f2bb-4a11-a3ed-76b47ee47d1f" x="30" y="484" width="525" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Chức danh: Kỹ sư phần mềm AI]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a7854e03-2485-479b-8ccd-49d529b56794" x="0" y="514" width="30" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[1.4.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="7e2b4774-a583-4de9-87e8-58903f8d919c" x="30" y="514" width="525" height="30" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Công việc phải làm: Theo sự phân công của Trưởng phụ trách/Giám đốc điều hành]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e7e8180d-2da2-4a93-89bd-5a99ae74ff90" x="0" y="544" width="555" height="26" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<text><![CDATA[ĐIỀU 2: CHẾ ĐỘ LÀM VIỆC]]></text>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="c5f86947-88e3-4b12-9b0b-7cdb89eae1c9" x="30" y="570" width="525" height="39" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Thời giờ làm việc: 8h/ngày từ (thứ Hai – thứ Sáu) và sáng thứ Bảy. Sáng 8h00 đến 12h00, Chiều 13h00 đến 17h00.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a3f0c37f-7593-4cc6-be31-9afc973f834a" x="0" y="570" width="30" height="39" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[2.1.	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+		</band>
+		<band height="797">
+			<element kind="staticText" uuid="58387276-df97-496f-bdca-4f86a362ef48" x="0" y="64" width="555" height="28" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<text><![CDATA[ĐIỀU 3: NGHĨA VỤ VÀ QUYỀN LỢI CỦA NGƯỜI LAO ĐỘNG]]></text>
+			</element>
+			<element kind="staticText" uuid="c20b844c-3e99-47be-aa92-f11320273db3" x="0" y="39" width="30" height="25" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[2.3.	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="38b59958-7e3d-4aa8-813f-0dc59c9369c0" x="30" y="39" width="525" height="25" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Điều kiện an toàn và vệ sinh lao động tại nơi làm việc: theo quy định của pháp luật và của Công ty.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="27ef938a-9475-428d-9d89-c15c812ff28d" x="0" y="92" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[3.1.	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="92c486d2-058f-4712-8950-5c8edc67021f" x="30" y="92" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Quyền lợi]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="ae0c23e5-d1f6-4628-bc10-890a15ebdf0f" x="30" y="111" width="320" height="23" markup="none" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Phương tiện đi lại làm việc: Người lao động tự túc. 
+
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a0dc0708-6948-4852-a10d-d7ee1f38edae" x="95" y="180" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Lương cơ bản]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3fb83aa6-8395-427e-ade0-a675ec6587e9" x="95" y="200" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Phụ cấp chức vụ, chức danh	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="eb8a3193-2cde-44a3-b66b-9f07d3c48849" x="95" y="220" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Phụ cấp ăn trưa, ăn ca ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a78fe03f-4e0f-426d-979d-7a2f0ac46942" x="95" y="240" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Phụ cấp xăng xe ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="345f9f79-566e-4162-9fcc-7a67d3e14569" x="95" y="300" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Thưởng sáng kiến]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b72b148f-f4f9-4ab9-beb6-7088d4438139" x="95" y="280" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Hỗ trợ nhà ở	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="922dd1ed-f715-459b-8d89-b0172cc39647" x="95" y="320" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Phụ cấp khác (tính chất đặc thù công việc)	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f49e9df6-b378-4ab5-8ca2-019bc100967b" x="95" y="260" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Điện thoại]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="0335b95a-3850-483c-80d1-fedf319e9ccf" x="95" y="340" width="280" height="20" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Tổng cộng]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="68937599-ea1e-4037-96bf-6d6340ab6f3a" x="375" y="180" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5241f840-2768-47bd-b31b-183583f72915" x="375" y="200" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="1db4eb02-4fde-449b-98e1-ac06bf64aa71" x="375" y="220" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d2b9e78f-c9ae-422b-bf3b-d4363f63fff4" x="375" y="240" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="768ba043-a030-4bad-8e59-789105ea75e0" x="375" y="260" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d15b72ac-5b31-4a4f-b695-1d29aba5cf22" x="375" y="280" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="2b39a540-a6a5-4563-a1fa-0aa26162704f" x="375" y="300" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="018895b4-9f03-4cae-8f68-b97184fd7379" x="375" y="320" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="384d90c1-b613-478d-be3e-c57ed03d1277" x="375" y="340" width="20" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="1585567e-6bdd-4c9d-8306-a89d6d75272c" x="395" y="180" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="47c4dbb0-c390-46a5-8262-9e29953b9c44" x="445" y="180" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9f8b70e2-fa17-45a1-b900-bfb6198bdd9b" x="395" y="200" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="11afff7a-f409-4b1e-8df7-496f250e19ed" x="445" y="200" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d4fafda6-506b-4384-988d-30f6b81459c3" x="395" y="220" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4025c26f-433b-4c13-9317-e63ffec4d6a8" x="445" y="220" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="23137fe5-8369-484d-aa1c-eef158b78486" x="395" y="240" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d99a1af5-bce4-487f-a428-e120eaf7d0b9" x="445" y="240" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8f41058b-e4a9-46e7-b65b-a57ea18d3673" x="395" y="260" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="baaf42a8-ecde-4877-ba07-4988c9039041" x="445" y="260" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a16fce62-de8e-4d26-a746-c88fb0d3f5de" x="395" y="280" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c9e56a93-6cce-4c59-9db0-60859304b5e8" x="445" y="280" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a2c80440-a983-4f9b-a229-757c4c193081" x="395" y="300" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="78e1fc58-903c-4acb-9bdc-d7af84df882b" x="445" y="300" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="62f6c29e-2175-4740-a68a-e3fcf6f8c992" x="395" y="320" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="7931b36a-2bbb-49e7-a0d8-9a1f503d8635" x="445" y="320" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5a254b14-c768-47b8-abfd-f9ba25d3e5c0" x="395" y="340" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a4639153-273b-48bc-9f96-da692492e717" x="445" y="340" width="50" height="20" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[VNĐ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="1df0d026-0b44-41b3-aabc-8f95765621cd" x="30" y="360" width="525" height="55" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Hình thức trả lương: Bằng tiền mặt/chuyển khoản
+-	Được trả lương từ ngày 3-7 hàng tháng (kế tiếp) dương lịch. 
+-	Tiền thưởng: Theo quy định tiêu chuẩn cho cán bộ nhân viên của Công ty. 
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5e3a268b-a393-4f2c-8ed5-396c767dfe2f" x="30" y="134" width="240" height="23" markup="none" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Mức lương tổng cộng (thực nhận) : ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="6e0a6d68-1d7a-4e4c-aa38-dbed74b50fe3" x="70" y="157" width="280" height="23" markup="none" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[Trong đó: ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="0879407e-c8d0-482b-94dd-edd40c3163e7" x="270" y="133" width="240" height="23" markup="none" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[VNĐ/ Tháng]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="bf0958c0-b1ef-4ab0-b856-249cea5fd1ac" x="70" y="415" width="280" height="23" markup="none" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[Bao gồm:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f206c85a-d20c-4110-b90e-f2b6ec3011fc" x="100" y="439" width="455" height="126" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Lương tháng 13 = Tiền lương trung bình 12 tháng trong năm. Nếu người lao động không làm đủ 12 tháng thì tiền "lương tháng 13" được tính tương ứng với số tháng làm việc trong năm. Được trả vào cuối tháng 12 trong năm
+	Thưởng theo hiệu suất làm việc và tình hình hiệu quả kinh doanh mà Công ty. Được trả vào trước hoặc sau giai đoạn Tết âm lịch của năm. Đối với Người lao động làm việc tại Công ty chưa đủ 12 tháng và đang tiếp tục làm việc tại thời điểm xét duyệt thì khoản tiền này sẽ được tính tỷ lệ theo thời gian làm việc của Người lao động.
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="beee0c81-4b0f-4d59-85bf-b0f585b69919" x="30" y="565" width="525" height="55" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Chế độ nâng lương: Định kỳ 1 năm 1 lần theo quy chế trả lương của Công ty. Thời gian xem xét tăng lương vào tháng 12 trong năm, và tăng lương vào tháng 1 năm tiếp theo. 
+	Ngoài ra, các trường hợp: ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9b6df270-e057-402e-bee4-f114412166ce" x="100" y="620" width="455" height="64" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Đối với Người lao động làm việc tại Công ty chưa đủ 12 tháng và đang tiếp tục làm việc tại thời điểm xét duyệt thì khoản tiền này sẽ được tính tỷ lệ theo thời gian làm việc của Người lao động. 
+	Các trường hợp tăng lương đặc biệt theo quyết định của Ban giám đốc
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="0cdb80bf-649c-41f1-9dd9-a420a172e172" x="30" y="0" width="525" height="39" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Được cấp phát những dụng cụ làm việc gồm: những dụng cụ cần thiết cho công việc theo quy định của Công ty.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="620480f1-7d70-46e0-afc2-dc12ea759756" x="0" y="0" width="30" height="39" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[2.2.	]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8d7f1785-fa30-4b8e-a5a2-fe2e801887da" x="30" y="684" width="525" height="34" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Được trang bị bảo hộ lao động theo đúng quy định Công ty. 
+-	Chế độ nghỉ ngơi (nghỉ hàng tuần, phép năm, lễ tết…) gồm:  
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="0abcaad7-ed75-443b-944d-ccf1614910df" x="100" y="718" width="455" height="79" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[	Nghỉ phép năm: 12 ngày/năm. Cứ mỗi năm (02) năm làm việc tại Công ty sẽ được cộng thêm một (01) ngày phép.
+	Nghỉ lễ, Tết: Theo quy định của Bộ luật Lao động  
+	Nghỉ việc riêng được hưởng nguyên lương: Theo quy định tại Điều 115 Bộ Luật Lao Động hiện hành.
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+		</band>
+		<band height="802">
+			<element kind="staticText" uuid="933b9f51-ba79-49d5-88e8-68fbeeeaa76d" x="30" y="0" width="525" height="34" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp:
+	Căn cứ trên mức tiền lương chính hoặc tiền công quy định, mức trích nộp như sau: 
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="component" uuid="7450624a-45fb-4b06-9b56-e8017fa233b6" x="130" y="34" width="290" height="130">
+				<component kind="table">
+					<datasetRun uuid="c7682c7a-9f14-4c9e-9002-a0b8413f520e" subDataset="Dataset1">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<column kind="single" uuid="432a8fee-9064-4b48-8b74-e96df632f821" width="110">
+						<tableHeader height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="bf0a6b93-971e-487a-9dec-99c434042897" x="0" y="0" width="110" height="30" hTextAlign="Left" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[Loại bảo hiểm]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="1e7382c1-cc45-4f13-bff5-61518969c794" x="0" y="0" width="110" height="30" hTextAlign="Left" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[Tổng cộng]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</tableFooter>
+						<columnHeader height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="4d780c27-4946-486b-af08-ab0ae394923b" x="0" y="0" width="110" height="30" hTextAlign="Left" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[Bảo hiểm xã hội]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="01990fc3-a2a5-4ef5-a675-bfb16199cf9e" x="0" y="0" width="110" height="30" hTextAlign="Left" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[Bảo hiểm thất nghiệp]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnFooter>
+						<detailCell height="30" style="Table_TD">
+							<element kind="staticText" uuid="2a401b74-df4a-495e-8cc5-91d0a97f135e" x="0" y="0" width="110" height="30" hTextAlign="Left" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[Bảo hiểm y tế]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</detailCell>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+					</column>
+					<column kind="single" uuid="739de56b-e46d-4faf-9a85-bdf479b172bc" width="80">
+						<tableHeader height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="3daac957-cc8f-4f28-96fe-99371dfcf37c" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Người sử dụng lao động]]></text>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="c9991549-b071-4ca7-8f62-933232f5933e" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[21.5%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</tableFooter>
+						<columnHeader height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="971b56e2-f9e9-4ee5-9313-47ad4048b527" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[17.5%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="456fbba4-3780-4882-a520-d0f6fe32c3aa" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[1%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnFooter>
+						<detailCell height="30" style="Table_TD">
+							<element kind="staticText" uuid="0a6825c6-2e10-4824-8b56-eeb3cf48e6db" x="0" y="0" width="80" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[3%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</detailCell>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+					</column>
+					<column kind="single" uuid="e810d56f-c387-4b4f-ba6d-364c5ea58b30" width="100">
+						<tableHeader height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="4341b991-7b73-4313-aa69-e96a683f5ece" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Người lao động]]></text>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" rowSpan="1" style="Table_TH">
+							<element kind="staticText" uuid="6eb3ce45-997e-42a4-89fc-0139d2761887" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[10.5%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</tableFooter>
+						<columnHeader height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="ef397cea-bb51-4bf3-ad68-0172394265a4" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[8%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" rowSpan="1" style="Table_CH">
+							<element kind="staticText" uuid="c8d0fa79-663c-46b7-803a-3d2532803fad" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[1%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</columnFooter>
+						<detailCell height="30" style="Table_TD">
+							<element kind="staticText" uuid="28011607-5c6c-48b8-a23a-a61338ced87e" x="0" y="0" width="100" height="30" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="10"/>
+								<text><![CDATA[1.5%]]></text>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+						</detailCell>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+					</column>
+				</component>
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+				<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+				<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+				<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+			</element>
+			<element kind="staticText" uuid="5ca9ff45-5927-44f3-a0fd-f3ee4feedc54" x="30" y="165" width="525" height="64" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[Mức trích nộp này có thể thay đổi theo quy định của pháp luật tại thời điểm trích nộp.
+-	Chế độ đào tạo: Trong thời gian Công ty cử đi đào tạo, người lao động phải hoàn thành khóa học đúng thời hạn, được hưởng nguyên lương và các quyền lợi khác như những ngày đi làm việc và người lao động phải thực hiện đúng các điều khoản cam kết (nếu có).]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d8fedc6f-005c-4122-8e83-4db47137868e" x="30" y="229" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Nghĩa vụ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d06631cf-6f78-403c-bc11-df8b2955a6ec" x="0" y="229" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[3.2.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="6cc0352b-cf8a-4099-93b1-cd6ad6cd4778" x="30" y="248" width="525" height="172" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Hoàn thành những công việc đã cam kết trong hợp đồng lao động và công việc được giao phó từ cấp trên.
+-	Trong công việc chịu sự điều hành của cấp trên trực tiếp. Hoàn thành những công việc đã cam kết trong hợp đồng lao động.
+-	Không tiết lộ thông tin về lương cá nhân, bí mật kinh doanh và tài sản trí tuệ của công ty
+-	Chấp hành lệnh điều hành sản xuất – kinh doanh, nội dung kỷ luật lao động, an toàn lao động được quy định trong Nội quy lao động hoặc theo thỏa ước lao động của Công ty.
+-	Chấp nhận điều động đến nhận công việc tại cơ sở khác trong công ty hoặc công ty khác do Công ty tham gia quản lý.
+-	Nếu tự ý chấm dứt hợp đồng lao động thì sẽ không được hưởng tiền thưởng tháng 13 và các chế độ thưởng khác theo chính sách áp dụng của công ty
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="13f2824d-52ed-4357-b574-16700c13eec6" x="30" y="420" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Chấm dứt hợp đồng lao động:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d994acdc-58a2-4cfc-b74b-d4cc0be582bd" x="0" y="420" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[3.3.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e56fe970-5c16-4041-84d2-610c26d60bb5" x="30" y="439" width="525" height="111" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[Hợp đồng lao động này chấm dứt hiệu lực khi thuộc một trong các trường hợp sau đây:
+-	Hết thời hạn ghi tại Điều 1.2 mà các bên không gia hạn.
+-	Người lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 35 của Bộ luật Lao động hiện hành.
+-	Người sử dụng lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 36 của Bộ luật Lao động hiện hành.
+-	Người lao động bị sa thải theo Điều 125 của Bộ luật Lao động hiện hành.
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="924f811c-2c3b-4da2-b23d-7dff625d5a85" x="30" y="550" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Bồi thường thiệt hại gây ra cho Công ty: ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="bd2fe61a-6b42-4a96-857f-6e331d3672cf" x="0" y="550" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[3.4.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="210a7478-b7b5-4e9c-bccc-048b485f68cd" x="30" y="568" width="525" height="42" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Theo điều 129, 130 của Bộ luật Lao động hiện hành, các quy định pháp luật và các quy định có liên quan của Công ty.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="abab37c8-644e-4622-95ed-4e0a09477723" x="0" y="610" width="555" height="28" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<text><![CDATA[ĐIỀU 4: NGHĨA VỤ VÀ QUYỀN HẠN CỦA NGƯỜI SỬ DỤNG LAO ĐỘNG]]></text>
+			</element>
+			<element kind="staticText" uuid="173c7b0d-f3c6-4bd7-a384-15d4a3365156" x="30" y="638" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Nghĩa vụ: ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="381841a1-7719-4d1b-8bf9-e2df04323bbb" x="0" y="638" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[4.1.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="55069184-e254-4573-9ea5-e6f7a040062d" x="30" y="656" width="525" height="54" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Bảo đảm làm việc và thực hiện đầy đủ những điều đã cam kết trong hợp đồng lao động.
+-	Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho Người lao động theo hợp đồng lao động và các quy định của Công ty.
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="494adf72-0660-40c5-a193-6aac771d90f9" x="30" y="710" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Quyền hạn: ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8064e1b4-96f1-4d0c-996d-566e66ca5b18" x="0" y="710" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[4.2.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="da1d45ec-2c2a-43dc-84a3-abaf07129353" x="30" y="728" width="525" height="71" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Điều hành Người lao động hoàn thành công việc theo hợp đồng (bố trí, điều chuyển, tạm ngưng việc…).
+-	Tạm hoãn, chấm dứt hợp đồng lao động, kỷ luật Người lao động theo quy định của pháp luật, và các quy định của Công ty.
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+		</band>
+		<band height="444">
+			<element kind="staticText" uuid="5f469ab7-bc53-4802-b868-c5c2e9a07d52" x="0" y="0" width="555" height="28" fontName="Arial Unicode MS" fontSize="12.0" bold="true" vTextAlign="Middle">
+				<text><![CDATA[ĐIỀU 5: ĐIỀU KHOẢN THI HÀNH VÀ THỎA THUẬN KHÁC]]></text>
+			</element>
+			<element kind="staticText" uuid="29f4c50f-3851-4f28-842b-f8580f051e9a" x="0" y="28" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[5.1.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="ac01222f-adf5-40da-9538-36e766b0362c" x="30" y="28" width="525" height="32" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Những vấn đề về lao động không ghi trong hợp đồng này thì áp dụng quy định của Thỏa ước tập thể, trường hợp chưa có Thỏa ước lao động tập thể thì áp dụng quy định Luật Lao động.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="7fbd7f64-c5d3-44c0-a9f8-e005879c230e" x="30" y="60" width="525" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Thỏa thuận khác:]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b46f821c-e223-49fa-888e-b7dc612e1f83" x="0" y="60" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[5.2.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d32a50a2-bc21-406e-a80a-476833b97271" x="30" y="78" width="525" height="111" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5" spacingBefore="3" spacingAfter="4"/>
+				<text><![CDATA[-	Trong thời gian hợp đồng có hiệu lực, người lao động không được làm việc cho bất kỳ cá nhân, tổ chức hoặc công ty kinh doanh nào khác có cùng sản phẩm/dịch vụ tương tự với mô hình kinh doanh của công ty thuê đang làm việc
+-	Trong trường hợp công ty tổ chức đào tạo chuyên môn như khóa học, thuê người hướng dẫn hoặc các chính sách đào tạo khác cho người lao động, thì người lao động có trách nhiệm hoàn thành việc học và cam kết làm việc với công ty trong một khoản thời gian nhất định (Tùy vào sự thỏa thuận giữa người lao động và cấp trên/giám đốc điều hành)
+]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+				<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+			</element>
+			<element kind="staticText" uuid="39e576d6-78e1-4f4d-873b-1b1689d8286f" x="0" y="189" width="30" height="18" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[5.3.]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b5f6d432-a139-427d-8d51-c62c9117dbf1" x="30" y="189" width="525" height="31" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Hợp đồng lao động này được làm thành hai (02) bản có giá trị pháp lý ngang nhau, mỗi bên giữ một (01) bản. ]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b04ca7ac-4303-4c72-8c6b-f622e07d5840" x="0" y="230" width="555" height="31" fontName="Arial Unicode MS" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="5"/>
+				<text><![CDATA[Hợp đồng này được ký tại Công ty cổ phần công nghệ Thadosoft Hồ Chí Minh ngày…..tháng…..năm]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e09a0264-310c-46fd-a69e-0bc016fb6f4b" x="1" y="290" width="230" height="20" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[NGƯỜI LAO ĐỘNG]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3c2912ce-ad3d-4a7f-bc3f-521d6bfde77f" x="325" y="290" width="230" height="20" fontName="Arial Unicode MS" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[NGƯỜI SỬ DỤNG LAO ĐỘNG]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4e44d1c6-aae2-46bc-ae33-fd291ab768fb" x="1" y="310" width="230" height="20" fontName="Arial Unicode MS" fontSize="10.0" italic="true" bold="false" hTextAlign="Center">
+				<text><![CDATA[(Ký, ghi rõ họ tên)]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="790622e9-1507-4cea-b87e-941f690d9d61" x="325" y="310" width="230" height="20" fontName="Arial Unicode MS" fontSize="10.0" italic="true" bold="false" hTextAlign="Center">
+				<text><![CDATA[(Ký, ghi rõ họ tên)]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

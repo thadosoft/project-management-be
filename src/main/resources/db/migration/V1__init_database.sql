@@ -84,7 +84,7 @@ create table if not exists medias
     id            char(36),
     assignment_id char(36)     not null,
     name          varchar(100) not null,
-    type          varchar(50)  not null,
+    type          VARCHAR(255) ,
     path          varchar(255) not null,
     size          bigint       not null,
     entry_by      char(36)     null,

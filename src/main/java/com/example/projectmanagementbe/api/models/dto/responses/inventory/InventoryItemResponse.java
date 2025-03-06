@@ -1,16 +1,7 @@
 package com.example.projectmanagementbe.api.models.dto.responses.inventory;
 
 import com.example.projectmanagementbe.api.models.iventory.InventoryCategory;
-import com.example.projectmanagementbe.api.models.iventory.InventoryTransaction;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +11,11 @@ public class InventoryItemResponse {
 
   private Long id;
 
+  private String name;
+
   private String sku;
 
-  private Long inventoryCategoryId;
+  private InventoryCategory inventoryCategory;
 
   private String unit;
 
@@ -35,4 +28,6 @@ public class InventoryItemResponse {
   private BigDecimal purchasePrice;
 
   private BigDecimal sellingPrice;
+
+  private String status;
 }
