@@ -1,0 +1,1568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HDLD_TDS" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4081bb8-7807-47d8-af96-258ab1641c5f">
+	<parameter name="nguoi_lao_dong" class="java.lang.String"/>
+	<parameter name="ngay_sinh" class="java.lang.String"/>
+	<parameter name="dịa_chi_thuong_tru" class="java.lang.String"/>
+	<parameter name="quoc_gia" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="d1ef09e0-bde6-45f7-9d3f-5bfdd27bc17d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="20" uuid="b9d46c82-2553-4748-af3f-45d7b4e60142">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Độc lập - Tự do - Hạnh phúc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="555" height="20" uuid="537ab1fa-44e8-4709-ad00-eb0adce0d368">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[------o0o------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="555" height="40" uuid="ae0aac98-9dd4-417d-a6da-4bbcd8f58d12">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="26"/>
+				</textElement>
+				<text><![CDATA[HỢP ĐỒNG LAO ĐỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="555" height="20" uuid="a9a3e52a-5022-4a86-a09c-6f685422404f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Ngày …. Tháng ….. Năm .....]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="632" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="110" height="20" uuid="f76a8cdc-e962-4242-8c9c-37818f767d62">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Chúng tôi, một bên là]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="110" height="20" uuid="07a6c03d-1e04-479e-9641-4f37cbffea59">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Chức vụ            ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="110" height="20" uuid="baa43fbe-c827-4275-afdb-b28a79b726b0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Đại diện cho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="110" height="20" uuid="2472b147-6b8b-4836-b591-f8f6754c04fd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Điện thoại]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="110" height="20" uuid="ab8883c0-1115-476d-9efd-f53d164e862d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="30" height="20" uuid="5d3df48b-8863-41c9-a103-ac35c96d80f4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="20" width="30" height="20" uuid="a04e496a-d1ff-4819-afb0-75bb752c0a8c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="40" width="30" height="20" uuid="cd22e4cb-de86-4b2f-8261-052914d51071">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="60" width="30" height="20" uuid="180f0071-12bb-4d3f-b731-cede49664816">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="80" width="30" height="20" uuid="92e10320-2155-48ee-aa33-d617e419e36e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="250" height="20" uuid="55bf172f-1769-492d-b982-ae0386a165e1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Ông NGUYỄN HOÀNG MINH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="165" height="20" uuid="65dd9435-840b-4c9b-b7b8-a7ca02d93b7a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[Quốc tịch: Việt Nam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="20" width="415" height="20" uuid="a9c32550-d191-4732-a577-57d9c36c4a65">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Tổng Giám Đốc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="40" width="415" height="20" uuid="a6f8a11c-43ec-47f3-80bf-94bae3f3c838">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[CÔNG TY CP CÔNG NGHỆ THADOSOFT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="60" width="415" height="20" uuid="58fa5290-7b7e-4d38-bbce-9525fbac72da">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[(+84) 377 877 058]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="80" width="415" height="40" uuid="10c08e59-b1cb-4664-b635-f4d6de2fbe4d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+					<property name="com.jaspersoft.studio.unit.spacingAfter" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="8.0" spacingBefore="4" spacingAfter="5"/>
+				</textElement>
+				<text><![CDATA[Tầng 2, Nhà Số 30 Đường Số 1, Khu Nhà Ở Hưng Phú, Khu Phố 1, Phường Tam Phú, Thành Phố Thủ Đức, Tp Hồ Chí Minh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="110" height="20" uuid="a522d77e-63b4-427b-878c-c5157333375d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Và một bên là]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="110" height="20" uuid="2a23b1e7-da8d-457a-ab53-ba57c11ae6ce">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Sinh ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="110" height="20" uuid="d1c9466a-ed9f-48bd-8622-bce4c6fc7256">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ thường trú]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="110" height="20" uuid="af592183-f6d0-4577-af05-e4a243123cc6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Số CMND/CCCD       ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="200" width="110" height="20" uuid="ca3ac0b8-757e-4978-bcc6-832237e990bf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cấp ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="120" width="30" height="20" uuid="f55d0c7f-1155-4814-bfa9-3377c84fa7c4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="140" width="30" height="20" uuid="7de07e07-f409-45aa-88d4-235396eb732f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="160" width="30" height="20" uuid="17f23cec-f1f4-47ba-acf6-edae3dd51341">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="180" width="30" height="20" uuid="c0e45750-2cce-49a4-97c7-c2b5baa7d6c3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="200" width="30" height="20" uuid="7d233703-9925-4ac3-b8c0-ef3ec5623e20">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="120" width="250" height="20" uuid="443e1a82-b261-4b7b-a1ac-2ddce610851f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nguoi_lao_dong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="120" width="165" height="20" uuid="1e702c07-f5ca-49ba-95d6-9f11b3a40cda">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Quốc tịch: " + $P{quoc_gia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="140" width="415" height="20" uuid="20615db3-454b-4372-a9d6-0d1440ad9344">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ngay_sinh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="160" width="415" height="20" uuid="358a64cc-6509-4cc4-815d-08ca2eeac668">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dịa_chi_thuong_tru}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="180" width="415" height="20" uuid="f5724a29-da52-4d99-a46c-dabeb51efc7a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="200" width="415" height="20" uuid="498f31f2-1b23-42d8-b7e4-9abc6531f0aa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="220" width="110" height="20" uuid="39ac937a-ead3-42a9-b7b1-86d39797f6c3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Nơi cấp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="220" width="30" height="20" uuid="ea1c22be-b379-4f82-9d6a-ed1087b0c031">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="220" width="415" height="20" uuid="70fb5f37-60e0-40a2-9955-ca88800cb875">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="242" width="555" height="20" uuid="a07c9f3d-2f11-4995-8f02-a8a497086bb4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Thỏa thuận ký hợp đồng lao động và cam kết làm đúng những điều khoản sau đây]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="264" width="555" height="20" uuid="9590ece6-2b39-4330-88f7-4887c7ded882">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐIỀU 1: THỜI HẠN VÀ CÔNG VIỆC HỢP ĐỒNG ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="284" width="30" height="20" uuid="3775c67d-ec3a-446a-8656-cecdac393f52">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1.1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="284" width="525" height="20" uuid="a2aec5db-728a-437f-9898-f7eb703b4e99">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Loại hợp đồng lao động:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="304" width="525" height="20" uuid="3d9c9902-febf-41aa-ac2d-090f018f2c8e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Có thời hạn, Xác định thời hạn 1 năm. Có hiệu lực từ ngày ….. tháng ….. năm ….. đến ngày …… tháng ….. năm …..]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="324" width="30" height="20" uuid="21bcfbc1-0549-4670-aba9-95b7520ba826">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1.2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="324" width="525" height="20" uuid="af7dec1a-8b79-4492-a955-c0e1cadefede">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Địa điểm làm việc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="344" width="525" height="40" uuid="e7e051b0-99f9-42dd-af91-18b9542931da">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Trong và ngoài trụ sở của CÔNG TY CỔ PHẦN CÔNG NGHỆ THADOSOFT  (“Công ty”), tùy theo yêu cầu và trách nhiệm công việc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="384" width="525" height="20" uuid="5c4f75c7-bbbd-4d8d-ad02-88d64a0cd766">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Chức danh: Kỹ sư phần mềm AI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="384" width="30" height="20" uuid="aba7f75e-e4e2-44cc-a852-0123aba48ef9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1.3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="404" width="30" height="20" uuid="5c590bbd-df4e-44a2-85b0-9be9c6f50c3d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1.4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="404" width="525" height="20" uuid="6db482fd-6655-4da3-8614-dc3f2c5816ba">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Công việc phải làm: Theo sự phân công của Trưởng phụ trách/Giám đốc điều hành]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="432" width="555" height="20" uuid="1e76045c-6d7c-4ab2-8dbf-be68a0c3c358">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐIỀU 2: CHẾ ĐỘ LÀM VIỆC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="452" width="525" height="40" uuid="0c04067f-937e-431b-835a-4e924b3e96fa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Thời giờ làm việc: 8h/ngày từ (thứ Hai – thứ Sáu) và sáng thứ Bảy. Sáng 8h00 đến 12h00, Chiều 13h00 đến 17h00.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="452" width="30" height="20" uuid="5a6f76c8-4832-4689-b6f8-e8d3e123faf3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[2.1.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="492" width="525" height="40" uuid="8504e4ac-026b-4d93-a8c7-61d278678a6c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Được cấp phát những dụng cụ làm việc gồm: những dụng cụ cần thiết cho công việc theo quy định của Công ty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="492" width="30" height="20" uuid="ac925354-ef84-452f-825c-52e26f458b8c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[2.2.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="532" width="30" height="20" uuid="85adb9c5-2f15-41fe-89c1-c15996842faa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[2.3.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="532" width="525" height="20" uuid="d4443b25-3f5a-4345-aae4-852def8d5676">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Điều kiện an toàn và vệ sinh lao động tại nơi làm việc: theo quy định của pháp luật và của Công ty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="552" width="555" height="20" uuid="a8a3bc61-57bc-4536-ae98-ee5ea8217e2f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐIỀU 3: NGHĨA VỤ VÀ QUYỀN LỢI CỦA NGƯỜI LAO ĐỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="572" width="525" height="20" uuid="b23116a7-d5c4-4af9-962b-2b4b540fc00a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Quyền lợi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="572" width="30" height="20" uuid="30803194-066f-4969-a84f-66659ecd387f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[3.1.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="592" width="525" height="20" uuid="bb5654b4-34d2-4662-8e72-5268d191ca5b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Phương tiện đi lại làm việc: Người lao động tự túc. 
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="612" width="240" height="20" uuid="92cd342b-f785-483b-9c39-aa51f720c93a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Mức lương tổng cộng (thực nhận) : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="612" width="285" height="20" uuid="371d1d56-2b73-4977-847a-99ddc8a24473">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VNĐ/ Tháng]]></text>
+			</staticText>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement x="70" y="0" width="485" height="20" uuid="44bb45e7-f092-4dac-b68a-0daaf79d329a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Trong đó:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="20" width="280" height="20" uuid="b34d3384-5449-4547-9700-68c2370f0e97">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Lương cơ bản]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="40" width="280" height="20" uuid="0a915565-443c-4420-90b7-a44377521e98">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Phụ cấp chức vụ, chức danh	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="60" width="280" height="20" uuid="87237406-b28c-45f7-a134-c8dc93e6f7d0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Phụ cấp ăn trưa, ăn ca ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="80" width="280" height="20" uuid="fae24d9d-fd1b-4fab-b61b-cf7749357892">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Phụ cấp xăng xe ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="100" width="280" height="20" uuid="0df21e04-a87c-4f92-8554-6711209da04a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Điện thoại]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="120" width="280" height="20" uuid="6db48188-2d2e-4ee4-bff3-3cae5811295c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Hỗ trợ nhà ở	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="140" width="280" height="20" uuid="1defc380-8f06-4680-b3f8-46f1d9f7b206">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Thưởng sáng kiến]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="160" width="280" height="20" uuid="ce349d9a-c954-49f6-88ab-f27ba04c9ec2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Phụ cấp khác (tính chất đặc thù công việc)	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="180" width="280" height="20" uuid="54bb5fdf-c99e-4bbe-88ef-40c94523e5ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[	Tổng cộng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="20" width="30" height="20" uuid="1430addd-f408-4608-806a-46a4fbb2a56e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="40" width="30" height="20" uuid="8e54309f-90ce-4f86-9818-5d00111e5bbd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="60" width="30" height="20" uuid="1118a46e-a5c7-42a6-a39b-638240aa5dd0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="80" width="30" height="20" uuid="d015ed12-eafd-45e3-9fd1-97a8c73ea1b0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="100" width="30" height="20" uuid="8c7b6702-641a-4a9c-b0a3-a0b2f0da769e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="120" width="30" height="20" uuid="60f17316-d552-4727-a122-d0f91999fe30">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="140" width="30" height="20" uuid="d5ce93ae-5e2e-48fa-bd33-4e08b27235db">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="160" width="30" height="20" uuid="da48716b-52c1-4cd8-b8a8-0baefe67921a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="180" width="30" height="20" uuid="3c359804-e124-4245-b205-ac8cc68741c4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="20" width="60" height="20" uuid="5e584122-60f9-40c3-b04e-545bf906135b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="40" width="60" height="20" uuid="d24ebd80-3f43-4383-9c39-0cd1cfb5ae40">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="60" width="60" height="20" uuid="bd6556ac-f77a-42c4-9d8d-586df4f7e399">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="80" width="60" height="20" uuid="76b9fc60-7536-48f5-a2e7-09819c0fc512">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="100" width="60" height="20" uuid="a76de122-8ce9-4ad9-b2f6-22ecd08741fd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="120" width="60" height="20" uuid="8ce39b68-0e5b-4d4f-8a8b-b54eddbb7070">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="140" width="60" height="20" uuid="a19dcbd8-d1b0-47c3-a6dd-60fa0f94f9b1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="160" width="60" height="20" uuid="8d9abcec-d93a-4db6-8f2c-e9390563e330">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="180" width="60" height="20" uuid="d107ee18-906e-4463-a00b-1adc9a59e3ce">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="20" width="60" height="20" uuid="b7f976ff-83ce-448d-af12-200f1ffe6589">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="40" width="60" height="20" uuid="55b75c76-17bf-42b0-aebd-02f259cd8ca6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="60" width="60" height="20" uuid="c3deff72-b57e-422c-9e72-1ea9f029b199">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="80" width="60" height="20" uuid="a0509739-b7c4-42d6-95f3-9283db483f0d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="100" width="60" height="20" uuid="6de418f0-b279-4cbf-a956-8d3b8dfcca62">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="120" width="60" height="20" uuid="c40f85cc-b55b-4ba0-98ab-c4a290d173ad">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="140" width="60" height="20" uuid="b4f1db44-74b4-43e6-871b-0fb9ff003741">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="160" width="60" height="20" uuid="b968f42a-ad8a-4950-a3ec-ac83762e92f4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="180" width="60" height="20" uuid="6184e340-fad1-4117-aef8-e96267765a4c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="200" width="525" height="50" uuid="56345589-2c4a-4b4c-8e7a-6497c44ca9c4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Hình thức trả lương: Bằng tiền mặt/chuyển khoản
+-	Được trả lương từ ngày 3-7 hàng tháng (kế tiếp) dương lịch. 
+-	Tiền thưởng: Theo quy định tiêu chuẩn cho cán bộ nhân viên của Công ty. 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="270" width="455" height="110" uuid="22e70b43-0d1e-400c-8d21-55d460c95be7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Lương tháng 13 = Tiền lương trung bình 12 tháng trong năm. Nếu người lao động không làm đủ 12 tháng thì tiền "lương tháng 13" được tính tương ứng với số tháng làm việc trong năm. Được trả vào cuối tháng 12 trong năm
+	Thưởng theo hiệu suất làm việc và tình hình hiệu quả kinh doanh mà Công ty. Được trả vào trước hoặc sau giai đoạn Tết âm lịch của năm. Đối với Người lao động làm việc tại Công ty chưa đủ 12 tháng và đang tiếp tục làm việc tại thời điểm xét duyệt thì khoản tiền này sẽ được tính tỷ lệ theo thời gian làm việc của Người lao động.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="250" width="485" height="20" uuid="939eb556-99da-4729-89b9-152380617c62">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Bao gồm:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="380" width="525" height="50" uuid="6585e8ad-458f-471e-a8be-d669926a2cf5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Chế độ nâng lương: Định kỳ 1 năm 1 lần theo quy chế trả lương của Công ty. Thời gian xem xét tăng lương vào tháng 12 trong năm, và tăng lương vào tháng 1 năm tiếp theo. 
+	Ngoài ra, các trường hợp: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="430" width="455" height="70" uuid="87eca402-7ae8-4d02-95c3-e77b501392da">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Đối với Người lao động làm việc tại Công ty chưa đủ 12 tháng và đang tiếp tục làm việc tại thời điểm xét duyệt thì khoản tiền này sẽ được tính tỷ lệ theo thời gian làm việc của Người lao động. 
+	Các trường hợp tăng lương đặc biệt theo quyết định của Ban giám đốc
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="500" width="525" height="39" uuid="ceeb479a-dc78-4188-8b8d-8a9301c5fd2d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Được trang bị bảo hộ lao động theo đúng quy định Công ty. 
+-	Chế độ nghỉ ngơi (nghỉ hàng tuần, phép năm, lễ tết…) gồm:  
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="539" width="455" height="80" uuid="2bcfe9fa-8e6b-4d80-9adb-ce8f3bba9967">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[	Nghỉ phép năm: 12 ngày/năm. Cứ mỗi năm (02) năm làm việc tại Công ty sẽ được cộng thêm một (01) ngày phép.
+	Nghỉ lễ, Tết: Theo quy định của Bộ luật Lao động  
+	Nghỉ việc riêng được hưởng nguyên lương: Theo quy định tại Điều 115 Bộ Luật Lao Động hiện hành.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="619" width="525" height="39" uuid="6cd341d2-073a-402d-a26a-01074c49f308">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp:
+	Căn cứ trên mức tiền lương chính hoặc tiền công quy định, mức trích nộp như sau: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="660" width="120" height="22" uuid="15579f22-843f-44a0-ae1e-2e5eb4299c07">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Loại bảo hiểm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="660" width="150" height="22" uuid="f9d52349-5d27-44f2-8f6e-003c32cf59fc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Người sử dụng lao động]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="682" width="120" height="30" uuid="dd3058cc-f599-4899-abbd-9beeb4144c38">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Bảo hiểm xã hội]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="712" width="120" height="30" uuid="b8238db1-82ab-455a-a233-33b1875f5d48">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Bảo hiểm y tế]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="742" width="120" height="30" uuid="1b8e2aeb-3567-41c6-97d7-9a033208af1e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Bảo hiểm thất nghiệp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="772" width="120" height="30" uuid="85b5ca24-8f7b-4a32-ad1d-a1e518b49a53">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tổng cộng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="660" width="120" height="22" uuid="f99ba6cd-643c-45b2-9ca8-52c5f2bd0624">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Người lao động]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="682" width="150" height="30" uuid="4294eb62-ad00-455c-9df6-5a95e4c5ffc7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[17.5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="712" width="150" height="30" uuid="5e0a389c-fb2a-4860-a9e2-6e49958b57cf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[3%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="742" width="150" height="30" uuid="5a4d1b3d-8033-472f-af4b-66c22d83de1a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="772" width="150" height="30" uuid="c603e1d0-decf-49f5-8041-7b8c43e3afcc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[21.5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="682" width="120" height="30" uuid="63f7a976-7d40-4e21-a729-e02f5dde5f2e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[8%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="712" width="120" height="30" uuid="e2435993-0733-4da4-ba67-3d6238aa3d2d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1.5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="742" width="120" height="30" uuid="812c9faa-b9dd-46a1-b6cb-64628d0e8e73">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[1%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="772" width="120" height="30" uuid="daa73659-8804-4614-9769-bd85165e0cb7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[10.5%]]></text>
+			</staticText>
+		</band>
+		<band height="760">
+			<staticText>
+				<reportElement x="30" y="0" width="525" height="70" uuid="10f4e50e-fb9e-446c-9e1a-ae2fde7fb881">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Mức trích nộp này có thể thay đổi theo quy định của pháp luật tại thời điểm trích nộp.
+-	Chế độ đào tạo: Trong thời gian Công ty cử đi đào tạo, người lao động phải hoàn thành khóa học đúng thời hạn, được hưởng nguyên lương và các quyền lợi khác như những ngày đi làm việc và người lao động phải thực hiện đúng các điều khoản cam kết (nếu có).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="70" width="525" height="20" uuid="461a7196-d0c3-42ae-9e71-c8468fbd48b2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Nghĩa vụ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="30" height="20" uuid="b74cbdc4-7734-41f3-825b-df4c8b23f5ae">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[3.2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="90" width="525" height="170" uuid="ff24f28a-658c-47c5-9fa3-ab8859e39be2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Hoàn thành những công việc đã cam kết trong hợp đồng lao động và công việc được giao phó từ cấp trên.
+-	Trong công việc chịu sự điều hành của cấp trên trực tiếp. Hoàn thành những công việc đã cam kết trong hợp đồng lao động.
+-	Không tiết lộ thông tin về lương cá nhân, bí mật kinh doanh và tài sản trí tuệ của công ty
+-	Chấp hành lệnh điều hành sản xuất – kinh doanh, nội dung kỷ luật lao động, an toàn lao động được quy định trong Nội quy lao động hoặc theo thỏa ước lao động của Công ty.
+-	Chấp nhận điều động đến nhận công việc tại cơ sở khác trong công ty hoặc công ty khác do Công ty tham gia quản lý.
+-	Nếu tự ý chấm dứt hợp đồng lao động thì sẽ không được hưởng tiền thưởng tháng 13 và các chế độ thưởng khác theo chính sách áp dụng của công ty
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="260" width="525" height="20" uuid="f05dd403-e6ab-4925-b96b-6c31ccc3a630">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Chấm dứt hợp đồng lao động:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="260" width="30" height="20" uuid="4606faa7-e973-426d-ae37-602a39d12d53">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[3.3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="280" width="525" height="110" uuid="a606acd4-4862-4dcc-a2ce-705fdff912cf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Hợp đồng lao động này chấm dứt hiệu lực khi thuộc một trong các trường hợp sau đây:
+-	Hết thời hạn ghi tại Điều 1.2 mà các bên không gia hạn.
+-	Người lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 35 của Bộ luật Lao động hiện hành.
+-	Người sử dụng lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 36 của Bộ luật Lao động hiện hành.
+-	Người lao động bị sa thải theo Điều 125 của Bộ luật Lao động hiện hành.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="390" width="525" height="20" uuid="b2349685-f346-43d2-8b75-17a4c647bbbc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Bồi thường thiệt hại gây ra cho Công ty: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="390" width="30" height="20" uuid="62ab86ba-f297-45a8-9f54-126177e93c89">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[3.4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="410" width="525" height="40" uuid="1e77db0b-7f2d-453b-9b4d-1727bd3e7223">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Theo điều 129, 130 của Bộ luật Lao động hiện hành, các quy định pháp luật và các quy định có liên quan của Công ty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="450" width="555" height="20" uuid="30ca6b4b-3aea-46d1-ba78-dffe114b5b3a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐIỀU 4: NGHĨA VỤ VÀ QUYỀN HẠN CỦA NGƯỜI SỬ DỤNG LAO ĐỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="470" width="525" height="20" uuid="90a03025-6eb5-4c52-a682-c627d9c9c990">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Nghĩa vụ: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="490" width="525" height="50" uuid="bd3e05c8-1a57-4ba3-95b3-df8d06a23431">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Bảo đảm làm việc và thực hiện đầy đủ những điều đã cam kết trong hợp đồng lao động.
+-	Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho Người lao động theo hợp đồng lao động và các quy định của Công ty.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="470" width="30" height="20" uuid="25158cf7-09bf-4dd6-8125-5edbc33886e6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[4.1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="540" width="525" height="20" uuid="93e8e710-a9bd-4d94-9e8e-98c2389ba443">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Quyền hạn: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="560" width="525" height="70" uuid="f89ed868-b78f-4a09-a61f-b9466b101ac2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Điều hành Người lao động hoàn thành công việc theo hợp đồng (bố trí, điều chuyển, tạm ngưng việc…).
+-	Tạm hoãn, chấm dứt hợp đồng lao động, kỷ luật Người lao động theo quy định của pháp luật, và các quy định của Công ty.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="540" width="30" height="20" uuid="59ef197a-4ecb-43e4-bc26-e84ffc822a48">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[4.2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="630" width="555" height="20" uuid="469163e2-500f-4cae-bb8f-60f111b56a37">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐIỀU 5: ĐIỀU KHOẢN THI HÀNH VÀ THỎA THUẬN KHÁC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="650" width="525" height="40" uuid="c2091e82-f663-48a0-812b-80d6beff797d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Những vấn đề về lao động không ghi trong hợp đồng này thì áp dụng quy định của Thỏa ước tập thể, trường hợp chưa có Thỏa ước lao động tập thể thì áp dụng quy định Luật Lao động.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="650" width="30" height="20" uuid="ffdb8728-f235-45ae-9941-49bbf9c0fca8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[5.1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="690" width="525" height="20" uuid="763df937-5267-403a-bd0b-915f39893dab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Thỏa thuận khác:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="690" width="30" height="20" uuid="2aa302ff-5262-4568-bb08-5bfc684cd73d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[5.2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="710" width="525" height="50" uuid="c9778e33-59ee-46be-8e3c-2945921bc01f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Trong thời gian hợp đồng có hiệu lực, người lao động không được làm việc cho bất kỳ cá nhân, tổ chức hoặc công ty kinh doanh nào khác có cùng sản phẩm/dịch vụ tương tự với mô hình kinh doanh của công ty thuê đang làm việc]]></text>
+			</staticText>
+		</band>
+		<band height="292">
+			<staticText>
+				<reportElement x="30" y="0" width="525" height="70" uuid="05517cd3-26f4-4ad9-ae9d-da9f4a9d5977">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[-	Trong trường hợp công ty tổ chức đào tạo chuyên môn như khóa học, thuê người hướng dẫn hoặc các chính sách đào tạo khác cho người lao động, thì người lao động có trách nhiệm hoàn thành việc học và cam kết làm việc với công ty trong một khoản thời gian nhất định (Tùy vào sự thỏa thuận giữa người lao động và cấp trên/giám đốc điều hành)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="70" width="525" height="39" uuid="085832eb-617b-4007-9fa4-3a25c13776f0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Hợp đồng lao động này được làm thành hai (02) bản có giá trị pháp lý ngang nhau, mỗi bên giữ một (01) bản. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="30" height="20" uuid="18f626f1-1356-4a4f-8dbd-1d7169fa7f63">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[5.3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="109" width="555" height="20" uuid="c1a0984f-4a29-4720-bad7-069bea950f1e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Hợp đồng này được ký tại Công ty cổ phần công nghệ Thadosoft Hồ Chí Minh ngày…..tháng…..năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="160" width="190" height="20" uuid="46cd20c6-9d48-477c-9bf4-d94046514d21">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NGƯỜI LAO ĐỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="160" width="190" height="20" uuid="f6ea0401-8ae3-44e8-97bb-9c77b26cea1c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NGƯỜI SỬ DỤNG LAO ĐỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="180" width="190" height="20" uuid="cd8ee4bc-3edc-42d7-bff4-9815dcfe64ca">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[(Ký, ghi rõ họ tên)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="180" width="190" height="20" uuid="260b86ee-989f-407f-88c8-fd25dc5bc158">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[(Ký, ghi rõ họ tên)]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

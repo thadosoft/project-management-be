@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class EmployeeController {
 
-  public static final String TEMPLATE_PATH = "src/main/resources/reports/templates/EmploymentContract.jrxml";
+  public static final String TEMPLATE_PATH = "src/main/resources/reports/templates/HDLD_TDS.jrxml";
   private final IEmployeeService employeeService;
   private final ExportFileService exportFileService;
 
@@ -71,8 +71,6 @@ public class EmployeeController {
   public ResponseEntity<byte[]> downloadPDF(@PathVariable("id") Long id) {
 
     var parameters = employeeService.loadData(id);
-
-    System.out.println("pârmamara----" + parameters);
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_PDF);

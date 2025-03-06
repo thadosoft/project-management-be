@@ -20,7 +20,7 @@ public class AuditAspect {
 
   @Before("execution(* com.example.projectmanagementbe.api.controllers..*(..))")
   public void logActivity(JoinPoint joinPoint) {
-    System.out.println("LOGGING: " + joinPoint.getSignature().getName());
+//    System.out.println("LOGGING: " + joinPoint.getSignature().getName());
     String username = "AnonymousUser";
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     if (authentication != null && authentication.isAuthenticated()

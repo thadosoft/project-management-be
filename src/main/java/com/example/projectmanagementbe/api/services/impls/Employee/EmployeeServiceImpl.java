@@ -84,9 +84,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
   @Override
   public Map<String, Object> loadData(Long id) {
     Optional<Employee> employmentContract = employeeRepository.findById(id);
+
     if (employmentContract.isPresent()) {
-      var parameters = new HashMap<String, Object>();
-      return parameters;
+      var parameter = new HashMap<String, Object>();
+      parameter.put("nguoi_lao_dong", employmentContract.get().getFullName());
+      parameter.put("ngay_sinh", employmentContract.get().getPlaceOfBirth());
+      parameter.put("dịa_chi_thuong_tru", employmentContract.get().getHouseHoldAddress());
+      parameter.put("quoc_gia", employmentContract.get().getNation());
+
+      return parameter;
     } else {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.CONTRACT_NOT_FOUND.toString());
     }
