@@ -10,6 +10,8 @@ import com.example.projectmanagementbe.api.repositories.project.TaskRepository;
 import com.example.projectmanagementbe.api.services.project.IAssignmentService;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.repositories.UserRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class AssignmentService implements IAssignmentService {
   private final AssignmentMapper assignmentMapper;
   private final TaskRepository taskRepository;
   private final UserRepository userRepository;
+  @PersistenceContext
+  private EntityManager entityManager;
 
   @Override
   public List<AssignmentResponse> findAll() {
@@ -81,7 +85,6 @@ public class AssignmentService implements IAssignmentService {
 
         if (assignmentRequest.getAssignmentOrder() > assignmentsInNewTask.size()) {
           //move to final position
-          assignmentMapper.toAssignmentEntity(assignmentRequest, assignmentEntity);
           assignmentEntity.setTask(task);
         } else {
           //move to non-final position
@@ -90,10 +93,10 @@ public class AssignmentService implements IAssignmentService {
               assignment.setAssignmentOrder(assignment.getAssignmentOrder() + 1);
             }
           }
-          assignmentMapper.toAssignmentEntity(assignmentRequest, assignmentEntity);
           assignmentEntity.setTask(task);
         }
 
+        assignmentRepository.save(assignmentEntity);
         assignmentsInNewTask.add(assignmentEntity);
         assignmentRepository.saveAll(assignmentsInNewTask);
       } else {
@@ -128,7 +131,24 @@ public class AssignmentService implements IAssignmentService {
       }
     } else {
       Assignment assignment = assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found"));
-      assignmentMapper.toAssignmentEntity(assignmentRequest, assignment);
+
+      User assigner = userRepository.findById(assignmentRequest.getAssignerId())
+          .orElseThrow(() -> new RuntimeException("Assigner not found"));
+      assignment.setAssigner(assigner);
+
+      if (assignmentRequest.getReceiverId() != null) {
+        User receiver = userRepository.findById(assignmentRequest.getReceiverId())
+            .orElseThrow(() -> new RuntimeException("Receiver not found"));
+        assignment.setReceiver(receiver);
+      }
+
+      Task task = taskRepository.findById(assignmentRequest.getTaskId())
+          .orElseThrow(() -> new RuntimeException("Task not found"));
+      assignment.setTask(task);
+
+      assignment.setTitle(assignmentRequest.getTitle());
+      assignment.setDescription(assignmentRequest.getDescription());
+      assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
 
       assignmentRepository.save(assignment);
     }
