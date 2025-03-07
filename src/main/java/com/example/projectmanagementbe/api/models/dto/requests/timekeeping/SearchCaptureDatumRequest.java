@@ -1,6 +1,5 @@
 package com.example.projectmanagementbe.api.models.dto.requests.timekeeping;
 
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,7 @@ public class SearchCaptureDatumRequest {
 
   private String personName;
 
-  private LocalDateTime startDate;
+  private String startDate;
 
-  private LocalDateTime endDate;
+  private String endDate;
 }

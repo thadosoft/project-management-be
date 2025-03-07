@@ -2,9 +2,7 @@ package com.example.projectmanagementbe.api.controllers.Employee;
 
 import com.example.projectmanagementbe.api.models.dto.requests.Employee.EmployeeRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.Employee.SearchEmployeeRequest;
-import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.Employee.EmployeeResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.services.Employee.IEmployeeService;
 import com.example.projectmanagementbe.api.services.File.ExportFileService;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +35,6 @@ public class EmployeeController {
   public ResponseEntity<Page<EmployeeResponse>> findAll(Pageable pageable) {
     return ResponseEntity.ok(employeeService.findAll(pageable));
   }
-
 
   @PostMapping
   public ResponseEntity<Void> create(@RequestBody EmployeeRequest request) {

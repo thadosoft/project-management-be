@@ -38,6 +38,7 @@ storage:
   directory: "D:\\STORAGE"
   max-size: "100MB"
 
+
 application:
   security:
     jwt:
@@ -45,3 +46,10 @@ application:
       expiration: 86400000
       refresh-token:
         expiration: 604800000
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
+#    org.hibernate: DEBUG
+#    org.springframework.security: DEBUG
+#    com.example.com.example.projectmanagementbe: DEBUG

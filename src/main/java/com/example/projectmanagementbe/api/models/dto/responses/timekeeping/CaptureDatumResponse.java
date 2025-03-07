@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.responses.timekeeping;
 
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -46,4 +47,6 @@ public class CaptureDatumResponse {
   private String qRcode;
 
   private String tripInfor;
+
+  private LocalDateTime createdAt;
 }
