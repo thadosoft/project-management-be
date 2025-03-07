@@ -59,7 +59,7 @@ public class CaptureDatum extends Auditable {
   private String personName;
 
   @Size(max = 255)
-  @Column(name = "hatColor")
+  @Column(name = "hat_color")
   private String hatColor;
 
   @Size(max = 255)
@@ -105,5 +105,4 @@ public class CaptureDatum extends Auditable {
   @Size(max = 255)
   @Column(name = "trip_infor")
   private String tripInfor;
-
 }

@@ -12,7 +12,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="110" splitType="Stretch">
+		<band height="114" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="20" uuid="d1ef09e0-bde6-45f7-9d3f-5bfdd27bc17d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>

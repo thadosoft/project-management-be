@@ -20,6 +20,7 @@ public enum ErrorCode {
   EMPLOYEE_NOT_FOUND("011", "Employee not found"),
   EXPORT_REPORT_FAILED("012", "Export report failed"),
   CONTRACT_NOT_FOUND("013", " Contract not found"),
+  QUOTATION_NOT_FOUND("014", " Quotation not found"),
 
   ;
 
