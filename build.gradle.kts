@@ -40,6 +40,7 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:3.1.0")
 
     implementation("mysql:mysql-connector-java:8.0.28")
+    implementation("org.xerial:sqlite-jdbc:3.49.1.0")
 
     implementation("net.sf.jasperreports:jasperreports:6.21.3")
     implementation("net.sf.jasperreports:jasperreports-fonts:6.21.3")

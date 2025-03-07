@@ -1,0 +1,27 @@
+CREATE TABLE Capture_Data
+(
+    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    capture_id         BIGINT,
+    sequnce            VARCHAR(255),
+    device_id          VARCHAR(255),
+    addr_name          VARCHAR(255),
+    time               VARCHAR(255),
+    match_status       VARCHAR(255),
+    match_type         VARCHAR(255),
+    person_id          VARCHAR(255),
+    person_name        VARCHAR(255),
+    hat_color          VARCHAR(255),
+    wg_card_id         VARCHAR(255),
+    match_failed_reson VARCHAR(255),
+    exist_mask         VARCHAR(255),
+    body_temp          VARCHAR(255),
+    device_sn          VARCHAR(255),
+    idcard_number      VARCHAR(255),
+    idcard_name        VARCHAR(255),
+    closeup            VARCHAR(255),
+    QRcodestatus       VARCHAR(255),
+    QRcode             VARCHAR(255),
+    trip_infor         VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
