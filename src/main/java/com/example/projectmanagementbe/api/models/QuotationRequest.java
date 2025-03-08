@@ -73,6 +73,6 @@ public class QuotationRequest extends Auditable {
   @Column(name = "receiver_website")
   private String receiverWebsite;
 
-  @OneToMany(mappedBy = "quotationRequest", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "quotationRequest", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<MaterialQuotation> materialQuotations;
 }

@@ -1,12 +1,15 @@
 package com.example.projectmanagementbe.api.mappers.quotation;
 
+import com.example.projectmanagementbe.api.models.MaterialQuotation;
 import com.example.projectmanagementbe.api.models.QuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.Employee.EmployeeRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.quotation.CreateQuotationRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.quotation.UpdateMaterialQuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.quotation.UpdateQuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.Employee.EmployeeResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.quotation.QuotationResponse;
 import com.example.projectmanagementbe.api.models.employee.Employee;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
@@ -18,4 +21,6 @@ public interface QuotationMapper {
   QuotationRequest map(CreateQuotationRequest request);
 
   void update(UpdateQuotationRequest dto, @MappingTarget QuotationRequest entity);
+
+  QuotationRequest mapByID(Long id);
 }

@@ -3,6 +3,7 @@ package com.example.projectmanagementbe.api.services.impls.quotation;
 import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.parseDateToLocalDateTime;
 
 import com.example.projectmanagementbe.api.mappers.quotation.QuotationMapper;
+import com.example.projectmanagementbe.api.models.MaterialQuotation;
 import com.example.projectmanagementbe.api.models.QuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.quotation.CreateQuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.quotation.SearchQuotationRequest;
@@ -12,8 +13,10 @@ import com.example.projectmanagementbe.api.repositories.quotation.QuotationReque
 import com.example.projectmanagementbe.api.services.quotation.IQuotationRequestService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
 import com.example.projectmanagementbe.exception.ErrorCode;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -42,16 +45,25 @@ public class QuotationRequestServiceImpl implements IQuotationRequestService {
 
   @Override
   public void create(CreateQuotationRequest request) {
-    quotationRequestRepository.save(quotationMapper.map(request));
+    QuotationRequest quotationRequest = quotationMapper.map(request);
+
+    quotationRequest.getMaterialQuotations().forEach(material -> material.setQuotationRequest(quotationRequest));
+
+    quotationRequestRepository.save(quotationRequest);
   }
 
   @Override
+  @Transactional
   public void update(Long id, UpdateQuotationRequest request) {
-    QuotationRequest category = quotationRequestRepository.findById(id)
+    QuotationRequest quotationRequest = quotationRequestRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
             ErrorCode.QUOTATION_NOT_FOUND.toString()));
 
-    quotationMapper.update(request, category);
+    quotationMapper.update(request, quotationRequest);
+
+    quotationRequest.getMaterialQuotations().forEach(material -> material.setQuotationRequest(quotationRequest));
+
+    quotationRequestRepository.save(quotationRequest);
   }
 
   @Override

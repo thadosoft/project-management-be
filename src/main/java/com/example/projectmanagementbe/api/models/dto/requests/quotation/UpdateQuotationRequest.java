@@ -28,5 +28,5 @@ public class UpdateQuotationRequest {
 
   private String receiverWebsite;
 
-  private List<MaterialQuotationRequest> materialQuotations;
+  private List<UpdateMaterialQuotationRequest> materialQuotations;
 }

@@ -1,4 +1,4 @@
-package com.example.projectmanagementbe.api.models.dto.responses.quotation;
+package com.example.projectmanagementbe.api.models.dto.requests.quotation;
 
 import com.example.projectmanagementbe.api.models.QuotationRequest;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MaterialQuotationResponse {
+public class UpdateMaterialQuotationRequest {
 
   private Long id;
 
