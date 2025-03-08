@@ -40,7 +40,7 @@ public class QuotationRequestServiceImpl implements IQuotationRequestService {
     LocalDateTime startDate = parseDateToLocalDateTime(request.getStartDate(), false);
     LocalDateTime endDate = parseDateToLocalDateTime(request.getEndDate(), true);
     return quotationRequestRepository
-        .findByParams(request.getRequesterName(), request.getReceiverName(), startDate, endDate, pageable).map(quotationMapper::mapQuotationResponse);
+        .findByParams(request.getTitle(),request.getRequesterName(), request.getReceiverName(), startDate, endDate, pageable).map(quotationMapper::mapQuotationResponse);
   }
 
   @Override

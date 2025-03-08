@@ -7,6 +7,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.quotation.SearchQ
 import com.example.projectmanagementbe.api.models.dto.requests.quotation.UpdateQuotationRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.Employee.EmployeeResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.quotation.QuotationResponse;
+import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ModuleResponse;
 import com.example.projectmanagementbe.api.services.File.ExportFileService;
 import com.example.projectmanagementbe.api.services.quotation.IQuotationRequestService;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,11 @@ public class QuotationRequestController {
   public ResponseEntity<Void> create(@RequestBody CreateQuotationRequest request) {
     iQuotationRequestService.create(request);
     return ResponseEntity.status(HttpStatus.CREATED).build();
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<QuotationResponse> findById(@PathVariable Long id) {
+    return ResponseEntity.ok(iQuotationRequestService.findById(id));
   }
 
   @PutMapping("/{id}")

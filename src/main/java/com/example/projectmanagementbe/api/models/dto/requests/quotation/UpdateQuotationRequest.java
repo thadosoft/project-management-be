@@ -8,6 +8,8 @@ import lombok.Setter;
 @Getter
 public class UpdateQuotationRequest {
 
+  private String title;
+
   private String requesterName;
 
   private String requesterEmail;

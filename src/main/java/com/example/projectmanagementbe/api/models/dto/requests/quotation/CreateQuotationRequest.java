@@ -10,6 +10,8 @@ public class CreateQuotationRequest {
 
   private String requesterName;
 
+  private String title;
+
   private String requesterEmail;
 
   private String requesterTel;

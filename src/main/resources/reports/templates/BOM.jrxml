@@ -44,8 +44,8 @@
 		<field name="priceTax" class="java.lang.String"/>
 		<field name="totalPrice" class="java.lang.String"/>
 		<variable name="stt" class="java.lang.Integer">
-			<variableExpression><![CDATA[$V{stt} == 1 ? ($V{stt} + 1) : $V{stt}]]></variableExpression>
-			<initialValueExpression><![CDATA[1]]></initialValueExpression>
+			<variableExpression><![CDATA[new Integer($V{stt}.intValue() + 1)]]></variableExpression>
+			<initialValueExpression><![CDATA[new java.lang.Integer(0)]]></initialValueExpression>
 		</variable>
 	</subDataset>
 	<parameter name="p_materialQuotationList" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
@@ -66,21 +66,21 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="802" splitType="Stretch">
+		<band height="760" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="0" width="81" height="101" uuid="f7ae6ad8-8fbb-4c00-b5ab-c9841b8b3b12"/>
+				<reportElement x="0" y="0" width="81" height="90" uuid="f7ae6ad8-8fbb-4c00-b5ab-c9841b8b3b12"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["C:/Users/PC/Desktop/AboutTDS/THADOSOFT/2.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/dung/Desktop/TDS_Project/ERP_TAS/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="81" y="33" width="389" height="68" uuid="bec46f37-a7e2-45f6-b429-6e999ed1df4e">
+				<reportElement x="81" y="33" width="389" height="57" uuid="bec46f37-a7e2-45f6-b429-6e999ed1df4e">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
@@ -100,7 +100,7 @@ Tax: 	0318703188
 Hotline: +84 377 877 058]]></text>
 			</staticText>
 			<image scaleImage="RealSize">
-				<reportElement x="470" y="0" width="93" height="101" uuid="099f37ba-5c90-48cc-89bf-68a8ac470e84">
+				<reportElement x="470" y="0" width="93" height="90" uuid="099f37ba-5c90-48cc-89bf-68a8ac470e84">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -110,7 +110,7 @@ Hotline: +84 377 877 058]]></text>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["C:/Users/PC/Desktop/AboutTDS/THADOSOFT/1.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/dung/Desktop/TDS_Project/ERP_TAS/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="81" y="0" width="389" height="33" uuid="5f2e9b55-4e80-47f8-bb0d-92d4d190a1b4"/>
@@ -126,7 +126,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[THADOSOFT., JSC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="81" y="101" width="389" height="30" uuid="c17be432-1aea-44da-a671-78f0585ff3af">
+				<reportElement x="81" y="90" width="389" height="30" uuid="c17be432-1aea-44da-a671-78f0585ff3af">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
@@ -135,7 +135,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[<b>BẢNG BÁO GIÁ/ QUOTATION</b>]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="150" width="80" height="30" uuid="476d5931-33d9-464c-8735-43edeca95d63">
+				<reportElement x="0" y="139" width="80" height="30" uuid="476d5931-33d9-464c-8735-43edeca95d63">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -151,7 +151,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Người báo giá:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="180" width="80" height="30" uuid="02e5a3be-b995-494e-be0a-39bfb07366cc">
+				<reportElement x="0" y="169" width="80" height="30" uuid="02e5a3be-b995-494e-be0a-39bfb07366cc">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -167,7 +167,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Email:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="210" width="80" height="30" uuid="b65d3918-0292-4eef-a3f6-6f23637848ab">
+				<reportElement x="0" y="199" width="80" height="30" uuid="b65d3918-0292-4eef-a3f6-6f23637848ab">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -183,7 +183,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Tel:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="240" width="80" height="30" uuid="2cd49947-e07f-44d4-a67a-658f3ea1fd06">
+				<reportElement x="0" y="229" width="80" height="30" uuid="2cd49947-e07f-44d4-a67a-658f3ea1fd06">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -199,7 +199,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Địa chỉ ( Add ):]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="270" width="80" height="30" uuid="a2465596-5826-46cd-a813-98bea81f65b0">
+				<reportElement x="0" y="259" width="80" height="30" uuid="a2465596-5826-46cd-a813-98bea81f65b0">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -215,7 +215,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Website:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="150" width="196" height="30" uuid="9f446974-201f-447e-852d-1c50e096b9bb">
+				<reportElement x="80" y="139" width="196" height="30" uuid="9f446974-201f-447e-852d-1c50e096b9bb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -232,7 +232,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{requesterName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="180" width="196" height="30" uuid="19c54ffc-c385-4cb9-877d-16cabe47ceba">
+				<reportElement x="80" y="169" width="196" height="30" uuid="19c54ffc-c385-4cb9-877d-16cabe47ceba">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -249,7 +249,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{requesterEmail}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="210" width="196" height="30" uuid="afbbb020-49db-44a8-a817-b70e1a1f0286">
+				<reportElement x="80" y="199" width="196" height="30" uuid="afbbb020-49db-44a8-a817-b70e1a1f0286">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -266,7 +266,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{requesterTel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="240" width="196" height="30" uuid="f394d7f1-00ce-4d41-b783-4e22bc97961d">
+				<reportElement x="80" y="229" width="196" height="30" uuid="f394d7f1-00ce-4d41-b783-4e22bc97961d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -283,7 +283,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{requesterAddress}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="270" width="196" height="30" uuid="44fdf677-7b86-44c5-8ef8-c2a4e1bf0e67">
+				<reportElement x="80" y="259" width="196" height="30" uuid="44fdf677-7b86-44c5-8ef8-c2a4e1bf0e67">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -300,7 +300,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{requesterWebsite}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="276" y="150" width="90" height="30" uuid="06c64c0a-a428-4bd8-a1a6-a7cc86ea3cb9">
+				<reportElement x="276" y="139" width="90" height="30" uuid="06c64c0a-a428-4bd8-a1a6-a7cc86ea3cb9">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -316,7 +316,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Người báo giá:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="180" width="90" height="30" uuid="edabba04-cdea-40cb-88ae-0ae6c9f24a26">
+				<reportElement x="276" y="169" width="90" height="30" uuid="edabba04-cdea-40cb-88ae-0ae6c9f24a26">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -332,7 +332,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Email:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="210" width="90" height="30" uuid="d0f49d96-858d-4ee0-ba26-c61efd1f1a3b">
+				<reportElement x="276" y="199" width="90" height="30" uuid="d0f49d96-858d-4ee0-ba26-c61efd1f1a3b">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -348,7 +348,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Tel:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="240" width="90" height="30" uuid="8f33a54d-7e13-4547-9049-b4d9cb96b595">
+				<reportElement x="276" y="229" width="90" height="30" uuid="8f33a54d-7e13-4547-9049-b4d9cb96b595">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -364,7 +364,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Địa chỉ ( Add ):]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="270" width="90" height="30" uuid="0ee934ae-b85d-420b-854d-096023ddd799">
+				<reportElement x="276" y="259" width="90" height="30" uuid="0ee934ae-b85d-420b-854d-096023ddd799">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -380,7 +380,7 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[Website:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="366" y="150" width="189" height="30" uuid="dddfdc9f-e950-49a1-9875-234c2c4f270f">
+				<reportElement x="366" y="139" width="189" height="30" uuid="dddfdc9f-e950-49a1-9875-234c2c4f270f">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -396,7 +396,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{receiverName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="366" y="180" width="189" height="30" uuid="64f81e7e-3ce1-4866-a361-51fdad6214ae">
+				<reportElement x="366" y="169" width="189" height="30" uuid="64f81e7e-3ce1-4866-a361-51fdad6214ae">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -412,7 +412,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{receiverEmail}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="366" y="210" width="189" height="30" uuid="8d70a7cc-7605-4502-839d-42f28688e1dc">
+				<reportElement x="366" y="199" width="189" height="30" uuid="8d70a7cc-7605-4502-839d-42f28688e1dc">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -428,7 +428,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{receiverTel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="366" y="240" width="189" height="30" uuid="6b4954d9-1082-4bb6-8f3f-087394ff8147">
+				<reportElement x="366" y="229" width="189" height="30" uuid="6b4954d9-1082-4bb6-8f3f-087394ff8147">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -444,7 +444,7 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{receiverAddress}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="366" y="270" width="189" height="30" uuid="f387f418-f634-45a2-9e9d-bcfbbca9db3f">
+				<reportElement x="366" y="259" width="189" height="30" uuid="f387f418-f634-45a2-9e9d-bcfbbca9db3f">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
@@ -460,17 +460,19 @@ Hotline: +84 377 877 058]]></text>
 				<textFieldExpression><![CDATA[$P{receiverWebsite}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="309" width="555" height="49" uuid="5e8efb42-6d6a-48cd-80c2-dc38ae2b2387">
+				<reportElement x="0" y="289" width="555" height="49" uuid="5e8efb42-6d6a-48cd-80c2-dc38ae2b2387">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial" size="9" isBold="false"/>
+					<paragraph leftIndent="2"/>
 				</textElement>
 				<text><![CDATA[Công ty chúng tôi xin chân thành cảm ơn sự quan tâm của Quý Khách hàng đối với sản phẩm/dịch vụ mà chúng tôi cung cấp. Chúng tôi xin gửi đến Quý khách bảng Báo giá như sau: <br>
 <font color='blue'>Our company sincerely appreciates your interest in the products/services we provide. We are pleased to present you with the following quotation:</font>]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="131" width="140" height="19" uuid="893e65c4-c54c-4278-bdba-51b79ee1995b">
+				<reportElement x="130" y="120" width="140" height="19" uuid="893e65c4-c54c-4278-bdba-51b79ee1995b">
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
@@ -480,93 +482,20 @@ Hotline: +84 377 877 058]]></text>
 				<text><![CDATA[TDS-BG 26]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="270" y="131" width="130" height="19" uuid="7d4763fc-8bb7-4f3e-bc1d-aeba615e686b"/>
+				<reportElement x="270" y="120" width="130" height="19" uuid="7d4763fc-8bb7-4f3e-bc1d-aeba615e686b"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="400" y="131" width="69" height="19" uuid="250e2bc0-7c43-4077-864f-6f799de3ae14"/>
+				<reportElement x="400" y="120" width="70" height="19" uuid="250e2bc0-7c43-4077-864f-6f799de3ae14"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Mã KH:]]></text>
 			</staticText>
-		</band>
-	</title>
-	<detail>
-		<band height="802" splitType="Stretch">
-			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-			<staticText>
-				<reportElement x="0" y="680" width="150" height="30" uuid="85a7f793-eed2-48b3-9a5d-bd8b78d4295c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="9" isBold="true"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[Địa điểm giao hàng 
-( Place of delivery )]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="150" y="680" width="405" height="30" uuid="b3c3e658-1a46-4a11-8eb4-ca773226f729">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="9" isBold="false"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[30 ngày kể từ ngày báo giá (30 days and subject to final confirmation by us)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="710" width="150" height="30" uuid="80d5d512-0d8c-4f35-a2bf-10bef5c4cb4d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="9" isBold="true"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[Bảo hành 
-(Warranty )]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="150" y="710" width="405" height="30" uuid="3a6965f4-6e35-47f2-9966-d9ffe39c5473">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="9" isBold="false"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[12 tháng ( Warranty 12 months )]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="40" y="760" width="150" height="30" uuid="92cd71ee-09a3-4c7f-bcc6-7780deaa6c72">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="11" isBold="true"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[Thadosoft., JSC]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="350" y="760" width="150" height="30" uuid="c393d255-2e5e-4d49-861b-7832e6750c14">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font fontName="Arial" size="11" isBold="true"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<text><![CDATA[Comfirm PO by Customer]]></text>
-			</staticText>
 			<componentElement>
-				<reportElement x="0" y="258" width="555" height="69" uuid="959df6cf-acab-4c0f-80ba-cff066f41858">
+				<reportElement x="0" y="338" width="555" height="82" uuid="959df6cf-acab-4c0f-80ba-cff066f41858">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -812,7 +741,7 @@ GTGT]]></text>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="349" width="555" height="90" uuid="f23139a8-0fd4-4e2f-b041-56eb3e953fb7">
+				<reportElement x="0" y="460" width="555" height="90" uuid="f23139a8-0fd4-4e2f-b041-56eb3e953fb7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -826,16 +755,18 @@ The above price is applied for continuous working days. If any delays caused by 
 The above price is only applied for entire job. In case, you reduce the scope of supply our quotation will be revised.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="329" width="555" height="20" uuid="bf9728e4-bc6b-4f7d-a4e9-3172ed78ddaf">
+				<reportElement x="0" y="440" width="555" height="20" uuid="bf9728e4-bc6b-4f7d-a4e9-3172ed78ddaf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial" size="9" isBold="true"/>
+					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Lưu ý/Noted:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="439" width="150" height="180" uuid="663396e2-c81c-4ac0-877c-310b52f07aa8">
+				<reportElement x="0" y="550" width="150" height="180" uuid="663396e2-c81c-4ac0-877c-310b52f07aa8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -847,7 +778,7 @@ The above price is only applied for entire job. In case, you reduce the scope of
 ( Payment Terms )]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="439" width="405" height="180" uuid="068b8d4d-b992-4542-9da9-99df28d0b13a">
+				<reportElement x="150" y="550" width="405" height="180" uuid="068b8d4d-b992-4542-9da9-99df28d0b13a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -869,7 +800,7 @@ Chi nhánh: ACB - PGD TAM HA<br>
 Swift Code: ASCBVNVX]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="619" width="150" height="30" uuid="95025949-9165-4bd8-a63b-b670eaddf0e5">
+				<reportElement x="0" y="730" width="150" height="30" uuid="95025949-9165-4bd8-a63b-b670eaddf0e5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -881,7 +812,7 @@ Swift Code: ASCBVNVX]]></text>
 ( Validity )]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="619" width="405" height="30" uuid="291a598d-7ac8-4540-97e2-23b3fd7bc788">
+				<reportElement x="150" y="730" width="405" height="30" uuid="291a598d-7ac8-4540-97e2-23b3fd7bc788">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -891,8 +822,58 @@ Swift Code: ASCBVNVX]]></text>
 				</textElement>
 				<text><![CDATA[30 ngày kể từ ngày báo giá (30 days and subject to final confirmation by us)]]></text>
 			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<staticText>
-				<reportElement x="0" y="649" width="150" height="30" uuid="fe37e76d-880d-4f1f-b536-945a66ab9cb5">
+				<reportElement x="0" y="60" width="150" height="30" uuid="80d5d512-0d8c-4f35-a2bf-10bef5c4cb4d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="9" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Bảo hành 
+(Warranty )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="60" width="405" height="30" uuid="3a6965f4-6e35-47f2-9966-d9ffe39c5473">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="9" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[12 tháng ( Warranty 12 months )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="110" width="150" height="30" uuid="92cd71ee-09a3-4c7f-bcc6-7780deaa6c72">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="11" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Thadosoft., JSC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="110" width="150" height="30" uuid="c393d255-2e5e-4d49-861b-7832e6750c14">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="11" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Comfirm PO by Customer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="150" height="30" uuid="fe37e76d-880d-4f1f-b536-945a66ab9cb5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -904,7 +885,7 @@ Swift Code: ASCBVNVX]]></text>
 ( Time of delivery )]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="649" width="405" height="30" uuid="5b85b013-accc-4331-b966-6fde380eeebf">
+				<reportElement x="150" y="0" width="405" height="30" uuid="5b85b013-accc-4331-b966-6fde380eeebf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -913,6 +894,29 @@ Swift Code: ASCBVNVX]]></text>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Follow items]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="150" height="30" uuid="85a7f793-eed2-48b3-9a5d-bd8b78d4295c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="9" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Địa điểm giao hàng 
+( Place of delivery )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="30" width="405" height="30" uuid="b3c3e658-1a46-4a11-8eb4-ca773226f729">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="Arial" size="9" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[30 ngày kể từ ngày báo giá (30 days and subject to final confirmation by us)]]></text>
 			</staticText>
 		</band>
 	</detail>

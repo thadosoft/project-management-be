@@ -20,8 +20,10 @@ public interface QuotationRequestRepository extends JpaRepository<QuotationReque
   @Query("SELECT r FROM QuotationRequest r " +
       "WHERE (:requesterName IS NULL OR LOWER(r.requesterName) LIKE LOWER(CONCAT('%', :requesterName, '%'))) " +
       " AND(:receiverName IS NULL OR LOWER(r.receiverName) LIKE LOWER(CONCAT('%', :receiverName, '%'))) " +
+      " AND(:title IS NULL OR LOWER(r.title) LIKE LOWER(CONCAT('%', :title, '%'))) " +
       "AND (:startDate IS NULL OR :endDate IS NULL OR r.createdAt BETWEEN :startDate AND :endDate)")
   Page<QuotationRequest> findByParams(
+      @Param("title") String title,
       @Param("requesterName") String requesterName,
       @Param("receiverName") String receiverName,
       @Param("startDate") LocalDateTime startDate,

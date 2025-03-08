@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.responses.quotation;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,8 @@ import lombok.Setter;
 public class QuotationResponse {
 
   private Long id;
+
+  private String title;
 
   private String requesterName;
 
@@ -29,6 +32,8 @@ public class QuotationResponse {
   private String receiverAddress;
 
   private String receiverWebsite;
+
+  protected LocalDateTime createdAt;
 
   private List<MaterialQuotationResponse> materialQuotations;
 }

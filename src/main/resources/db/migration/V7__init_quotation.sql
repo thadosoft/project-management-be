@@ -1,10 +1,12 @@
 CREATE TABLE quotation_request
 (
     id                BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title             VARCHAR(255) NOT NULL,
+
     requester_name    VARCHAR(255) NOT NULL,
     requester_email   VARCHAR(255) NOT NULL,
     requester_tel     VARCHAR(50)  NOT NULL,
-    requester_address VARCHAR(255) NOT NULL ,
+    requester_address VARCHAR(255) NOT NULL,
     requester_website VARCHAR(255) NULL,
 
     receiver_name     VARCHAR(255) NOT NULL,
@@ -16,6 +18,8 @@ CREATE TABLE quotation_request
     created_at        DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at        DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_quotation_request ON quotation_request (created_at, title, requester_name, receiver_name);
 
 CREATE TABLE material_quotation
 (

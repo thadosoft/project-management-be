@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class SearchQuotationRequest {
 
+  private String title;
+
   private String requesterName;
 
   private String receiverName;

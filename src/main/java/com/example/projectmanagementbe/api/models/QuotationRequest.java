@@ -31,6 +31,11 @@ public class QuotationRequest extends Auditable {
 
   @Size(max = 255)
   @NotNull
+  @Column(name = "title", nullable = false)
+  private String title;
+
+  @Size(max = 255)
+  @NotNull
   @Column(name = "requester_name", nullable = false)
   private String requesterName;
 
