@@ -140,4 +140,9 @@ public class AuthenticationService implements IAuthenticationService {
       }
     }
   }
+
+  @Override
+  public boolean isTokenValid(String token) {
+    return tokenRepository.existsByToken(token);
+  }
 }

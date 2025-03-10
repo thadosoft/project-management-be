@@ -14,4 +14,6 @@ public interface IAuthenticationService {
   public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest);
 
   void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+  boolean isTokenValid(String token);
 }
