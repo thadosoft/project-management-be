@@ -11,14 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-@Aspect
-@Component
-@AllArgsConstructor
-public class AuditAspect {
+  @Aspect
+  @Component
+  @AllArgsConstructor
+  public class AuditAspect {
 
-  private final AuditLogRepository auditLogRepository;
+    private final AuditLogRepository auditLogRepository;
 
-  @Before("execution(* com.example.projectmanagementbe.api.controllers..*(..))")
+    @Before("execution(* com.example.projectmanagementbe.api.controllers..*(..))")
   public void logActivity(JoinPoint joinPoint) {
 //    System.out.println("LOGGING: " + joinPoint.getSignature().getName());
     String username = "AnonymousUser";
