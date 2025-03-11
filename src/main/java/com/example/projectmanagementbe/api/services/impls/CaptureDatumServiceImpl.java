@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.parseDateToLocalDateTime;
+import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.parseDateToLocalDateTime2;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +22,8 @@ public class CaptureDatumServiceImpl implements ICaptureDatumService {
 
   @Override
   public Page<CaptureDatumResponse> searchByParams(SearchCaptureDatumRequest request, Pageable pageable) {
-    LocalDateTime startDate = parseDateToLocalDateTime(request.getStartDate(), false);
-    LocalDateTime endDate = parseDateToLocalDateTime(request.getEndDate(), true);
+    LocalDateTime startDate = parseDateToLocalDateTime2(request.getStartDate(), false);
+    LocalDateTime endDate = parseDateToLocalDateTime2(request.getEndDate(), true);
     return captureDatumRepository.findByParams(request.getPersonName(), startDate, endDate, pageable).map(mapper::map);
   }
 }

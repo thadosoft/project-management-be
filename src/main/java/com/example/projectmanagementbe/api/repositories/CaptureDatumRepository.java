@@ -15,7 +15,8 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
 
   @Query("SELECT r FROM CaptureDatum r " +
       "WHERE (:keyword IS NULL OR LOWER(r.personName) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
-      "AND (:startDate IS NULL OR :endDate IS NULL OR r.createdAt BETWEEN :startDate AND :endDate)")
+      "AND (:startDate IS NULL OR :endDate IS NULL OR " +
+      "FUNCTION('STR_TO_DATE', r.time, '%Y-%m-%d %H:%i:%s') BETWEEN :startDate AND :endDate)")
   Page<CaptureDatum> findByParams(
       @Param("keyword") String keyword,
       @Param("startDate") LocalDateTime startDate,
