@@ -66,7 +66,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="760" splitType="Stretch">
+		<band height="802" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
@@ -77,7 +77,7 @@
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["C:/Users/dung/Desktop/TDS_Project/ERP_TAS/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/PC/Desktop/TDS_Project/ERP/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="81" y="33" width="389" height="57" uuid="bec46f37-a7e2-45f6-b429-6e999ed1df4e">
@@ -110,7 +110,7 @@ Hotline: +84 377 877 058]]></text>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<imageExpression><![CDATA["C:/Users/dung/Desktop/TDS_Project/ERP_TAS/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/PC/Desktop/TDS_Project/ERP/project-management-be/src/main/resources/reports/templates/images/2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="81" y="0" width="389" height="33" uuid="5f2e9b55-4e80-47f8-bb0d-92d4d190a1b4"/>
@@ -486,6 +486,7 @@ Hotline: +84 377 877 058]]></text>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="400" y="120" width="70" height="19" uuid="250e2bc0-7c43-4077-864f-6f799de3ae14"/>
@@ -741,7 +742,7 @@ GTGT]]></text>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="460" width="555" height="90" uuid="f23139a8-0fd4-4e2f-b041-56eb3e953fb7">
+				<reportElement x="0" y="500" width="555" height="90" uuid="f23139a8-0fd4-4e2f-b041-56eb3e953fb7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -755,7 +756,7 @@ The above price is applied for continuous working days. If any delays caused by 
 The above price is only applied for entire job. In case, you reduce the scope of supply our quotation will be revised.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="440" width="555" height="20" uuid="bf9728e4-bc6b-4f7d-a4e9-3172ed78ddaf">
+				<reportElement x="0" y="480" width="555" height="20" uuid="bf9728e4-bc6b-4f7d-a4e9-3172ed78ddaf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -766,7 +767,7 @@ The above price is only applied for entire job. In case, you reduce the scope of
 				<text><![CDATA[Lưu ý/Noted:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="550" width="150" height="180" uuid="663396e2-c81c-4ac0-877c-310b52f07aa8">
+				<reportElement x="0" y="590" width="150" height="180" uuid="663396e2-c81c-4ac0-877c-310b52f07aa8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -778,7 +779,7 @@ The above price is only applied for entire job. In case, you reduce the scope of
 ( Payment Terms )]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="550" width="405" height="180" uuid="068b8d4d-b992-4542-9da9-99df28d0b13a">
+				<reportElement x="150" y="590" width="405" height="180" uuid="068b8d4d-b992-4542-9da9-99df28d0b13a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -800,7 +801,7 @@ Chi nhánh: ACB - PGD TAM HA<br>
 Swift Code: ASCBVNVX]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="730" width="150" height="30" uuid="95025949-9165-4bd8-a63b-b670eaddf0e5">
+				<reportElement x="0" y="770" width="150" height="30" uuid="95025949-9165-4bd8-a63b-b670eaddf0e5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
@@ -812,7 +813,7 @@ Swift Code: ASCBVNVX]]></text>
 ( Validity )]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="730" width="405" height="30" uuid="291a598d-7ac8-4540-97e2-23b3fd7bc788">
+				<reportElement x="150" y="770" width="405" height="30" uuid="291a598d-7ac8-4540-97e2-23b3fd7bc788">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
