@@ -1,11 +1,17 @@
 package com.example.projectmanagementbe.api.controllers;
 
+import com.example.projectmanagementbe.api.models.dto.requests.timekeeping.AttendanceRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.timekeeping.SearchCaptureDatumRequest;
+import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.AttendanceResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.CaptureDatumResponse;
 import com.example.projectmanagementbe.api.services.Timekeeping.ICaptureDatumService;
+import java.math.BigDecimal;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +27,13 @@ public class AttendanceController {
   @PostMapping("/search")
   public Page<CaptureDatumResponse> search(@RequestBody SearchCaptureDatumRequest request, Pageable pageable) {
     return iCaptureDatumService.searchByParams(request, pageable);
+  }
+
+  @PostMapping
+  public ResponseEntity<BigDecimal> getAttendance(
+      @RequestBody AttendanceRequest request) {
+
+    BigDecimal attendanceList = iCaptureDatumService.getAttendance(request);
+    return ResponseEntity.ok(attendanceList);
   }
 }

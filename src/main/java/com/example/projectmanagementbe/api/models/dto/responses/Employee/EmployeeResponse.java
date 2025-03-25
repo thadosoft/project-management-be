@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.models.dto.responses.Employee;
 
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,4 +39,8 @@ public class EmployeeResponse {
   private String currentAddress;
 
   private String description;
+
+  private String employeeCode;
+
+  private Double totalLeave;
 }

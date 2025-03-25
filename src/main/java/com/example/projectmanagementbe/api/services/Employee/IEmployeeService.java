@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface IEmployeeService {
 
-  Page<EmployeeResponse> findAll(Pageable pageable);
+  List<EmployeeResponse> findAll();
 
   Page<EmployeeResponse> searchByParams(SearchEmployeeRequest searchReferenceProfileRequest, Pageable pageable);
 

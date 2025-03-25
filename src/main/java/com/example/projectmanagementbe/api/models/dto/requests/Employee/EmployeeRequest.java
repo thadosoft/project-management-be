@@ -36,4 +36,8 @@ public class EmployeeRequest {
   private String currentAddress;
 
   private String description;
+
+  private String employeeCode;
+
+  private Double totalLeave;
 }

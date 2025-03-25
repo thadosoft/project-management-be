@@ -35,14 +35,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
   private final EmployeeMapper mapper;
 
   @Override
-  public Page<EmployeeResponse> findAll(Pageable pageable) {
-    Pageable request = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "createdAt"));
+  public List<EmployeeResponse> findAll() {
 
-    Page<Employee> referenceProfiles = employeeRepository.findAll(request);
-
-    List<EmployeeResponse> bearingResponses = referenceProfiles.getContent().stream().map(mapper::mapEmployeeResponse).collect(Collectors.toList());
-
-    return new PageImpl<>(bearingResponses, request, referenceProfiles.getTotalElements());
+    return employeeRepository.findAllByOrderByEmployeeCode().stream().map(mapper::mapEmployeeResponse).toList();
   }
 
   @Override

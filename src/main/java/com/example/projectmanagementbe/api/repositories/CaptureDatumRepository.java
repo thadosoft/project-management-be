@@ -3,10 +3,12 @@ package com.example.projectmanagementbe.api.repositories;
 import com.example.projectmanagementbe.api.models.employee.CaptureDatum;
 import com.example.projectmanagementbe.api.models.employee.Employee;
 import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
 public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long> {
@@ -23,4 +25,9 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
       @Param("endDate") LocalDateTime endDate,
       Pageable pageable
   );
+
+
+  @Procedure(procedureName = "RetriveTotalShiftDay")
+  Object[] getAttendanceData(@Param("work_date_param") String startDate,
+      @Param("emp_code_param") String empCode);
 }

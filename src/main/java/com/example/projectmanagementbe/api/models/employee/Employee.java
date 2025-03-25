@@ -80,4 +80,10 @@ public class Employee extends Auditable {
   @Size(max = 255)
   @Column(name = "description")
   private String description;
+
+  @Column(name = "employee_code", length = 50)
+  private String employeeCode;
+
+  @Column(name = "total_leave", length = 50)
+  private Double totalLeave;
 }
