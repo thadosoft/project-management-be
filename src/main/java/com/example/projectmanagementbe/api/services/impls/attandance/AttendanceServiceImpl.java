@@ -108,9 +108,6 @@ public class AttendanceServiceImpl implements IAttendanceService {
   @Override
   public void update(Long id, UpdateDailyAttendance attendance) {
 
-    System.out.println("Id: "+ id);
-    System.out.println("Id: "+ attendance.getFullName());
-
     Attendance module = attendanceRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.ATTENDANCE_NOT_FOUND.toString()));
 
