@@ -1,8 +1,8 @@
-package com.example.projectmanagementbe.api.services.impls;
+package com.example.projectmanagementbe.api.services.impls.attandance;
 
 import com.example.projectmanagementbe.api.models.employee.CaptureDatum;
-import com.example.projectmanagementbe.api.repositories.CaptureDatumRepository;
-import com.example.projectmanagementbe.api.services.Timekeeping.IDataMigrationService;
+import com.example.projectmanagementbe.api.repositories.attandance.CaptureDatumRepository;
+import com.example.projectmanagementbe.api.services.attandance.IDataMigrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

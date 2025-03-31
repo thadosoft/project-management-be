@@ -1,6 +1,6 @@
 package com.example.projectmanagementbe.auth.configs;
 
-import com.example.projectmanagementbe.api.services.Timekeeping.IDataMigrationService;
+import com.example.projectmanagementbe.api.services.attandance.IDataMigrationService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

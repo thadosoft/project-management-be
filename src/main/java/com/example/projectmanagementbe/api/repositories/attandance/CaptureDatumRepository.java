@@ -1,4 +1,4 @@
-package com.example.projectmanagementbe.api.repositories;
+package com.example.projectmanagementbe.api.repositories.attandance;
 
 import com.example.projectmanagementbe.api.models.employee.CaptureDatum;
 import com.example.projectmanagementbe.api.models.employee.Employee;
@@ -25,9 +25,8 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
       @Param("endDate") LocalDateTime endDate,
       Pageable pageable
   );
-
-
   @Procedure(procedureName = "RetriveTotalShiftDay")
   Object[] getAttendanceData(@Param("work_date_param") String startDate,
       @Param("emp_code_param") String empCode);
+
 }

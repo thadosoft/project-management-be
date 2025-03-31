@@ -21,6 +21,7 @@ public enum ErrorCode {
   EXPORT_REPORT_FAILED("012", "Export report failed"),
   CONTRACT_NOT_FOUND("013", " Contract not found"),
   QUOTATION_NOT_FOUND("014", " Quotation not found"),
+  ATTENDANCE_NOT_FOUND("015", " Attendance not found"),
 
   ;
 

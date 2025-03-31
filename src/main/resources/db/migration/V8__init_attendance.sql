@@ -1,35 +1,37 @@
 alter table employee
     add COLUMN total_leave DOUBLE;
 
-CREATE TABLE shift
+CREATE TABLE period
 (
     id         BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name       VARCHAR(100) NOT NULL,
-    start_time TIME         NOT NULL,
-    end_time   TIME         NOT NULL,
+
+    month      INTEGER NULL DEFAULT NULL,
+    year       INTEGER NULL DEFAULT NULL,
+    start_date DATE NOT NULL,
+    end_date   DATE NOT NULL,
+
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
-CREATE TABLE attendance
+CREATE TABLE IF NOT EXISTS attendance
 (
-    id             BIGINT PRIMARY KEY AUTO_INCREMENT,
-    employee_id    BIGINT NOT NULL,
-    work_date      DATE   NOT NULL,
-    shift_id       BIGINT NOT NULL,
-    status         VARCHAR(50) NULL,
-    check_in_time  TIME     DEFAULT NULL,
-    check_out_time TIME     DEFAULT NULL,
+    id                 BIGINT PRIMARY KEY AUTO_INCREMENT,
+    employee_code      VARCHAR(50)  NOT NULL,
+    full_name          VARCHAR(255) NOT NULL,
+    work_date          DATE         NOT NULL,
+    shift_name         VARCHAR(50)  NULL,
+    total_shifts       DECIMAL(3, 1)     DEFAULT 0.0,
+    morning_checkin    VARCHAR(255)      DEFAULT NULL,
+    afternoon_checkout VARCHAR(255)      DEFAULT NULL,
+    other_checkins     VARCHAR(255)      DEFAULT NULL,
+    period_id          BIGINT       NULL DEFAULT NULL,
+    created_at         DATETIME          DEFAULT CURRENT_TIMESTAMP,
+    updated_at         DATETIME          DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    created_at     DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at     DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-    CONSTRAINT fk_employee_attendance FOREIGN KEY (employee_id) REFERENCES employee (id) ON DELETE CASCADE,
-    CONSTRAINT fk_shift_attendance FOREIGN KEY (shift_id) REFERENCES shift (id) ON DELETE CASCADE,
-    UNIQUE KEY unique_attendance (employee_id, work_date, shift_id)
+    FOREIGN KEY (period_id) REFERENCES period (id) ON DELETE CASCADE
 );
-
 
 CREATE TABLE leave_requests
 (
