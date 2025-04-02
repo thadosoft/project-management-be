@@ -22,6 +22,8 @@ public enum ErrorCode {
   CONTRACT_NOT_FOUND("013", " Contract not found"),
   QUOTATION_NOT_FOUND("014", " Quotation not found"),
   ATTENDANCE_NOT_FOUND("015", " Attendance not found"),
+  NOT_ENOUGH_STOCK("016", " Not enough stock "),
+  INVALID_TRANSACTION_TYPE("017", " Invalid transaction type "),
 
   ;
 
