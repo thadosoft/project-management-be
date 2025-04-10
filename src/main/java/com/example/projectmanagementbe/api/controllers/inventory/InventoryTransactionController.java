@@ -1,11 +1,16 @@
 package com.example.projectmanagementbe.api.controllers.inventory;
 
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Create.InventoryTransactionRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.inventory.Search.SearchMaterialRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.UpdateInventoryTransactionRequest;
+import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryTransactionResponse;
+import com.example.projectmanagementbe.api.models.dto.responses.inventory.SearchInventoryTransactionRequest;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryTransactionService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,9 +41,8 @@ public class InventoryTransactionController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UpdateInventoryTransactionRequest request) {
+  public void update(@PathVariable Long id, @RequestBody UpdateInventoryTransactionRequest request) {
     itemService.update(id, request);
-    return ResponseEntity.noContent().build();
   }
 
   @DeleteMapping("/{id}")
@@ -51,4 +55,11 @@ public class InventoryTransactionController {
   public ResponseEntity<InventoryTransactionResponse> findById(@PathVariable Long id) {
     return ResponseEntity.ok(itemService.findById(id));
   }
+
+  @PostMapping("/search")
+  public Page<InventoryTransactionResponse> search(
+      @RequestBody SearchInventoryTransactionRequest request, Pageable pageable) {
+    return itemService.searchByParams(request, pageable);
+  }
+
 }
