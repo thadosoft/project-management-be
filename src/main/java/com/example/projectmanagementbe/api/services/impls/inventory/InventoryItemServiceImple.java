@@ -61,6 +61,8 @@ public class InventoryItemServiceImple implements IInventoryItemService {
             ErrorCode.INVENTORY_ITEM_NOT_FOUND.toString()));
 
     inventoryItemMapper.update(request, category);
+
+    inventoryItemRepository.save(category);
   }
 
   @Override
