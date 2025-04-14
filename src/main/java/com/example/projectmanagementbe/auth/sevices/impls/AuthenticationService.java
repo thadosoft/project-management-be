@@ -2,13 +2,16 @@ package com.example.projectmanagementbe.auth.sevices.impls;
 
 import com.example.projectmanagementbe.auth.configs.security.JwtService;
 import com.example.projectmanagementbe.auth.models.dto.requests.AuthenticationRequest;
+import com.example.projectmanagementbe.auth.models.dto.requests.ForgotPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.RegisterRequest;
+import com.example.projectmanagementbe.auth.models.dto.requests.ResetPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.responses.AuthenticationResponse;
 import com.example.projectmanagementbe.auth.enums.UserRole;
 import com.example.projectmanagementbe.auth.models.Token;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.enums.TokenType;
 import com.example.projectmanagementbe.api.repositories.TokenRepository;
+import com.example.projectmanagementbe.auth.models.dto.responses.ForgotPasswordResponse;
 import com.example.projectmanagementbe.auth.repositories.UserRepository;
 import com.example.projectmanagementbe.auth.sevices.IAuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -144,5 +147,30 @@ public class AuthenticationService implements IAuthenticationService {
   @Override
   public boolean isTokenValid(String token) {
     return tokenRepository.existsByToken(token);
+  }
+
+  @Override
+  public ForgotPasswordResponse verifyUsername(ForgotPasswordRequest request) {
+    boolean usernameExists = userRepository.findByUsername(request.getUsername()).isPresent();
+    return ForgotPasswordResponse.builder()
+            .usernameExists(usernameExists)
+            .message(usernameExists ? "Username verified successfully" : "Username does not exist")
+            .build();
+  }
+
+  @Override
+  public void resetPassword(ResetPasswordRequest request) {
+    if (!request.getPassword().equals(request.getConfirmPassword())) {
+      throw new IllegalArgumentException("Passwords do not match");
+    }
+
+    User user = userRepository.findByUsername(request.getUsername())
+            .orElseThrow(() -> new IllegalArgumentException("Username does not exist"));
+
+    user.setPassword(passwordEncoder.encode(request.getPassword()));
+    userRepository.save(user);
+
+    // Revoke all existing tokens to force re-authentication
+    revokeAllUserTokens(user);
   }
 }
