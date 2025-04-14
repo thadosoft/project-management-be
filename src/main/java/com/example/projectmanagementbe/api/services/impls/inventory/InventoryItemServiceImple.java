@@ -7,8 +7,10 @@ import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
+import com.example.projectmanagementbe.api.models.iventory.InventoryCategory;
 import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
+import com.example.projectmanagementbe.api.repositories.inventory.InventoryCategoryRepository;
 import com.example.projectmanagementbe.api.repositories.inventory.InventoryItemRepository;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryItemService;
 import com.example.projectmanagementbe.exception.ApiRequestException;
@@ -32,6 +34,7 @@ public class InventoryItemServiceImple implements IInventoryItemService {
 
   private final InventoryItemRepository inventoryItemRepository;
   private final InventoryItemMapper inventoryItemMapper;
+  private final InventoryCategoryRepository inventoryCategoryRepository;
 
   @Override
   public List<InventoryItemResponse> findAll() {
@@ -56,13 +59,18 @@ public class InventoryItemServiceImple implements IInventoryItemService {
 
   @Override
   public void update(Long id, UpdateInventoryItemRequest request) {
-    InventoryItem category = inventoryItemRepository.findById(id)
+    InventoryItem item = inventoryItemRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
             ErrorCode.INVENTORY_ITEM_NOT_FOUND.toString()));
 
-    inventoryItemMapper.update(request, category);
+    InventoryCategory category = inventoryCategoryRepository.findById(request.getInventoryCategoryId())
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVENTORY_CATEGORY_NOT_FOUND.getMessage()));
 
-    inventoryItemRepository.save(category);
+    item.setInventoryCategory(category);
+
+    inventoryItemMapper.update(request, item);
+
+    inventoryItemRepository.save(item);
   }
 
   @Override
