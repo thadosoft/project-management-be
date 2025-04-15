@@ -19,12 +19,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import com.example.projectmanagementbe.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -161,11 +164,11 @@ public class AuthenticationService implements IAuthenticationService {
   @Override
   public void resetPassword(ResetPasswordRequest request) {
     if (!request.getPassword().equals(request.getConfirmPassword())) {
-      throw new IllegalArgumentException("Passwords do not match");
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_MATCH_PASSWORD.getMessage());
     }
 
     User user = userRepository.findByUsername(request.getUsername())
-            .orElseThrow(() -> new IllegalArgumentException("Username does not exist"));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVENTORY_CATEGORY_NOT_FOUND.getMessage()));
 
     user.setPassword(passwordEncoder.encode(request.getPassword()));
     userRepository.save(user);

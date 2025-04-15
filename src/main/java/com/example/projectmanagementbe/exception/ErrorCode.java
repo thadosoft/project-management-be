@@ -24,6 +24,7 @@ public enum ErrorCode {
   ATTENDANCE_NOT_FOUND("015", " Attendance not found"),
   NOT_ENOUGH_STOCK("016", " Not enough stock "),
   INVALID_TRANSACTION_TYPE("017", " Invalid transaction type "),
+  INVALID_MATCH_PASSWORD("018", " Password not matched, please confirm again "),
 
   ;
 
