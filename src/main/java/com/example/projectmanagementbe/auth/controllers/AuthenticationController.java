@@ -1,11 +1,9 @@
 package com.example.projectmanagementbe.auth.controllers;
 
 import com.example.projectmanagementbe.auth.models.dto.requests.AuthenticationRequest;
-import com.example.projectmanagementbe.auth.models.dto.requests.ForgotPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.RegisterRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.ResetPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.responses.AuthenticationResponse;
-import com.example.projectmanagementbe.auth.models.dto.responses.ForgotPasswordResponse;
 import com.example.projectmanagementbe.auth.sevices.IAuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -42,11 +40,6 @@ public class AuthenticationController {
   }
 
   @PostMapping("/forgot-password")
-  public ResponseEntity<ForgotPasswordResponse> verifyUsername(@RequestBody ForgotPasswordRequest request) {
-    return ResponseEntity.ok(IAuthenticationService.verifyUsername(request));
-  }
-
-  @PostMapping("/reset-password")
   public ResponseEntity<Void> resetPassword(@RequestBody ResetPasswordRequest request) {
     IAuthenticationService.resetPassword(request);
     return ResponseEntity.ok().build();

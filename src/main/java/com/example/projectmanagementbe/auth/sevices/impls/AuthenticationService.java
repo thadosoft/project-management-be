@@ -2,7 +2,6 @@ package com.example.projectmanagementbe.auth.sevices.impls;
 
 import com.example.projectmanagementbe.auth.configs.security.JwtService;
 import com.example.projectmanagementbe.auth.models.dto.requests.AuthenticationRequest;
-import com.example.projectmanagementbe.auth.models.dto.requests.ForgotPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.RegisterRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.ResetPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.responses.AuthenticationResponse;
@@ -11,7 +10,6 @@ import com.example.projectmanagementbe.auth.models.Token;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.enums.TokenType;
 import com.example.projectmanagementbe.api.repositories.TokenRepository;
-import com.example.projectmanagementbe.auth.models.dto.responses.ForgotPasswordResponse;
 import com.example.projectmanagementbe.auth.repositories.UserRepository;
 import com.example.projectmanagementbe.auth.sevices.IAuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,15 +17,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import com.example.projectmanagementbe.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -42,13 +37,13 @@ public class AuthenticationService implements IAuthenticationService {
   @Override
   public AuthenticationResponse register(RegisterRequest registerRequest) {
     User user = User.builder()
-        .name(registerRequest.getName())
-        .email(registerRequest.getEmail())
-        .username(registerRequest.getUsername())
-        .password(passwordEncoder.encode(registerRequest.getPassword()))
-        .phoneNumber(registerRequest.getPhoneNumber())
-        .role(UserRole.valueOf(registerRequest.getRole()))
-        .build();
+            .name(registerRequest.getName())
+            .email(registerRequest.getEmail())
+            .username(registerRequest.getUsername())
+            .password(passwordEncoder.encode(registerRequest.getPassword()))
+            .phoneNumber(registerRequest.getPhoneNumber())
+            .role(UserRole.valueOf(registerRequest.getRole()))
+            .build();
 
     User savedUser = userRepository.save(user);
     String jwtToken = jwtService.generateToken(user);
@@ -57,23 +52,23 @@ public class AuthenticationService implements IAuthenticationService {
     saveUserToken(savedUser, jwtToken);
 
     return AuthenticationResponse.builder()
-        .accessToken(jwtToken)
-        .refreshToken(refreshToken)
-        .id(savedUser.getId())
-        .build();
+            .accessToken(jwtToken)
+            .refreshToken(refreshToken)
+            .id(savedUser.getId())
+            .build();
   }
 
   @Override
   public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
     authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(
-            authenticationRequest.getUsername(),
-            authenticationRequest.getPassword()
-        )
+            new UsernamePasswordAuthenticationToken(
+                    authenticationRequest.getUsername(),
+                    authenticationRequest.getPassword()
+            )
     );
 
     User user = userRepository.findByUsername(authenticationRequest.getUsername())
-        .orElseThrow();
+            .orElseThrow();
     String jwtToken = jwtService.generateToken(user);
     String refreshToken = jwtService.generateRefreshToken(user);
 
@@ -81,20 +76,20 @@ public class AuthenticationService implements IAuthenticationService {
     saveUserToken(user, jwtToken);
 
     return AuthenticationResponse.builder()
-        .accessToken(jwtToken)
-        .refreshToken(refreshToken)
-        .id(user.getId())
-        .build();
+            .accessToken(jwtToken)
+            .refreshToken(refreshToken)
+            .id(user.getId())
+            .build();
   }
 
   private void saveUserToken(User savedUser, String jwtToken) {
     Token token = Token.builder()
-        .user(savedUser)
-        .token(jwtToken)
-        .tokenType(TokenType.BEARER)
-        .expired(false)
-        .revoked(false)
-        .build();
+            .user(savedUser)
+            .token(jwtToken)
+            .tokenType(TokenType.BEARER)
+            .expired(false)
+            .revoked(false)
+            .build();
 
     tokenRepository.save(token);
   }
@@ -129,7 +124,7 @@ public class AuthenticationService implements IAuthenticationService {
 
     if (username != null) {
       User user = userRepository.findByUsername(username)
-          .orElseThrow();
+              .orElseThrow();
 
       if (jwtService.isTokenValid(refreshToken, user)) {
         String accessToken = jwtService.generateToken(user);
@@ -138,9 +133,9 @@ public class AuthenticationService implements IAuthenticationService {
         saveUserToken(user, accessToken);
 
         AuthenticationResponse authenticationResponse = AuthenticationResponse.builder()
-            .accessToken(accessToken)
-            .refreshToken(refreshToken)
-            .build();
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
 
         new ObjectMapper().writeValue(response.getOutputStream(), authenticationResponse);
       }
@@ -153,27 +148,17 @@ public class AuthenticationService implements IAuthenticationService {
   }
 
   @Override
-  public ForgotPasswordResponse verifyUsername(ForgotPasswordRequest request) {
-    boolean usernameExists = userRepository.findByUsername(request.getUsername()).isPresent();
-    return ForgotPasswordResponse.builder()
-            .usernameExists(usernameExists)
-            .message(usernameExists ? "Username verified successfully" : "Username does not exist")
-            .build();
-  }
-
-  @Override
   public void resetPassword(ResetPasswordRequest request) {
-    if (!request.getPassword().equals(request.getConfirmPassword())) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_MATCH_PASSWORD.getMessage());
-    }
-
     User user = userRepository.findByUsername(request.getUsername())
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVENTORY_CATEGORY_NOT_FOUND.getMessage()));
+            .orElseThrow(() -> new IllegalArgumentException("Username does not exist"));
+
+    if (!request.getPassword().equals(request.getConfirmPassword())) {
+      throw new IllegalArgumentException("Passwords do not match");
+    }
 
     user.setPassword(passwordEncoder.encode(request.getPassword()));
     userRepository.save(user);
 
-    // Revoke all existing tokens to force re-authentication
     revokeAllUserTokens(user);
   }
 }
