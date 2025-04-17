@@ -3,12 +3,14 @@ package com.example.projectmanagementbe.api.services.impls.uploadFileV2;
 import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import com.example.projectmanagementbe.api.repositories.ReferenceFileV2Repository;
 import com.example.projectmanagementbe.api.services.uploadFile.IFileUploadV2;
+import com.example.projectmanagementbe.auth.configs.application.StorageConfig;
 import com.example.projectmanagementbe.exception.ErrorCode;
 import jakarta.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
@@ -25,22 +27,21 @@ import org.springframework.web.server.ResponseStatusException;
 public class UploadFileV2ServiceImpl implements IFileUploadV2 {
 
   private final ReferenceFileV2Repository referenceFileV2Repository;
-  private static final String UPLOAD_DIR = "uploads";
-
+  private final StorageConfig storageConfig;
   @PostConstruct
   public void init() {
-    File dir = new File(UPLOAD_DIR);
+    String uploadDir = storageConfig.getDirectory();
+    File dir = new File(uploadDir);
     if (!dir.exists()) {
       boolean created = dir.mkdirs();
       if (created) {
-        log.info("Tạo thư mục lưu file: {}", UPLOAD_DIR);
+        log.info("Tạo thư mục lưu file: {}", uploadDir);
       } else {
-        log.error("Không thể tạo thư mục lưu file: {}", UPLOAD_DIR);
-        throw new RuntimeException("Không thể tạo thư mục lưu file: " + UPLOAD_DIR);
+        log.error("Không thể tạo thư mục lưu file: {}", uploadDir);
+        throw new RuntimeException("Không thể tạo thư mục lưu file: " + uploadDir);
       }
     }
   }
-
 
   @Override
   public void uploadFile(MultipartFile file) {
@@ -49,8 +50,9 @@ public class UploadFileV2ServiceImpl implements IFileUploadV2 {
     }
 
     try {
+      String uploadDir = storageConfig.getDirectory();
       String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-      String filePath = UPLOAD_DIR + File.separator + fileName;
+      String filePath = uploadDir + File.separator + fileName;
 
       File destFile = new File(filePath);
       file.transferTo(destFile);
@@ -69,7 +71,6 @@ public class UploadFileV2ServiceImpl implements IFileUploadV2 {
 
   @Override
   public ResponseEntity<byte[]> downloadFile(Long fileId) {
-
     ReferenceFileV2 file = referenceFileV2Repository.findById(fileId)
         .orElseThrow(() -> new RuntimeException("File không tìm thấy"));
 
