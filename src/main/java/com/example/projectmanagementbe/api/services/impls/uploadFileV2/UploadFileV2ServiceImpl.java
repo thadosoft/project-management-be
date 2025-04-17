@@ -2,13 +2,12 @@ package com.example.projectmanagementbe.api.services.impls.uploadFileV2;
 
 import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import com.example.projectmanagementbe.api.repositories.ReferenceFileV2Repository;
-import com.example.projectmanagementbe.api.services.uploadFile.IFileUpload;
+import com.example.projectmanagementbe.api.services.uploadFile.IFileUploadV2;
 import com.example.projectmanagementbe.exception.ErrorCode;
 import jakarta.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ContentDisposition;
@@ -23,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UploadFileServiceImpl implements IFileUpload {
+public class UploadFileV2ServiceImpl implements IFileUploadV2 {
 
   private final ReferenceFileV2Repository referenceFileV2Repository;
   private static final String UPLOAD_DIR = "uploads";
