@@ -45,12 +45,12 @@ public class InventoryTransactionServiceImple implements IInventoryTransactionSe
     InventoryItem inventory = inventoryItemRepository.findById(transaction.getItemId())
         .orElseThrow(() ->new ApiRequestException(ErrorCode.INVENTORY_ITEM_NOT_FOUND));
 
-    if ("NK".equalsIgnoreCase(transaction.getTransactionType()) || "XK".equalsIgnoreCase(transaction.getTransactionType())) {
+    if ("XK".equalsIgnoreCase(transaction.getTransactionType())) {
       if (inventory.getQuantityInStock() < transaction.getQuantity()) {
         throw new ApiRequestException(ErrorCode.NOT_ENOUGH_STOCK);
       }
       inventory.setQuantityInStock(inventory.getQuantityInStock() - transaction.getQuantity());
-    } else if ("IMPORT".equalsIgnoreCase(transaction.getTransactionType()) || "IN".equalsIgnoreCase(transaction.getTransactionType())) {
+    } else if ("NK".equalsIgnoreCase(transaction.getTransactionType())) {
       inventory.setQuantityInStock(inventory.getQuantityInStock() + transaction.getQuantity());
     } else {
       throw new ApiRequestException(ErrorCode.INVALID_TRANSACTION_TYPE);
