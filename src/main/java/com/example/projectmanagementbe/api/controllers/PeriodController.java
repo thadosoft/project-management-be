@@ -25,7 +25,7 @@ public class PeriodController {
   }
 
   @GetMapping("/attandance-detail/{id}")
-  public ResponseEntity<List<AttendanceByPeriodResponse>> CreateMonthlyAttendance(
+  public ResponseEntity<List<AttendanceByPeriodResponse>> CreatetMonthlyAttendance(
       @PathVariable Long id) {
     return ResponseEntity.ok(periodService.getAttandanceByPeriodId(id));
   }

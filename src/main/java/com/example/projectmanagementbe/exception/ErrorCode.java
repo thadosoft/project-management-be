@@ -24,9 +24,7 @@ public enum ErrorCode {
   ATTENDANCE_NOT_FOUND("015", " Attendance not found"),
   NOT_ENOUGH_STOCK("016", " Not enough stock "),
   INVALID_TRANSACTION_TYPE("017", " Invalid transaction type "),
-  FILE_EMPTY("018", " File empty "),
-  FILE_UPLOAD_FAILED("019", " File upload failed "),
-  FILE_NOT_FOUND("020", " File not found "),
+
   ;
 
   private final String code;
