@@ -1,7 +1,9 @@
 package com.example.projectmanagementbe.api.models.dto.responses.inventory;
 
 import com.example.projectmanagementbe.api.models.iventory.InventoryCategory;
+import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import java.math.BigDecimal;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,4 +32,6 @@ public class InventoryItemResponse {
   private BigDecimal sellingPrice;
 
   private String status;
+
+  private List<ReferenceFileV2> images;
 }

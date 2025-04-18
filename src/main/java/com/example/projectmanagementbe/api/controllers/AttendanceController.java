@@ -61,7 +61,7 @@ public class AttendanceController {
   }
 
   @PostMapping("/create/monthly")
-  public ResponseEntity<List<CreateAttendanceResponse>> CreatetMonthlyAttendance(
+  public ResponseEntity<List<CreateAttendanceResponse>> CreateMonthlyAttendance(
       @RequestParam int year,
       @RequestParam int month) {
     attendanceService.CreateAttendanceForMonth(year, month);

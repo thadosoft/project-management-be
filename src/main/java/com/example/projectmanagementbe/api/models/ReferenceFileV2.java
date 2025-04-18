@@ -1,10 +1,14 @@
 package com.example.projectmanagementbe.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -20,6 +24,11 @@ public class ReferenceFileV2 extends Auditable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Long id;
+
+  @ManyToOne
+  @JoinColumn(name = "inventory_item_id", nullable = false)
+  @JsonBackReference
+  private InventoryItem inventoryItem;
 
   @Size(max = 255)
   @Column(name = "file_name", nullable = false)

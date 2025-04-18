@@ -4,12 +4,9 @@ import com.example.projectmanagementbe.api.mappers.inventory.InventoryItemMapper
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Create.InventoryItemRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Search.SearchMaterialRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.UpdateInventoryItemRequest;
-import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
 import com.example.projectmanagementbe.api.models.iventory.InventoryCategory;
 import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
-import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
 import com.example.projectmanagementbe.api.repositories.inventory.InventoryCategoryRepository;
 import com.example.projectmanagementbe.api.repositories.inventory.InventoryItemRepository;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryItemService;
@@ -18,6 +15,7 @@ import com.example.projectmanagementbe.exception.ErrorCode;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -38,7 +36,9 @@ public class InventoryItemServiceImple implements IInventoryItemService {
 
   @Override
   public List<InventoryItemResponse> findAll() {
-    return inventoryItemRepository.findAll().stream().map(inventoryItemMapper::mapInventoryItemResponse).toList();
+    List<InventoryItem> items = inventoryItemRepository.findAll();
+    items.forEach(item -> Hibernate.initialize(item.getImages())); // Initialize images
+    return items.stream().map(inventoryItemMapper::mapInventoryItemResponse).toList();
   }
 
   @Override
@@ -47,7 +47,12 @@ public class InventoryItemServiceImple implements IInventoryItemService {
 
     Page<InventoryItem> referenceProfiles = inventoryItemRepository.searchByNameAndSku(request.getName(), request.getSku(), pageable);
 
-    List<InventoryItemResponse> bearingResponses = referenceProfiles.getContent().stream().map(inventoryItemMapper::mapInventoryItemResponse).collect(Collectors.toList());
+    List<InventoryItem> items = referenceProfiles.getContent();
+    items.forEach(item -> Hibernate.initialize(item.getImages())); // Initialize images
+
+    List<InventoryItemResponse> bearingResponses = items.stream()
+            .map(inventoryItemMapper::mapInventoryItemResponse)
+            .collect(Collectors.toList());
 
     return new PageImpl<>(bearingResponses, pageRequest, referenceProfiles.getTotalElements());
   }
@@ -60,11 +65,11 @@ public class InventoryItemServiceImple implements IInventoryItemService {
   @Override
   public void update(Long id, UpdateInventoryItemRequest request) {
     InventoryItem item = inventoryItemRepository.findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-            ErrorCode.INVENTORY_ITEM_NOT_FOUND.toString()));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    ErrorCode.INVENTORY_ITEM_NOT_FOUND.toString()));
 
     InventoryCategory category = inventoryCategoryRepository.findById(request.getInventoryCategoryId())
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVENTORY_CATEGORY_NOT_FOUND.getMessage()));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.INVENTORY_CATEGORY_NOT_FOUND.getMessage()));
 
     item.setInventoryCategory(category);
 
@@ -84,6 +89,9 @@ public class InventoryItemServiceImple implements IInventoryItemService {
 
   @Override
   public InventoryItemResponse findById(Long id) {
-    return inventoryItemMapper.mapInventoryItemResponse(inventoryItemRepository.findById(id).orElseThrow(() -> new ApiRequestException(ErrorCode.INVENTORY_ITEM_NOT_FOUND)));
+    InventoryItem item = inventoryItemRepository.findById(id)
+            .orElseThrow(() -> new ApiRequestException(ErrorCode.INVENTORY_ITEM_NOT_FOUND));
+    Hibernate.initialize(item.getImages()); // Initialize images
+    return inventoryItemMapper.mapInventoryItemResponse(item);
   }
 }

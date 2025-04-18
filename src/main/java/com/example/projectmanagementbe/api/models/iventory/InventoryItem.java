@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.api.models.iventory;
 
 import com.example.projectmanagementbe.api.models.Auditable;
+import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +23,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "inventory_item")
-public class InventoryItem  extends Auditable {
+public class InventoryItem extends Auditable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,6 +68,9 @@ public class InventoryItem  extends Auditable {
 
   @OneToMany(mappedBy = "item")
   private List<InventoryTransaction> inventoryTransactions;
+
+  @OneToMany(mappedBy = "inventoryItem")
+  private List<ReferenceFileV2> images;
 
   @Size(max = 50)
   @Column(name = "status")
