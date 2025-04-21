@@ -3,8 +3,10 @@ package com.example.projectmanagementbe.api.models.iventory;
 import com.example.projectmanagementbe.api.models.Auditable;
 import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -69,7 +71,8 @@ public class InventoryItem extends Auditable {
   @OneToMany(mappedBy = "item")
   private List<InventoryTransaction> inventoryTransactions;
 
-  @OneToMany(mappedBy = "inventoryItem")
+  @OneToMany(mappedBy = "inventoryItem", fetch = FetchType.EAGER)
+  @JsonManagedReference
   private List<ReferenceFileV2> images;
 
   @Size(max = 50)

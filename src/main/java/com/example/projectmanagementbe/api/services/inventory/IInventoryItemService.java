@@ -4,9 +4,11 @@ import com.example.projectmanagementbe.api.models.dto.requests.inventory.Create.
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Search.SearchMaterialRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.UpdateInventoryItemRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
-import java.util.List;
+import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface IInventoryItemService {
 
@@ -14,9 +16,9 @@ public interface IInventoryItemService {
 
   Page<InventoryItemResponse> searchByParams(SearchMaterialRequest request, Pageable pageable);
 
-  void create(InventoryItemRequest moduleRequest);
+  InventoryItem create(InventoryItemRequest request);
 
-  void update(Long id, UpdateInventoryItemRequest inventoryCategoryRequest);
+  void update(Long id, UpdateInventoryItemRequest request);
 
   void delete(Long id);
 

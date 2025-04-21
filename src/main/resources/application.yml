@@ -5,7 +5,7 @@ server:
 web-config:
   cors:
     allowed:
-      origins: http://localhost:5173,http://192.168.1.154:5173,https://little-rouge-fwd-britannica.trycloudflare.com,https://project-mana-fe.pages.dev/
+      origins: http://localhost:5173,http://192.168.1.154:5173,https://headphones-political-planning-hungarian.trycloudflare.com,https://project-mana-fe.pages.dev/
       methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
 
 spring:

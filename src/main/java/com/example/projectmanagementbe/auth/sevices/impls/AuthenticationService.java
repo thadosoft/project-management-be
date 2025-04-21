@@ -1,11 +1,11 @@
 package com.example.projectmanagementbe.auth.sevices.impls;
 
 import com.example.projectmanagementbe.auth.configs.security.JwtService;
+import com.example.projectmanagementbe.auth.enums.UserRole;
 import com.example.projectmanagementbe.auth.models.dto.requests.AuthenticationRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.RegisterRequest;
 import com.example.projectmanagementbe.auth.models.dto.requests.ResetPasswordRequest;
 import com.example.projectmanagementbe.auth.models.dto.responses.AuthenticationResponse;
-import com.example.projectmanagementbe.auth.enums.UserRole;
 import com.example.projectmanagementbe.auth.models.Token;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.enums.TokenType;

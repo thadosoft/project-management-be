@@ -6,6 +6,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.inventory.Update.
 import com.example.projectmanagementbe.api.models.dto.requests.referenceProfile.Search.SearchReferenceProfileRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.inventory.InventoryItemResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceProfileResponse;
+import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
 import com.example.projectmanagementbe.api.services.inventory.IInventoryItemService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -39,11 +40,11 @@ public class InventoryItemController {
     return itemService.searchByParams(request, pageable);
   }
 
-
   @PostMapping
-  public ResponseEntity<Void> create(@RequestBody InventoryItemRequest request) {
-    itemService.create(request);
-    return ResponseEntity.status(HttpStatus.CREATED).build();
+  public ResponseEntity<InventoryItemResponse> create(@RequestBody InventoryItemRequest request) {
+    InventoryItem item = itemService.create(request);
+    return ResponseEntity.status(HttpStatus.CREATED)
+            .body(InventoryItemResponse.fromEntity(item));
   }
 
   @PutMapping("/{id}")
