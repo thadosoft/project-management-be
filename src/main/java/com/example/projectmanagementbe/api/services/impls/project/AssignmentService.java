@@ -45,22 +45,25 @@ public class AssignmentService implements IAssignmentService {
     Assignment assignment = new Assignment();
 
     User assigner = userRepository.findById(assignmentRequest.getAssignerId())
-        .orElseThrow(() -> new RuntimeException("Assigner not found"));
+            .orElseThrow(() -> new RuntimeException("Assigner not found"));
     assignment.setAssigner(assigner);
 
     if (assignmentRequest.getReceiverId() != null) {
       User receiver = userRepository.findById(assignmentRequest.getReceiverId())
-          .orElseThrow(() -> new RuntimeException("Receiver not found"));
+              .orElseThrow(() -> new RuntimeException("Receiver not found"));
       assignment.setReceiver(receiver);
     }
 
     Task task = taskRepository.findById(assignmentRequest.getTaskId())
-        .orElseThrow(() -> new RuntimeException("Task not found"));
+            .orElseThrow(() -> new RuntimeException("Task not found"));
     assignment.setTask(task);
 
     assignment.setTitle(assignmentRequest.getTitle());
     assignment.setDescription(assignmentRequest.getDescription());
     assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
+    assignment.setStatus_type(assignmentRequest.getStatus_type());
+    assignment.setStart_date(assignmentRequest.getStart_date());
+    assignment.setEnd_date(assignmentRequest.getEnd_date());
 
     return assignmentMapper.toAssignmentResponse(assignmentRepository.save(assignment));
   }
@@ -68,14 +71,16 @@ public class AssignmentService implements IAssignmentService {
   @Override
   public void update(String id, AssignmentRequest assignmentRequest) {
     if (assignmentRequest.getOldAssignmentOrder() != null) {
-      Assignment assignmentEntity = assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found"));
+      Assignment assignmentEntity = assignmentRepository.findById(id)
+              .orElseThrow(() -> new RuntimeException("Assignment not found"));
 
       if (assignmentRequest.getOldTaskId() != null &&
-          !assignmentRequest.getTaskId().equals(assignmentRequest.getOldTaskId())) {
-        //move to other task
+              !assignmentRequest.getTaskId().equals(assignmentRequest.getOldTaskId())) {
+        // Move to other task
         List<Assignment> assignmentsInNewTask = assignmentRepository.findByTask_Id(assignmentRequest.getTaskId());
         List<Assignment> assignmentsInOldTask = assignmentRepository.findByTask_Id(assignmentRequest.getOldTaskId());
-        Task task = taskRepository.findById(assignmentRequest.getTaskId()).orElseThrow(() -> new RuntimeException("Task not found"));
+        Task task = taskRepository.findById(assignmentRequest.getTaskId())
+                .orElseThrow(() -> new RuntimeException("Task not found"));
 
         for (Assignment assignment : assignmentsInOldTask) {
           if (assignment.getAssignmentOrder() > assignmentRequest.getOldAssignmentOrder()) {
@@ -84,10 +89,10 @@ public class AssignmentService implements IAssignmentService {
         }
 
         if (assignmentRequest.getAssignmentOrder() > assignmentsInNewTask.size()) {
-          //move to final position
+          // Move to final position
           assignmentEntity.setTask(task);
         } else {
-          //move to non-final position
+          // Move to non-final position
           for (Assignment assignment : assignmentsInNewTask) {
             if (assignment.getAssignmentOrder() >= assignmentRequest.getAssignmentOrder()) {
               assignment.setAssignmentOrder(assignment.getAssignmentOrder() + 1);
@@ -96,32 +101,40 @@ public class AssignmentService implements IAssignmentService {
           assignmentEntity.setTask(task);
         }
 
+        // Cập nhật start_date và end_date
+        assignmentEntity.setStart_date(assignmentRequest.getStart_date());
+        assignmentEntity.setEnd_date(assignmentRequest.getEnd_date());
+
         assignmentRepository.save(assignmentEntity);
         assignmentsInNewTask.add(assignmentEntity);
         assignmentRepository.saveAll(assignmentsInNewTask);
       } else {
-        //move to same task
+        // Move to same task
         List<Assignment> assignmentsInTask = assignmentRepository.findByTask_Id(assignmentRequest.getTaskId());
         int oldAssignmentOrder = assignmentRequest.getOldAssignmentOrder();
         int newAssignmentOrder = assignmentRequest.getAssignmentOrder();
 
         if (oldAssignmentOrder > newAssignmentOrder) {
-          //move up
+          // Move up
           for (Assignment assignment : assignmentsInTask) {
             if (assignment.getId().equals(id)) {
               assignment.setAssignmentOrder(newAssignmentOrder);
+              assignment.setStart_date(assignmentRequest.getStart_date()); // Cập nhật start_date
+              assignment.setEnd_date(assignmentRequest.getEnd_date());     // Cập nhật end_date
             } else if (assignment.getAssignmentOrder() >= newAssignmentOrder &&
-                assignment.getAssignmentOrder() < oldAssignmentOrder) {
+                    assignment.getAssignmentOrder() < oldAssignmentOrder) {
               assignment.setAssignmentOrder(assignment.getAssignmentOrder() + 1);
             }
           }
         } else {
-          //move down
+          // Move down
           for (Assignment assignment : assignmentsInTask) {
             if (assignment.getId().equals(id)) {
               assignment.setAssignmentOrder(newAssignmentOrder);
+              assignment.setStart_date(assignmentRequest.getStart_date()); // Cập nhật start_date
+              assignment.setEnd_date(assignmentRequest.getEnd_date());     // Cập nhật end_date
             } else if (assignment.getAssignmentOrder() <= newAssignmentOrder &&
-                assignment.getAssignmentOrder() > oldAssignmentOrder) {
+                    assignment.getAssignmentOrder() > oldAssignmentOrder) {
               assignment.setAssignmentOrder(assignment.getAssignmentOrder() - 1);
             }
           }
@@ -130,25 +143,31 @@ public class AssignmentService implements IAssignmentService {
         assignmentRepository.saveAll(assignmentsInTask);
       }
     } else {
-      Assignment assignment = assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found"));
+      Assignment assignment = assignmentRepository.findById(id)
+              .orElseThrow(() -> new RuntimeException("Assignment not found"));
 
       User assigner = userRepository.findById(assignmentRequest.getAssignerId())
-          .orElseThrow(() -> new RuntimeException("Assigner not found"));
+              .orElseThrow(() -> new RuntimeException("Assigner not found"));
       assignment.setAssigner(assigner);
 
       if (assignmentRequest.getReceiverId() != null) {
         User receiver = userRepository.findById(assignmentRequest.getReceiverId())
-            .orElseThrow(() -> new RuntimeException("Receiver not found"));
+                .orElseThrow(() -> new RuntimeException("Receiver not found"));
         assignment.setReceiver(receiver);
       }
 
       Task task = taskRepository.findById(assignmentRequest.getTaskId())
-          .orElseThrow(() -> new RuntimeException("Task not found"));
+              .orElseThrow(() -> new RuntimeException("Task not found"));
       assignment.setTask(task);
 
       assignment.setTitle(assignmentRequest.getTitle());
       assignment.setDescription(assignmentRequest.getDescription());
       assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
+      if (assignmentRequest.getStatus_type() != null) {
+        assignment.setStatus_type(assignmentRequest.getStatus_type());
+      }
+      assignment.setStart_date(assignmentRequest.getStart_date());
+      assignment.setEnd_date(assignmentRequest.getEnd_date());
 
       assignmentRepository.save(assignment);
     }

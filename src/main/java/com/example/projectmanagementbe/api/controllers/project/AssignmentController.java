@@ -4,6 +4,8 @@ import com.example.projectmanagementbe.api.models.dto.requests.project.Assignmen
 import com.example.projectmanagementbe.api.models.dto.responses.project.AssignmentResponse;
 import com.example.projectmanagementbe.api.services.project.IAssignmentService;
 import java.util.List;
+
+import com.example.projectmanagementbe.auth.enums.AssignmentStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,5 +56,10 @@ public class AssignmentController {
   @GetMapping("/project/{id}")
   public ResponseEntity<List<AssignmentResponse>> findByProjectId(@PathVariable String id) {
     return ResponseEntity.ok(assignmentService.findByProjectId(id));
+  }
+
+  @GetMapping("/statuses")
+  public ResponseEntity<AssignmentStatus[]> getStatuses() {
+    return ResponseEntity.ok(AssignmentStatus.values());
   }
 }

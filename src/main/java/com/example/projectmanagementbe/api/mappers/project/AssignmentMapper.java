@@ -12,7 +12,9 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
 public interface AssignmentMapper {
-
+  @Mapping(source = "status_type", target = "status_type")
+  @Mapping(source = "start_date", target = "start_date")
+  @Mapping(source = "end_date", target = "end_date")
   AssignmentResponse toAssignmentResponse(Assignment assignment);
 
   List<AssignmentResponse> toAssignmentResponses(List<Assignment> assignmentEntities);
@@ -20,6 +22,9 @@ public interface AssignmentMapper {
   @Mapping(source = "assignerId", target = "assigner.id")
   @Mapping(source = "receiverId", target = "receiver.id")
   @Mapping(source = "taskId", target = "task.id")
+  @Mapping(source = "status_type", target = "status_type")
+  @Mapping(source = "start_date", target = "start_date")
+  @Mapping(source = "end_date", target = "end_date")
   Assignment toAssignmentEntity(AssignmentRequest assignmentRequest);
 
   Assignment toAssignmentEntity(AssignmentResponse assignmentResponse);
@@ -27,6 +32,9 @@ public interface AssignmentMapper {
   @Mapping(source = "assignerId", target = "assigner.id")
   @Mapping(source = "receiverId", target = "receiver.id")
   @Mapping(source = "taskId", target = "task.id")
+  @Mapping(source = "status_type", target = "status_type")
+  @Mapping(source = "start_date", target = "start_date")
+  @Mapping(source = "end_date", target = "end_date")
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void toAssignmentEntity(AssignmentRequest assignmentRequest, @MappingTarget Assignment assignment);
 }

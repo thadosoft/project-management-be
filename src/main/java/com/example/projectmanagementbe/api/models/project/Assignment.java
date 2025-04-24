@@ -2,16 +2,14 @@ package com.example.projectmanagementbe.api.models.project;
 
 import com.example.projectmanagementbe.api.models.Base;
 import com.example.projectmanagementbe.auth.models.User;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.example.projectmanagementbe.auth.enums.AssignmentStatus;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -50,4 +48,14 @@ public class Assignment extends Base {
 
   @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
   private List<Media> medias;
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "status_type")
+  private AssignmentStatus status_type;
+
+  @Column(name = "start_date")
+  private LocalDateTime start_date;
+
+  @Column(name = "end_date")
+  private LocalDateTime end_date;
 }
