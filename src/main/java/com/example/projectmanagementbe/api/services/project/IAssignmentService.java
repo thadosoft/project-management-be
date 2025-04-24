@@ -9,7 +9,7 @@ public interface IAssignmentService {
 
   AssignmentResponse create(AssignmentRequest assignmentRequest);
 
-  void update(String id, AssignmentRequest assignmentRequest); // Đổi từ void thành AssignmentResponse
+  void update(String id, AssignmentRequest assignmentRequest);
   void delete(String id);
 
   AssignmentResponse findById(String id);
