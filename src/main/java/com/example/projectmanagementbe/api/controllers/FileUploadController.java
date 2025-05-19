@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/api/v1/file-uploads")
@@ -52,18 +54,21 @@ public class FileUploadController {
     }
 
     @PostMapping(value = "/images/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<FileUploadResponse> uploadImage(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<List<FileUploadResponse>> uploadImages(
+            @RequestParam("files") List<MultipartFile> files,
             @RequestParam("inventoryItemId") Long inventoryItemId) throws IOException {
-        ReferenceFileV2 referenceFile = fileUploadsService.uploadImage(file, inventoryItemId, UPLOAD_DIR);
-        FileUploadResponse response = new FileUploadResponse();
-        response.setId(referenceFile.getId());
-        response.setFileName(referenceFile.getFileName());
-        response.setFileType(referenceFile.getFileType());
-        response.setFileSize(referenceFile.getFileSize());
-        response.setFilePath(referenceFile.getFilePath());
-        // Sử dụng accessUrl từ ReferenceFileV2 (đã được tạo đúng trong FileUploadsServiceImpl)
-        response.setAccessUrl(referenceFile.getAccessUrl());
-        return ResponseEntity.ok(response);
+        List<ReferenceFileV2> referenceFiles = fileUploadsService.uploadImages(files, inventoryItemId, UPLOAD_DIR);
+        List<FileUploadResponse> responses = new ArrayList<>();
+        for (ReferenceFileV2 referenceFile : referenceFiles) {
+            FileUploadResponse response = new FileUploadResponse();
+            response.setId(referenceFile.getId());
+            response.setFileName(referenceFile.getFileName());
+            response.setFileType(referenceFile.getFileType());
+            response.setFileSize(referenceFile.getFileSize());
+            response.setFilePath(referenceFile.getFilePath());
+            response.setAccessUrl(referenceFile.getAccessUrl());
+            responses.add(response);
+        }
+        return ResponseEntity.ok(responses);
     }
 }

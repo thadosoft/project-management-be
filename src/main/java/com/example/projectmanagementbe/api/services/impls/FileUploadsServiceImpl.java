@@ -22,6 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -177,5 +179,15 @@ public class FileUploadsServiceImpl implements FileUploadsService {
 
         log.info("File uploaded thành công: {}", filePath);
         return referenceFile;
+    }
+
+    @Override
+    public List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, String uploadDir) throws IOException {
+        List<ReferenceFileV2> referenceFiles = new ArrayList<>();
+        for (MultipartFile file : files) {
+            ReferenceFileV2 referenceFile = uploadImage(file, inventoryItemId, uploadDir);
+            referenceFiles.add(referenceFile);
+        }
+        return referenceFiles;
     }
 }

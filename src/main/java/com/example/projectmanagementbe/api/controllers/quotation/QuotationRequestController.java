@@ -67,6 +67,8 @@ public class QuotationRequestController {
   @GetMapping("/printPDF/{id}")
   public ResponseEntity<byte[]> downloadPDF(@PathVariable("id") Long id) {
 
+    System.out.println("a");
+
     var parameters = iQuotationRequestService.loadData(id);
 
     HttpHeaders headers = new HttpHeaders();

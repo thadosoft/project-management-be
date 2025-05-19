@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface FileUploadsService {
     byte[] getFileAsBytes(String filePath) throws IOException;
@@ -16,4 +17,5 @@ public interface FileUploadsService {
 
     // New method for file upload
     ReferenceFileV2 uploadImage(MultipartFile file, Long inventoryItemId, String uploadDir) throws IOException;
+    List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, String uploadDir) throws IOException;
 }
