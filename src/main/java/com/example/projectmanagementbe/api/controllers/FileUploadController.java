@@ -24,7 +24,8 @@ import java.util.Optional;
 public class FileUploadController {
 
     private final FileUploadsService fileUploadsService;
-    private static final String UPLOAD_DIR = "C:/Users/admin/Documents/GitHub/project-management-be/uploads"; //dường dẫn
+    private static final String UPLOAD_DIR = "D://HLO"; //dường dẫn
+
 
     @GetMapping("/images/{filename:.+}") //chi lay ten file
     public ResponseEntity<byte[]> getImage(@PathVariable String filename) throws IOException {

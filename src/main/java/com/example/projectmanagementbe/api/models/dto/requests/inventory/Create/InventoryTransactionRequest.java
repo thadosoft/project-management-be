@@ -8,6 +8,8 @@ import lombok.Setter;
 @Setter
 public class InventoryTransactionRequest {
 
+  private Long id;
+
   private Long itemId;
 
   private String transactionType;

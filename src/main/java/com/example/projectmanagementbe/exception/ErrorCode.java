@@ -27,6 +27,8 @@ public enum ErrorCode {
   FILE_EMPTY("018", " File empty "),
   FILE_UPLOAD_FAILED("019", " File upload failed "),
   FILE_NOT_FOUND("020", " File not found "),
+  LEAVE_REQUEST_NOT_FOUND("021", "Leave request not found"),
+  WHITE_BOARD_NOT_FOUND("022", "White board not found"),
   ;
 
   private final String code;
