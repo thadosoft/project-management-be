@@ -32,7 +32,6 @@ public class WhiteBoard  extends Auditable {
     @Column(name = "project_name", nullable = false)
     private String projectName;
 
-    @Lob
     @Column(name = "description")
     private String description;
 
