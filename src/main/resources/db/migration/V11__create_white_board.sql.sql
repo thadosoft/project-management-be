@@ -3,7 +3,7 @@ CREATE TABLE white_board
     id           BIGINT AUTO_INCREMENT PRIMARY KEY,
     employee_id  BIGINT       NOT NULL,
     project_name VARCHAR(255) NOT NULL,
-    description  TEXT,
+    description  VARCHAR(1000),
     deadline     DATE,
     start_date   DATE,
     end_date     DATE,
