@@ -29,6 +29,7 @@ public enum ErrorCode {
   FILE_NOT_FOUND("020", " File not found "),
   LEAVE_REQUEST_NOT_FOUND("021", "Leave request not found"),
   WHITE_BOARD_NOT_FOUND("022", "White board not found"),
+  EMPLOYEE_OF_MONTH_NOT_FOUND("023", "Employee of Month not found"),
   ;
 
   private final String code;

@@ -69,6 +69,7 @@ create table if not exists assignments
     description      text         null,
     assignment_order int          not null check (assignment_order >= 1),
     entry_by         char(36)     null,
+    status_type         varchar(36)     null,
     entry_date       datetime default current_timestamp,
     updated_by       char(36)     null,
     updated_date     datetime default current_timestamp on update current_timestamp,
