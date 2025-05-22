@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -36,13 +37,13 @@ public class WhiteBoard  extends Auditable {
     private String description;
 
     @Column(name = "deadline")
-    private LocalDate deadline;
+    private LocalDateTime deadline;
 
     @Column(name = "start_date")
-    private LocalDate startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "end_date")
-    private LocalDate endDate;
+    private LocalDateTime endDate;
 
     @Size(max = 100)
     @Column(name = "status", length = 100)

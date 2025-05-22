@@ -3,6 +3,7 @@ package com.example.projectmanagementbe.api.models.project;
 import com.example.projectmanagementbe.api.models.Base;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.enums.AssignmentStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -53,9 +54,11 @@ public class Assignment extends Base {
   @Column(name = "status_type")
   private AssignmentStatus status_type;
 
+  @JsonFormat(pattern = "dd/MM/yyyy")
   @Column(name = "start_date")
   private LocalDateTime start_date;
 
+  @JsonFormat(pattern = "dd/MM/yyyy")
   @Column(name = "end_date")
   private LocalDateTime end_date;
 }
