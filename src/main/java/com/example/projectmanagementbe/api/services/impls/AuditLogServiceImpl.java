@@ -41,4 +41,11 @@ public class AuditLogServiceImpl implements AuditLogService {
         .collect(Collectors.toList());
     return new PageImpl<>(auditTrailResponses, sortedPageable, productsList.getTotalElements());
   }
+
+  @Override
+  public List<AuditTrailResponse> get6LatestLogs() {
+    List<AuditTrail> trailList = auditLogRepository.findTop6ByOrderByCreatedAtDesc();
+
+    return auditLogMapper.mapAuditTrailResponse(trailList);
+  }
 }

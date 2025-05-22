@@ -27,6 +27,7 @@ public class FileUploadController {
     private static final String UPLOAD_DIR = "D://HLO"; //dường dẫn
 
 
+
     @GetMapping("/images/{filename:.+}") //chi lay ten file
     public ResponseEntity<byte[]> getImage(@PathVariable String filename) throws IOException {
         // combine filename với UPLOAD_DIR để tạo đường dẫn access đầy đủ

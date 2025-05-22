@@ -15,7 +15,7 @@ public class DashboardController {
 
     private final DashboardService dashboardService;
 
-    @PostMapping
+    @GetMapping
     public ResponseEntity<List<DashboardResponse>> dashboardInfo() {
         return ResponseEntity.ok(dashboardService.getProjectProgressJavaWay());
     }

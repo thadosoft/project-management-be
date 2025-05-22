@@ -45,7 +45,7 @@ public class CaptureDatumServiceImpl implements ICaptureDatumService {
     }
 
     public List<LateStaff> getLatest6CaptureData() {
-        List<CaptureDatum> captureDatumList = captureDatumRepository.findTop6ByOrderByCreatedAtDesc();
+        List<CaptureDatum> captureDatumList = captureDatumRepository.findTop4ByOrderByCreatedAtDesc();
         return mapper.map(captureDatumList);
     }
 

@@ -6,13 +6,12 @@ import com.example.projectmanagementbe.api.services.AuditLogService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/audit-logs")
+@RequestMapping("/api/v1/audit-logs")
 @AllArgsConstructor
 public class AuditLogController {
 
@@ -21,5 +20,10 @@ public class AuditLogController {
     @PostMapping("/search-params")
     public Page<AuditTrailResponse> findByParams(@RequestBody AuditTrailRequest auditTrailRequest, Pageable pageable) {
         return auditLogService.findByParams(auditTrailRequest, pageable);
+    }
+
+    @GetMapping
+    public List<AuditTrailResponse> get6LatestLogs() {
+        return auditLogService.get6LatestLogs();
     }
 }

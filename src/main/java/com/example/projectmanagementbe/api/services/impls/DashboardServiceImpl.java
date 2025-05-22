@@ -19,15 +19,14 @@ public class DashboardServiceImpl implements DashboardService {
     @Override
     public List<DashboardResponse> getProjectProgressJavaWay() {
         List<Object[]> results = projectRepository.fetchProjectProgress();
-        return results.stream().map(row ->
-                new DashboardResponse(
-                        (String) row[0],
-                        ((BigDecimal) row[1]).doubleValue(),
-                        (String) row[2]
-                )
-        ).collect(Collectors.toList());
+        return results.stream()
+                .map(row -> {
+                    String projectName = row[0] != null ? row[0].toString() : null;
+                    Double progress = row[1] != null ? ((Number) row[1]).doubleValue() : 0.0;
+                    String status = row[2] != null ? row[2].toString() : null;
+                    return new DashboardResponse(projectName, progress, status);
+                })
+                .collect(Collectors.toList());
     }
-
-
 
 }

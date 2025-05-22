@@ -29,5 +29,5 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
   Object[] getAttendanceData(@Param("work_date_param") String startDate,
       @Param("emp_code_param") String empCode);
 
-  List<CaptureDatum> findTop6ByOrderByCreatedAtDesc();
+  List<CaptureDatum> findTop4ByOrderByCreatedAtDesc();
 }
