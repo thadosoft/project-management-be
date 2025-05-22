@@ -40,10 +40,10 @@ public class EmployeeOfMonth extends Auditable {
     private String reason;
 
     @Column(name = "month")
-    private String month;
+    private Integer month;
 
     @Column(name = "year")
-    private String year;
+    private Integer year;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "award_date")

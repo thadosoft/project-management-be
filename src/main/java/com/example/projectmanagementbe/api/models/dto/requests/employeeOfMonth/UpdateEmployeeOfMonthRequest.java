@@ -18,9 +18,9 @@ public class UpdateEmployeeOfMonthRequest {
 
     private String reason;
 
-    private String month;
+    private Integer month;
 
-    private String year;
+    private Integer year;
 
     private LocalDateTime awardDate;
 }

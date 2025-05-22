@@ -4,9 +4,9 @@ CREATE TABLE white_board
     employee_id  BIGINT       NOT NULL,
     project_name VARCHAR(255) NOT NULL,
     description  VARCHAR(1000),
-    deadline     DATE,
-    start_date   DATE,
-    end_date     DATE,
+    deadline     DATETIME,
+    start_date   DATETIME,
+    end_date     DATETIME,
     status       VARCHAR(100),
     assign_by    VARCHAR(100),
 
