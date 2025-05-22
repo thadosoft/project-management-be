@@ -8,8 +8,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class WhiteBoardResponse {
-    private Long id;
+    private String id;
     private Long employeeId;
+    private String employeeName;
     private String projectName;
     private String description;
     private LocalDate deadline;

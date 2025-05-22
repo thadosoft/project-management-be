@@ -12,6 +12,7 @@ import org.mapstruct.MappingTarget;
 public interface WhiteBoardMapper {
 
   @Mapping(source = "employee.id", target = "employeeId")
+  @Mapping(source = "employee.fullName", target = "employeeName")
   WhiteBoardResponse mapWhiteBoardResponse(WhiteBoard whiteBoard);
 
   @Mapping(target = "employee", ignore = true)

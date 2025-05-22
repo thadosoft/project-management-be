@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 public class CreateWhiteBoard {
     @NotNull(message = "Employee ID is required")
-    private Long employeeId;
+    private String employeeId;
 
     @NotNull()
     @Size(max = 255)
