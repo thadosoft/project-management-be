@@ -24,7 +24,7 @@ import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.p
 
 @Service
 @RequiredArgsConstructor
-public class IEmployeeOfMonthServiceImpl implements IEmployeeOfMonthService {
+public class EmployeeOfMonthServiceImpl implements IEmployeeOfMonthService {
 
     private final EmployeeOfMonthRepository employeeOfMonthRepository;
     private final EmployeeOfMonthMapper employeeOfMonthMapper;
@@ -35,8 +35,8 @@ public class IEmployeeOfMonthServiceImpl implements IEmployeeOfMonthService {
         LocalDateTime endDate = parseDateToLocalDateTime(request.getEndDate(), true);
         return employeeOfMonthRepository
                 .findByParams(request.getName(), startDate, endDate, pageable).map(employeeOfMonthMapper::mapEmployeeOfMonthResponse);
-
     }
+
 
     @Override
     public void create(CreateEmployeeOfMonthRequest request) {

@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 
 public interface EmployeeOfMonthRepository extends JpaRepository<EmployeeOfMonth, Long>, JpaSpecificationExecutor<EmployeeOfMonth> {
     @Query("SELECT r FROM EmployeeOfMonth r " +
-            "WHERE (:requesterName IS NULL OR LOWER(r.employee.fullName) LIKE LOWER(CONCAT('%', :requesterName, '%'))) " +
-            "AND (:startDate IS NULL OR :endDate IS NULL OR r.createdAt BETWEEN :startDate AND :endDate)")
+            "WHERE (:requesterName IS NULL OR (LOWER(r.employee.fullName) LIKE LOWER(CONCAT('%', :requesterName, '%'))))" +
+            "AND (:startDate IS NULL OR :endDate IS NULL OR r.awardDate BETWEEN :startDate AND :endDate)")
     Page<EmployeeOfMonth> findByParams(
             @Param("requesterName") String requesterName,
             @Param("startDate") LocalDateTime startDate,

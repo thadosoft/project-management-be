@@ -17,9 +17,6 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "employee_of_month")
-@AttributeOverrides({
-        @AttributeOverride(name = "createdAt", column = @Column(name = "created_at"))
-})
 public class EmployeeOfMonth extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +29,7 @@ public class EmployeeOfMonth extends Auditable {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @NotNull
-    @Column(name = "month_year", nullable = false)
+    @Column(name = "month_year")
     private LocalDate monthYear;
 
     @Column(name = "reason")

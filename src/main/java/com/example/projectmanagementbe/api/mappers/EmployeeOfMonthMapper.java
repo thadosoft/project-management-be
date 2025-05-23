@@ -6,12 +6,16 @@ import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.C
 import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.UpdateEmployeeOfMonthRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.employeeOfMonth.EmployeeOfMonthResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeOfMonthMapper {
 
   EmployeeOfMonthResponse mapEmployeeOfMonthResponse(EmployeeOfMonth employee);
+
+  @Mapping(source = "employeeId", target = "employee.id")
   EmployeeOfMonth mapEmployeeOfMonth(CreateEmployeeOfMonthRequest request);
+
   void update(UpdateEmployeeOfMonthRequest dto, @MappingTarget EmployeeOfMonth entity);
 }

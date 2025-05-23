@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth;
 
 import com.example.projectmanagementbe.api.models.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +10,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-
 public class CreateEmployeeOfMonthRequest {
 
-    private Employee employee;
+    private Long employeeId;
 
     private LocalDate monthYear;
 
@@ -22,5 +22,5 @@ public class CreateEmployeeOfMonthRequest {
 
     private Integer year;
 
-    private LocalDateTime awardDate;
+    private String awardDate;
 }

@@ -2,7 +2,7 @@ CREATE TABLE employee_of_month
 (
     id          BIGINT AUTO_INCREMENT PRIMARY KEY,
     employee_id BIGINT NOT NULL,
-    month_year  DATE   NOT NULL,
+    month_year  DATE   NULL,
     reason      TEXT,
     month       INTEGER  DEFAULT NULL,
     year        INTEGER  DEFAULT NULL,
