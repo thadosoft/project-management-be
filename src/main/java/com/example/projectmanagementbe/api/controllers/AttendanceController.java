@@ -4,10 +4,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.quotation.UpdateQ
 import com.example.projectmanagementbe.api.models.dto.requests.timekeeping.AttendanceRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.timekeeping.SearchCaptureDatumRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.dashboard.LateStaff;
-import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.AttendanceResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.CaptureDatumResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.CreateAttendanceResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.UpdateDailyAttendance;
+import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.*;
 import com.example.projectmanagementbe.api.services.attandance.IAttendanceService;
 import com.example.projectmanagementbe.api.services.attandance.ICaptureDatumService;
 
@@ -19,14 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/attendances")
@@ -74,5 +64,12 @@ public class AttendanceController {
     @GetMapping("/latest-late")
     public ResponseEntity<List<LateStaff>> getLatest6CaptureData() {
         return ResponseEntity.ok(iCaptureDatumService.getLatest6CaptureData());
+    }
+
+    @GetMapping("/grouped")
+    public Page<GroupedAttendanceResponse> getGroupedAttendance(
+            @ModelAttribute SearchCaptureDatumRequest request,
+            Pageable pageable) {
+        return iCaptureDatumService.searchGroupedAttendances(request, pageable);
     }
 }

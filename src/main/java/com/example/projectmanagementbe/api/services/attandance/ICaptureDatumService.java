@@ -8,6 +8,7 @@ import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.Capt
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.example.projectmanagementbe.api.models.dto.responses.timekeeping.GroupedAttendanceResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,4 +19,8 @@ public interface ICaptureDatumService {
     BigDecimal getAttendance(AttendanceRequest request);
 
     List<LateStaff> getLatest6CaptureData();
+
+    Page<GroupedAttendanceResponse> searchGroupedAttendances(SearchCaptureDatumRequest request, Pageable pageable);
+
+
 }

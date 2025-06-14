@@ -25,6 +25,16 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
       @Param("endDate") LocalDateTime endDate,
       Pageable pageable
   );
+
+  @Query("SELECT r FROM CaptureDatum r " +
+          "WHERE (:keyword IS NULL OR LOWER(r.personName) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
+          "AND (:startDate IS NULL OR :endDate IS NULL OR " +
+          "FUNCTION('STR_TO_DATE', r.time, '%Y-%m-%d %H:%i:%s') BETWEEN :startDate AND :endDate)")
+  List<CaptureDatum> findAllByParams(
+          @Param("keyword") String keyword,
+          @Param("startDate") LocalDateTime startDate,
+          @Param("endDate") LocalDateTime endDate
+  );
   @Procedure(procedureName = "RetriveTotalShiftDay")
   Object[] getAttendanceData(@Param("work_date_param") String startDate,
       @Param("emp_code_param") String empCode);

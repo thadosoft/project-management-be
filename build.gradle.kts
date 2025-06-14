@@ -44,6 +44,7 @@ dependencies {
 
     implementation("net.sf.jasperreports:jasperreports:6.21.3")
     implementation("net.sf.jasperreports:jasperreports-fonts:6.21.3")
+    implementation ("com.microsoft.sqlserver:mssql-jdbc:12.6.1.jre11")
 
     runtimeOnly("com.mysql:mysql-connector-j")
 
