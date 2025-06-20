@@ -29,4 +29,7 @@ public class MaterialQuotationRequest {
   private String priceTax;
 
   private String totalPrice;
+
+  private Boolean isSaved;
+
 }
