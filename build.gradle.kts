@@ -33,9 +33,10 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
-
+    implementation("com.microsoft.sqlserver:mssql-jdbc:12.10.0.jre11")
     implementation("org.springframework.security:spring-security-web:6.4.1")
     implementation("org.springframework.security:spring-security-config:6.4.1")
+    implementation("org.springframework.boot:spring-boot-starter-mail")
 
     implementation("jakarta.validation:jakarta.validation-api:3.1.0")
 

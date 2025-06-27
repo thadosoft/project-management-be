@@ -14,6 +14,17 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tungh3210@gmail.com
+    password: jprz tfpt axnu cxla
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   jpa:
     hibernate:
       ddl-auto: validate
@@ -35,7 +46,7 @@ spring:
       max-request-size: 1024MB
       enabled: true
 storage:
-  directory: "D:\\STORAGE"
+  directory: "C:\\STORAGE"
   max-size: "100MB"
 
 
