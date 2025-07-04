@@ -4,18 +4,23 @@ import com.example.projectmanagementbe.api.models.dto.requests.project.Assignmen
 import com.example.projectmanagementbe.api.models.dto.responses.project.AssignmentResponse;
 import com.example.projectmanagementbe.api.models.project.Assignment;
 import com.example.projectmanagementbe.api.models.project.Task;
-import com.example.projectmanagementbe.api.mappers.project.AssignmentMapper;
 import com.example.projectmanagementbe.api.repositories.project.AssignmentRepository;
 import com.example.projectmanagementbe.api.repositories.project.TaskRepository;
+import com.example.projectmanagementbe.api.services.mail.MailService;
 import com.example.projectmanagementbe.api.services.project.IAssignmentService;
 import com.example.projectmanagementbe.auth.models.User;
 import com.example.projectmanagementbe.auth.repositories.UserRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import java.util.List;
+import com.example.projectmanagementbe.api.mappers.project.AssignmentMapper;
+
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AssignmentService implements IAssignmentService {
@@ -24,163 +29,131 @@ public class AssignmentService implements IAssignmentService {
   private final AssignmentMapper assignmentMapper;
   private final TaskRepository taskRepository;
   private final UserRepository userRepository;
-  @PersistenceContext
-  private EntityManager entityManager;
+  private final MailService mailService;
 
   @Override
   public List<AssignmentResponse> findAll() {
-    return assignmentRepository.findAll().stream().map(assignmentMapper::toAssignmentResponse).toList();
+    return assignmentMapper.toAssignmentResponses(assignmentRepository.findAll());
   }
 
   @Override
-  public AssignmentResponse create(AssignmentRequest assignmentRequest) {
+  public AssignmentResponse create(AssignmentRequest request) {
     Assignment assignment = new Assignment();
-    User assigner = userRepository.findById(assignmentRequest.getAssignerId())
-            .orElseThrow(() -> new RuntimeException("Assigner not found"));
-    assignment.setAssigner(assigner);
+    assignment.setTitle(request.getTitle());
+    assignment.setDescription(request.getDescription());
+    assignment.setAssignmentOrder(request.getAssignmentOrder());
+    assignment.setStatus_type(request.getStatus_type());
 
-    if (assignmentRequest.getReceiverId() != null) {
-      User receiver = userRepository.findById(assignmentRequest.getReceiverId())
-              .orElseThrow(() -> new RuntimeException("Receiver not found"));
-      assignment.setReceiver(receiver);
+    if (request.getStart_date() != null) {
+      assignment.setStart_date(request.getStart_date());
     }
 
-    Task task = taskRepository.findById(assignmentRequest.getTaskId())
+    if (request.getEnd_date() != null) {
+      assignment.setEnd_date(request.getEnd_date());
+    }
+
+    // Gán task
+    Task task = taskRepository.findById(request.getTaskId())
             .orElseThrow(() -> new RuntimeException("Task not found"));
     assignment.setTask(task);
 
-    assignment.setTitle(assignmentRequest.getTitle());
-    assignment.setDescription(assignmentRequest.getDescription());
-    assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
-    assignment.setStatus_type(assignmentRequest.getStatus_type());
-    assignment.setStart_date(assignmentRequest.getStart_date());
-    assignment.setEnd_date(assignmentRequest.getEnd_date());
+    // Gán assigner nếu có
+    if (request.getAssignerId() != null && !request.getAssignerId().isEmpty()) {
+      userRepository.findById(request.getAssignerId()).ifPresentOrElse(
+              assignment::setAssigner,
+              () -> log.warn("Assigner not found: {}", request.getAssignerId())
+      );
+    }
 
-    return assignmentMapper.toAssignmentResponse(assignmentRepository.save(assignment));
+    // Gán receiver nếu có
+    if (request.getReceiverId() != null && !request.getReceiverId().isEmpty()) {
+      userRepository.findById(request.getReceiverId()).ifPresentOrElse(
+              receiver -> {
+                assignment.setReceiver(receiver);
+                // Gửi email thông báo
+                try {
+                  mailService.sendAssignmentNotification(receiver.getEmail(), assignment.getTitle(), task.getStatus(), assignment.getAssigner().getName());
+                } catch (Exception e) {
+                  log.error("Failed to send assignment email to {}", receiver.getEmail(), e);
+                }
+              },
+              () -> log.warn("Receiver not found: {}", request.getReceiverId())
+      );
+    }
+
+    Assignment saved = assignmentRepository.save(assignment);
+    return assignmentMapper.toAssignmentResponse(saved);
   }
 
   @Override
-  public void update(String id, AssignmentRequest assignmentRequest) {
-    if (assignmentRequest.getOldAssignmentOrder() != null) {
-      Assignment assignmentEntity = assignmentRepository.findById(id)
-              .orElseThrow(() -> new RuntimeException("Assignment not found"));
+  public void update(String id, AssignmentRequest request) {
+    Assignment assignment = assignmentRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Assignment not found"));
 
-      if (assignmentRequest.getOldTaskId() != null &&
-              !assignmentRequest.getTaskId().equals(assignmentRequest.getOldTaskId())) {
-        // Move to other task
-        List<Assignment> assignmentsInNewTask = assignmentRepository.findByTask_Id(assignmentRequest.getTaskId());
-        List<Assignment> assignmentsInOldTask = assignmentRepository.findByTask_Id(assignmentRequest.getOldTaskId());
+    assignment.setTitle(request.getTitle());
+    assignment.setDescription(request.getDescription());
+    assignment.setAssignmentOrder(request.getAssignmentOrder());
+    assignment.setStatus_type(request.getStatus_type());
+    assignment.setStart_date(request.getStart_date());
+    assignment.setEnd_date(request.getEnd_date());
 
-        for (Assignment assignment : assignmentsInOldTask) {
-          if (assignment.getAssignmentOrder() > assignmentRequest.getOldAssignmentOrder()) {
-            assignment.setAssignmentOrder(assignment.getAssignmentOrder() - 1);
-          }
-        }
-
-        assignmentsInOldTask.removeIf(assignment -> assignment.getId().equals(id));
-
-        Task newTask = taskRepository.findById(assignmentRequest.getTaskId())
-                .orElseThrow(() -> new RuntimeException("Task not found"));
-
-        assignmentMapper.toAssignmentEntity(assignmentRequest, assignmentEntity);
-
-        assignmentEntity.setTask(newTask);
-        assignmentEntity.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
-
-        if (assignmentRequest.getAssignmentOrder() > assignmentsInNewTask.size() + 1) {
-          // Move to final position
-          assignmentEntity.setAssignmentOrder(assignmentsInNewTask.size() + 1);
-        } else {
-          // Move to non-final position
-          for (Assignment assignment : assignmentsInNewTask) {
-            if (assignment.getAssignmentOrder() >= assignmentRequest.getAssignmentOrder()) {
-              assignment.setAssignmentOrder(assignment.getAssignmentOrder() + 1);
-            }
-          }
-        }
-
-        assignmentsInNewTask.add(assignmentEntity);
-        assignmentRepository.saveAll(assignmentsInOldTask);
-        assignmentRepository.saveAll(assignmentsInNewTask);
-      } else {
-        // Move to same task
-        List<Assignment> assignmentsInTask = assignmentRepository.findByTask_Id(assignmentRequest.getTaskId());
-        int oldAssignmentOrder = assignmentRequest.getOldAssignmentOrder();
-        int newAssignmentOrder = assignmentRequest.getAssignmentOrder();
-
-        if (oldAssignmentOrder > newAssignmentOrder) {
-          // Move up
-          for (Assignment assignment : assignmentsInTask) {
-            if (assignment.getId().equals(id)) {
-              assignmentMapper.toAssignmentEntity(assignmentRequest, assignment);
-              assignment.setAssignmentOrder(newAssignmentOrder);
-            } else if (assignment.getAssignmentOrder() >= newAssignmentOrder &&
-                    assignment.getAssignmentOrder() < oldAssignmentOrder) {
-              assignment.setAssignmentOrder(assignment.getAssignmentOrder() + 1);
-            }
-          }
-        } else {
-          // Move down
-          for (Assignment assignment : assignmentsInTask) {
-            if (assignment.getId().equals(id)) {
-              assignmentMapper.toAssignmentEntity(assignmentRequest, assignment);
-              assignment.setAssignmentOrder(newAssignmentOrder);
-            } else if (assignment.getAssignmentOrder() <= newAssignmentOrder &&
-                    assignment.getAssignmentOrder() > oldAssignmentOrder) {
-              assignment.setAssignmentOrder(assignment.getAssignmentOrder() - 1);
-            }
-          }
-        }
-
-        assignmentRepository.saveAll(assignmentsInTask);
-      }
-    } else {
-      Assignment assignment = assignmentRepository.findById(id)
-              .orElseThrow(() -> new RuntimeException("Assignment not found"));
-
-      User assigner = userRepository.findById(assignmentRequest.getAssignerId())
-              .orElseThrow(() -> new RuntimeException("Assigner not found"));
-      assignment.setAssigner(assigner);
-
-      if (assignmentRequest.getReceiverId() != null) {
-        User receiver = userRepository.findById(assignmentRequest.getReceiverId())
-                .orElseThrow(() -> new RuntimeException("Receiver not found"));
-        assignment.setReceiver(receiver);
-      }
-
-      Task task = taskRepository.findById(assignmentRequest.getTaskId())
+    // Task
+    if (request.getTaskId() != null && !request.getTaskId().isEmpty()) {
+      Task task = taskRepository.findById(request.getTaskId())
               .orElseThrow(() -> new RuntimeException("Task not found"));
       assignment.setTask(task);
-
-      assignment.setTitle(assignmentRequest.getTitle());
-      assignment.setDescription(assignmentRequest.getDescription());
-      assignment.setAssignmentOrder(assignmentRequest.getAssignmentOrder());
-      if (assignmentRequest.getStatus_type() != null) {
-        assignment.setStatus_type(assignmentRequest.getStatus_type());
-      }
-      assignment.setStart_date(assignmentRequest.getStart_date());
-      assignment.setEnd_date(assignmentRequest.getEnd_date());
-
-      assignmentRepository.save(assignment);
     }
+
+    //Assignment
+    if (assignment.getAssignmentOrder() < 1) {
+      assignment.setAssignmentOrder(1);
+    }
+
+    // Assigner
+    if (request.getAssignerId() != null && !request.getAssignerId().isEmpty()) {
+      userRepository.findById(request.getAssignerId()).ifPresent(assignment::setAssigner);
+    }
+
+    // Receiver + gửi mail
+    if (request.getReceiverId() != null && !request.getReceiverId().isEmpty()) {
+      userRepository.findById(request.getReceiverId()).ifPresentOrElse(
+              receiver -> {
+                assignment.setReceiver(receiver);
+                try {
+                  mailService.sendAssignmentNotification(
+                          receiver.getEmail(),
+                          assignment.getTitle(),
+                          assignment.getTask() != null ? assignment.getTask().getStatus() : "(Chưa rõ)",
+                          assignment.getAssigner() != null ? assignment.getAssigner().getName() : "Không xác định"
+                  );
+                } catch (Exception e) {
+                  log.error("Gửi email thất bại đến {}", receiver.getEmail(), e);
+                }
+              },
+              () -> log.warn("Receiver not found: {}", request.getReceiverId())
+      );
+    }
+
+    assignmentRepository.save(assignment);
   }
 
   @Override
   public void delete(String id) {
-    if (assignmentRepository.existsById(id)) {
-      assignmentRepository.deleteById(id);
-    } else {
-      throw new RuntimeException("Assignment not found");
-    }
+    assignmentRepository.deleteById(id);
   }
 
   @Override
   public AssignmentResponse findById(String id) {
-    return assignmentMapper.toAssignmentResponse(assignmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Assignment not found")));
+    return assignmentMapper.toAssignmentResponse(
+            assignmentRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Assignment not found"))
+    );
   }
 
   @Override
-  public List<AssignmentResponse> findByProjectId(String id) {
-    return assignmentMapper.toAssignmentResponses(assignmentRepository.findByTask_Project_Id(id));
+  public List<AssignmentResponse> findByProjectId(String projectId) {
+    return assignmentMapper.toAssignmentResponses(
+            assignmentRepository.findByTask_Project_Id(projectId)
+    );
   }
 }

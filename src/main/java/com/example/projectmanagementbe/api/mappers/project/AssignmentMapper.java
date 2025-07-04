@@ -18,12 +18,16 @@ public interface AssignmentMapper {
 
   @Mapping(source = "assignerId", target = "assigner.id")
   @Mapping(source = "receiverId", target = "receiver.id")
+  @Mapping(source = "status_type", target = "status_type")
+
   Assignment toAssignmentEntity(AssignmentRequest assignmentRequest);
 
   Assignment toAssignmentEntity(AssignmentResponse assignmentResponse);
 
   @Mapping(source = "assignerId", target = "assigner.id")
   @Mapping(source = "receiverId", target = "receiver.id")
+  @Mapping(source = "status_type", target = "status_type")
+
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void toAssignmentEntity(AssignmentRequest assignmentRequest, @MappingTarget Assignment assignment);
 }

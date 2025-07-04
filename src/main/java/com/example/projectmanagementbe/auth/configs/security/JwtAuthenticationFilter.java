@@ -26,9 +26,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(
-      @NonNull HttpServletRequest request,
-      @NonNull HttpServletResponse response,
-      @NonNull FilterChain filterChain
+          @NonNull HttpServletRequest request,
+          @NonNull HttpServletResponse response,
+          @NonNull FilterChain filterChain
   ) throws ServletException, IOException {
 
     final String authHeader = request.getHeader("Authorization");
@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     final String username;
 
     if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-      filterChain.doFilter(request, response);
+      filterChain.doFilter(request, response); // luôn gọi tiếp filter chain
       return;
     }
 
@@ -46,23 +46,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
       boolean isTokenValid = tokenRepository.findByToken(jwt)
-          .map(t -> !t.isExpired() && !t.isRevoked())
-          .orElse(false);
+              .map(t -> !t.isExpired() && !t.isRevoked())
+              .orElse(false);
 
       if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-            userDetails,
-            null,
-            userDetails.getAuthorities()
+                userDetails,
+                null,
+                userDetails.getAuthorities()
         );
 
         authToken.setDetails(
-            new WebAuthenticationDetailsSource().buildDetails(request)
+                new WebAuthenticationDetailsSource().buildDetails(request)
         );
 
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
-      filterChain.doFilter(request, response);
     }
+
+    // ✅ Luôn cho đi tiếp dù có token hợp lệ hay không
+    filterChain.doFilter(request, response);
   }
 }
