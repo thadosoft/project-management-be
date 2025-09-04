@@ -36,12 +36,26 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     final String username;
 
     if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-      filterChain.doFilter(request, response); // luôn gọi tiếp filter chain
+      filterChain.doFilter(request, response);
       return;
     }
 
     jwt = authHeader.substring(7);
-    username = jwtService.extractUsername(jwt);
+
+    try {
+      username = jwtService.extractUsername(jwt);
+    } catch (io.jsonwebtoken.ExpiredJwtException ex) {
+      // 🔥 Token hết hạn → trả về 401
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.setContentType("application/json");
+      response.getWriter().write("{\"error\": \"Token expired\"}");
+      return;
+    } catch (Exception ex) {
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.setContentType("application/json");
+      response.getWriter().write("{\"error\": \"Invalid token\"}");
+      return;
+    }
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
@@ -55,16 +69,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 null,
                 userDetails.getAuthorities()
         );
-
         authToken.setDetails(
                 new WebAuthenticationDetailsSource().buildDetails(request)
         );
-
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }
 
-    // ✅ Luôn cho đi tiếp dù có token hợp lệ hay không
     filterChain.doFilter(request, response);
   }
 }

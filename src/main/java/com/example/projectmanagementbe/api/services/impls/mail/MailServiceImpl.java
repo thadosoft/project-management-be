@@ -43,7 +43,7 @@ public class MailServiceImpl implements MailService {
                 <ul>
                     <li><strong>Tên nhiệm vụ:</strong> %s</li>
                     <li><strong>Tên task:</strong> %s</li>
-                    <li><strong>Người giao:</strong> %s</li>
+                    <li><strong>Người giao:</strong> %s </li>
                 </ul>
                 <p>Vui lòng truy cập hệ thống để xem chi tiết và bắt đầu công việc.</p>
                 <br/>
