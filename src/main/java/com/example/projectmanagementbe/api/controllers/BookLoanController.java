@@ -7,9 +7,8 @@ import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.C
 import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.SearchEmployeeOfMonthRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.UpdateEmployeeOfMonthRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.BookLoanResponse;
-import com.example.projectmanagementbe.api.models.dto.responses.employeeOfMonth.BookLoanResponse;
+import com.example.projectmanagementbe.api.models.dto.responses.BookLoanResponse;
 import com.example.projectmanagementbe.api.services.BookLoanService;
-import com.example.projectmanagementbe.api.services.bookLoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
