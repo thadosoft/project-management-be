@@ -30,7 +30,14 @@ public enum ErrorCode {
   LEAVE_REQUEST_NOT_FOUND("021", "Leave request not found"),
   WHITE_BOARD_NOT_FOUND("022", "White board not found"),
   EMPLOYEE_OF_MONTH_NOT_FOUND("023", "Employee of Month not found"),
-  ;
+  BOOK_NOT_FOUND("030", "Book not found"),
+  BOOK_NOT_AVAILABLE("031", "Book is not available for borrowing"),
+  BOOK_LIMIT_EXCEEDED("032", "User has reached the maximum number of borrowed books"),
+  BOOK_ALREADY_RETURNED("033", "Book has already been returned"),
+  BOOK_LOAN_NOT_FOUND("034", "Book loan record not found"),
+  BOOK_OVERDUE("035", "Book loan is overdue"),
+  BOOK_LOAN_ACTIVE_DELETE_DENIED("036", "Cannot delete a record that is currently borrowed. Please return the book first."),
+          ;
 
   private final String code;
 

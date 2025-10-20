@@ -1,6 +1,5 @@
 package com.example.projectmanagementbe.api.services;
 
-import com.example.projectmanagementbe.api.models.BookLoan;
 import com.example.projectmanagementbe.api.models.dto.requests.BookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.CreateBookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.UpdateBookLoanRequest;
@@ -18,4 +17,8 @@ public interface BookLoanService {
     void update(Long id, UpdateBookLoanRequest request);
 
     void delete(Long id);
+
+    void markAsReturned(Long id);
+
+    void checkAndNotifyOverdueLoans();
 }
