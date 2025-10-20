@@ -73,6 +73,8 @@ public class BookLoanServiceManagement implements BookLoanService {
                         new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.BOOK_LOAN_NOT_FOUND.getMessage())
                 );
 
+        bookLoanMapper.update(request, loan);
+
         bookLoanRepository.save(loan);
     }
 

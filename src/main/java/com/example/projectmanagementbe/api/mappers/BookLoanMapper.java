@@ -4,6 +4,7 @@ import com.example.projectmanagementbe.api.models.BookLoan;
 import com.example.projectmanagementbe.api.models.EmployeeOfMonth;
 import com.example.projectmanagementbe.api.models.dto.requests.BookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.CreateBookLoanRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.UpdateBookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.CreateEmployeeOfMonthRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.employeeOfMonth.UpdateEmployeeOfMonthRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.BookLoanResponse;
@@ -19,5 +20,5 @@ public interface BookLoanMapper {
 
   BookLoan mapCreate(CreateBookLoanRequest request);
 
-  void update(UpdateEmployeeOfMonthRequest dto, @MappingTarget EmployeeOfMonth entity);
+  void update(UpdateBookLoanRequest dto, @MappingTarget BookLoan entity);
 }
