@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CreateBookLoanRequest {
+    private Long bookId;
 
     private String bookTitle;
 

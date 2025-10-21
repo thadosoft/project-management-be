@@ -38,5 +38,7 @@ public class BookLoanResponse {
 
     private String remarks;
 
+    private Long borrowDurationDays;
+
     private LocalDateTime createdAt;
 }

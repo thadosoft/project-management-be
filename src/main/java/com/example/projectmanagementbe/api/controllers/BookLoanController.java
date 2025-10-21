@@ -4,6 +4,7 @@ import com.example.projectmanagementbe.api.models.dto.requests.BookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.CreateBookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.UpdateBookLoanRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.BookLoanResponse;
+import com.example.projectmanagementbe.api.models.dto.responses.BookLoanStatsResponse;
 import com.example.projectmanagementbe.api.services.BookLoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -46,5 +47,22 @@ public class BookLoanController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         bookLoanService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/return")
+    public ResponseEntity<Void> markAsReturned(@PathVariable Long id) {
+        bookLoanService.markAsReturned(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/check-overdue")
+    public ResponseEntity<String> checkOverdueLoans() {
+        bookLoanService.checkAndNotifyOverdueLoans();
+        return ResponseEntity.ok("Đã kiểm tra và cập nhật trạng thái quá hạn.");
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<BookLoanStatsResponse> getLoanStats() {
+        return ResponseEntity.ok(bookLoanService.getLoanStatistics());
     }
 }

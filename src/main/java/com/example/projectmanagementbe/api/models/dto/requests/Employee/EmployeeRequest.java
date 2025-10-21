@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class EmployeeRequest {
   private Long id;
-
+  
   private String username;
 
   private String avatar;

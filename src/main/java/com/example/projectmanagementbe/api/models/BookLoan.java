@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "book_loans")
 public class BookLoan extends Auditable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id", nullable = false)
@@ -24,6 +23,10 @@ public class BookLoan extends Auditable {
     @Column(name = "book_title")
     private String bookTitle;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
+
     @Size(max = 255)
     @Column(name = "borrower_name")
     private String borrowerName;
@@ -31,11 +34,7 @@ public class BookLoan extends Auditable {
     @Column(name = "borrower_id")
     private Long borrowerId;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "borrow_date")
     private LocalDateTime borrowDate;
-
-    @Column(name = "due_date")
     private LocalDateTime dueDate;
 
     @Enumerated(EnumType.STRING)
@@ -46,25 +45,11 @@ public class BookLoan extends Auditable {
     @Column(name = "approver_name")
     private String approverName;
 
-    @Column(name = "approved_at")
     private LocalDateTime approvedAt;
-
-    @Column(name = "returned_at")
     private LocalDateTime returnedAt;
 
-    @Size(max = 255)
-    @Column(name = "book_owner")
     private String bookOwner;
-
-    @Size(max = 100)
-    @Column(name = "book_condition", length = 100)
     private String bookCondition;
-
-    @Column(name = "is_available")
-    @ColumnDefault("true")
     private Boolean isAvailable;
-
-    @Size(max = 500)
-    @Column(name = "remarks", length = 500)
     private String remarks;
 }
