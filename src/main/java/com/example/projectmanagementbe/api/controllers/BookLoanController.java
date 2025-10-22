@@ -25,7 +25,6 @@ public class BookLoanController {
         return bookLoanService.findByParams(request, pageable);
     }
 
-
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody CreateBookLoanRequest request) {
         bookLoanService.create(request);

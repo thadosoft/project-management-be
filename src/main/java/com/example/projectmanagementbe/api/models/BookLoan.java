@@ -1,12 +1,10 @@
 package com.example.projectmanagementbe.api.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
-
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
@@ -34,7 +32,10 @@ public class BookLoan extends Auditable {
     @Column(name = "borrower_id")
     private Long borrowerId;
 
+    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime borrowDate;
+
+    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime dueDate;
 
     @Enumerated(EnumType.STRING)
@@ -45,7 +46,10 @@ public class BookLoan extends Auditable {
     @Column(name = "approver_name")
     private String approverName;
 
+    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime approvedAt;
+
+    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime returnedAt;
 
     private String bookOwner;
