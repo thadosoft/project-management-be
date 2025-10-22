@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateBookRequest {
+public class UpdateBookRequest {
 
     private String title;
 

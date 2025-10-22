@@ -1,21 +1,41 @@
 package com.example.projectmanagementbe.api.services;
 
+import com.example.projectmanagementbe.api.mappers.BookMapper;
 import com.example.projectmanagementbe.api.models.Book;
+import com.example.projectmanagementbe.api.models.BookLoan;
+import com.example.projectmanagementbe.api.models.LoanStatus;
+import com.example.projectmanagementbe.api.models.dto.requests.BookRequest;
 import com.example.projectmanagementbe.api.models.dto.requests.CreateBookRequest;
+import com.example.projectmanagementbe.api.models.dto.requests.UpdateBookRequest;
 import com.example.projectmanagementbe.api.models.dto.responses.BookResponse;
 import com.example.projectmanagementbe.api.repositories.BookRepository;
 import com.example.projectmanagementbe.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
+
+import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.parseDateToLocalDateTime;
+
 @Service
 @RequiredArgsConstructor
-public class BookServiceManagement {
+public class BookServiceManagement implements BookService{
 
     private final BookRepository bookRepository;
+    private final BookMapper bookMapper;
 
+    @Override
+    public Page<BookResponse> findByParams(BookRequest request, Pageable pageable) {
+        return bookRepository
+                .findByParams(request.getTitle(), pageable).map(bookMapper::mapBookResponse);
+
+    }
+
+    @Override
     public BookResponse create(CreateBookRequest request) {
         if (bookRepository.existsByTitle(request.getTitle())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.BOOK_ALREADY_EXISTS.getMessage());
@@ -46,5 +66,36 @@ public class BookServiceManagement {
         response.setQuantity(book.getQuantity_total());
         response.setAvailable(book.getQuantity_available() != null && book.getQuantity_available() > 0);
         return response;
+    }
+
+    @Override
+    public BookResponse findById(Long id) {
+        return bookRepository.findById(id)
+                .map(bookMapper::mapBookResponse)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.BOOK_NOT_FOUND.getMessage())
+                );
+    }
+
+    @Override
+    public void update(Long id, UpdateBookRequest request) {
+        Book loan = bookRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.BOOK_NOT_FOUND.getMessage())
+                );
+
+        bookMapper.update(request, loan);
+
+        bookRepository.save(loan);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Book loan = bookRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, ErrorCode.BOOK_NOT_FOUND.getMessage())
+                );
+
+        bookRepository.delete(loan);
     }
 }
