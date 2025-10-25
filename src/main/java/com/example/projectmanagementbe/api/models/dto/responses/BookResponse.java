@@ -19,7 +19,10 @@ public class BookResponse {
 
     private Integer publicationYear;
 
-    private Integer quantity;
+    private Integer quantity_total; // tổng số bản
 
-    private Boolean available;
+    private Integer quantity_available; // tổng số bản
+
+    private String location;
+
 }

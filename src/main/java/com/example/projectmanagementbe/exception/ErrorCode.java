@@ -38,6 +38,7 @@ public enum ErrorCode {
   BOOK_OVERDUE("035", "Book loan is overdue"),
   BOOK_LOAN_ACTIVE_DELETE_DENIED("036", "Cannot delete a record that is currently borrowed. Please return the book first."),
   BOOK_ALREADY_EXISTS("037", "Book with the same title already exists"),
+  BOOK_OUT_OF_STOCK("038", "Book not found"),
           ;
 
   private final String code;

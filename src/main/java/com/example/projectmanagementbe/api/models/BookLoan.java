@@ -30,7 +30,7 @@ public class BookLoan extends Auditable {
     private String borrowerName;
 
     @Column(name = "borrower_id")
-    private Long borrowerId;
+    private String borrowerId;
 
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime borrowDate;

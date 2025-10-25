@@ -26,9 +26,9 @@ public class BookLoanController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateBookLoanRequest request) {
-        bookLoanService.create(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<BookLoanResponse> create(@RequestBody CreateBookLoanRequest request) {
+        BookLoanResponse response = bookLoanService.create(request);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")

@@ -35,7 +35,7 @@ public class BookLoanServiceManagement implements BookLoanService {
     private final BookRepository bookRepository;
 
     private static final int MAX_BOOKS_PER_USER = 3;
-    private static final int LOAN_DURATION_DAYS = 15;
+    private static final int LOAN_DURATION_DAYS = 14;
 
     @Override
     public Page<BookLoanResponse> findByParams(BookLoanRequest request, Pageable pageable) {
@@ -47,7 +47,7 @@ public class BookLoanServiceManagement implements BookLoanService {
 
     @Override
     @Transactional
-    public void create(CreateBookLoanRequest request) {
+    public BookLoanResponse create(CreateBookLoanRequest request) {
         long activeLoans = bookLoanRepository.countByBorrowerIdAndStatusIn(
                 request.getBorrowerId(),
                 List.of(LoanStatus.BORROWED, LoanStatus.OVERDUE)
@@ -58,33 +58,38 @@ public class BookLoanServiceManagement implements BookLoanService {
 
         // Lấy thông tin sách
         Book book = bookRepository.findById(request.getBookId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.BOOK_NOT_FOUND.getMessage()));
 
         // Kiểm tra còn sách không
-        if (book.getQuantity_available() <= 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book is out of stock");
+        Integer availableQty = book.getQuantity_available() != null ? book.getQuantity_available() : 0;
+        if (availableQty <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorCode.BOOK_OUT_OF_STOCK.getMessage());
         }
 
         // Giảm số lượng sách
-        book.setQuantity_available(book.getQuantity_available() - 1);
+        book.setQuantity_available(availableQty - 1);
         bookRepository.save(book);
 
         // Tạo record loan
         BookLoan loan = new BookLoan();
         loan.setBook(book);
         loan.setBookTitle(book.getTitle());
-        loan.setApproverName(book.getAuthor()); // <-- Gán tác giả vào approver_name
+        loan.setApproverName(book.getAuthor());
         loan.setBorrowerName(request.getBorrowerName());
+        loan.setBorrowerId(request.getBorrowerId());
         loan.setStatus(LoanStatus.BORROWED);
         loan.setBorrowDate(LocalDateTime.now());
         loan.setApprovedAt(LocalDateTime.now());
-        loan.setBorrowerId(request.getBorrowerId()); // ✅ bổ sung
-        loan.setBookOwner(book.getPublisher());   // ✅ bổ sung
+        loan.setBookOwner(book.getPublisher());
         loan.setBookCondition(request.getBookCondition());
         loan.setRemarks(book.getLocation());
-        loan.setDueDate(LocalDateTime.now().plusDays(14));
+        loan.setDueDate(LocalDateTime.now().plusDays(LOAN_DURATION_DAYS));
         bookLoanRepository.save(loan);
+
+        // ✅ Trả về thông tin đầy đủ cho FE
+        return bookLoanMapper.mapBookLoanResponse(loan);
     }
+
 
     @Override
     public BookLoanResponse findById(Long id) {

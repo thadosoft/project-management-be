@@ -58,7 +58,6 @@ public class SecurityConfig {
                                 .logoutSuccessHandler((request, response, authentication) ->
                                         SecurityContextHolder.clearContext())
                 )
-                // ✅ Bổ sung đoạn xử lý khi authentication fail
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

@@ -12,7 +12,7 @@ public interface BookLoanService {
 
     Page<BookLoanResponse> findByParams(BookLoanRequest request, Pageable pageable);
 
-    void create(CreateBookLoanRequest request);
+    BookLoanResponse create(CreateBookLoanRequest request);
 
     BookLoanResponse findById(Long id);
 

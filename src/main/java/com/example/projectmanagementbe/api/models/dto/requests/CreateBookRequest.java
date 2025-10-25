@@ -20,4 +20,7 @@ public class CreateBookRequest {
     private Integer quantity_total;
 
     private Integer quantity_available;
+
+    private String location;
+
 }

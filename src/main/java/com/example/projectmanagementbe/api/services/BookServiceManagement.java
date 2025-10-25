@@ -48,12 +48,19 @@ public class BookServiceManagement implements BookService{
         book.setPublisher(request.getPublisher());
         book.setPublicationYear(request.getPublicationYear());
         book.setQuantity_total(request.getQuantity_total());
+        book.setLocation(request.getLocation());
 // ✅ Khi tạo mới, nếu quantity_available chưa có → gán bằng quantity_total
-        if (request.getQuantity_available() == null) {
-            book.setQuantity_available(request.getQuantity_total());
-        } else {
-            book.setQuantity_available(request.getQuantity_available());
-        }
+//        if (request.getQuantity_available() == null) {
+//            book.setQuantity_available(request.getQuantity_total());
+//        } else {
+//            book.setQuantity_available(request.getQuantity_available());
+//        }
+        Integer total = request.getQuantity_total() != null ? request.getQuantity_total() : 0;
+        Integer available = request.getQuantity_available() != null ? request.getQuantity_available() : total;
+
+        book.setQuantity_total(total);
+        book.setQuantity_available(available);
+
         bookRepository.save(book);
 
         BookResponse response = new BookResponse();
@@ -63,8 +70,9 @@ public class BookServiceManagement implements BookService{
         response.setCategory(book.getCategory());
         response.setPublisher(book.getPublisher());
         response.setPublicationYear(book.getPublicationYear());
-        response.setQuantity(book.getQuantity_total());
-        response.setAvailable(book.getQuantity_available() != null && book.getQuantity_available() > 0);
+        response.setQuantity_total(book.getQuantity_total());
+        response.setQuantity_available(book.getQuantity_available());
+        response.setLocation(book.getLocation());
         return response;
     }
 

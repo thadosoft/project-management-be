@@ -16,7 +16,7 @@ public class CreateBookLoanRequest {
 
     private String borrowerName;
 
-    private Long borrowerId;
+    private String borrowerId;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime borrowDate;

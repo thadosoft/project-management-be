@@ -24,7 +24,7 @@ public class MailServiceImpl implements MailService {
             helper.setTo(to);
             helper.setSubject("Dự án mới: " + projectName);
             helper.setText("<p>Bạn đã được thêm vào dự án: <strong>" + projectName + "</strong></p>", true);
-            mailSender.send(message);
+//            mailSender.send(message);
         }
     }
 
@@ -53,6 +53,6 @@ public class MailServiceImpl implements MailService {
 
         helper.setText(content, true);
 
-        mailSender.send(message);
+//        mailSender.send(message);
     }
 }

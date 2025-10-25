@@ -16,7 +16,7 @@ public class BookLoanResponse {
 
     private String borrowerName;
 
-    private Long borrowerId;
+    private String borrowerId;
 
     private LocalDateTime borrowDate;
 
