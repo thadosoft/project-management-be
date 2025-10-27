@@ -1,9 +1,12 @@
 package com.example.projectmanagementbe.api.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,5 +40,8 @@ public class Book extends Auditable {
     @Size(max = 50)
     private String location; // vị trí sách trong thư viện
 
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<ReferenceFileV2> images;
 
 }

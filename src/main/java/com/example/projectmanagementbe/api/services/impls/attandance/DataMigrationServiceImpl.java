@@ -26,7 +26,7 @@ public class DataMigrationServiceImpl implements IDataMigrationService {
   public DataMigrationServiceImpl(CaptureDatumRepository employeeRepository) {
     this.employeeRepository = employeeRepository;
 
-    String url = "jdbc:sqlite:D:/FaceRASystemTool/huaanDatabase.sqlite";
+    String url = "jdbc:sqlite:C:/FaceRASystemTool/huaanDatabase.sqlite";
     DataSource sqliteDataSource = new org.sqlite.SQLiteDataSource();
     ((org.sqlite.SQLiteDataSource) sqliteDataSource).setUrl(url);
     this.jdbcTemplate = new JdbcTemplate(sqliteDataSource);

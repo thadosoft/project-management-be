@@ -24,7 +24,7 @@ import java.util.Optional;
 public class FileUploadController {
 
     private final FileUploadsService fileUploadsService;
-    private static final String UPLOAD_DIR = "D://HLO"; //dường dẫn
+    private static final String UPLOAD_DIR = "C://HLO"; //dường dẫn
 
 
 
@@ -58,8 +58,11 @@ public class FileUploadController {
     @PostMapping(value = "/images/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<List<FileUploadResponse>> uploadImages(
             @RequestParam("files") List<MultipartFile> files,
-            @RequestParam("inventoryItemId") Long inventoryItemId) throws IOException {
-        List<ReferenceFileV2> referenceFiles = fileUploadsService.uploadImages(files, inventoryItemId, UPLOAD_DIR);
+            @RequestParam(value = "inventoryItemId", required = false) Long inventoryItemId,
+            @RequestParam(value = "bookId", required = false) Long bookId) throws IOException {
+
+        List<ReferenceFileV2> referenceFiles = fileUploadsService.uploadImages(files, inventoryItemId, bookId, UPLOAD_DIR);
+
         List<FileUploadResponse> responses = new ArrayList<>();
         for (ReferenceFileV2 referenceFile : referenceFiles) {
             FileUploadResponse response = new FileUploadResponse();
@@ -71,6 +74,7 @@ public class FileUploadController {
             response.setAccessUrl(referenceFile.getAccessUrl());
             responses.add(response);
         }
+
         return ResponseEntity.ok(responses);
     }
 }

@@ -2,6 +2,8 @@ package com.example.projectmanagementbe.api.services.impls;
 
 import com.example.projectmanagementbe.api.models.ReferenceFileV2;
 import com.example.projectmanagementbe.api.models.iventory.InventoryItem;
+import com.example.projectmanagementbe.api.models.Book;
+import com.example.projectmanagementbe.api.repositories.BookRepository;
 import com.example.projectmanagementbe.api.repositories.ReferenceFileV2Repository;
 import com.example.projectmanagementbe.api.repositories.inventory.InventoryItemRepository;
 import com.example.projectmanagementbe.exception.ErrorCode;
@@ -34,6 +36,7 @@ public class FileUploadsServiceImpl implements FileUploadsService {
 
     private final InventoryItemRepository inventoryItemRepository;
     private final ReferenceFileV2Repository referenceFileV2Repository;
+    private final BookRepository bookRepository;
 
     @Override
     public byte[] getFileAsBytes(String filePath) throws IOException {
@@ -141,14 +144,41 @@ public class FileUploadsServiceImpl implements FileUploadsService {
     }
 
     @Override
-    public ReferenceFileV2 uploadImage(MultipartFile file, Long inventoryItemId, String uploadDir) throws IOException {
+    public ReferenceFileV2 uploadImage(
+            MultipartFile file,
+            Long inventoryItemId,
+            Long bookId,
+            String uploadDir
+    ) throws IOException {
+
         if (file == null || file.isEmpty()) {
-            throw new IllegalArgumentException("File rôỗng hoặc ko tìm thấy");
+            throw new IllegalArgumentException("File rỗng hoặc không tìm thấy");
         }
 
-        InventoryItem inventoryItem = inventoryItemRepository.findById(inventoryItemId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ko tìm tấy vật tư với id: " + inventoryItemId));
+        // Nếu cả 2 đều null → báo lỗi
+        if (inventoryItemId == null && bookId == null) {
+            throw new IllegalArgumentException("Phải truyền ít nhất 1 trong 2 ID: inventoryItemId hoặc bookId");
+        }
 
+        // Tìm InventoryItem nếu có
+        InventoryItem inventoryItem = null;
+        if (inventoryItemId != null) {
+            inventoryItem = inventoryItemRepository.findById(inventoryItemId)
+                    .orElseThrow(() -> new ResponseStatusException(
+                            HttpStatus.NOT_FOUND,
+                            "Không tìm thấy vật tư với id: " + inventoryItemId));
+        }
+
+        // Tìm Book nếu có
+        Book book = null;
+        if (bookId != null) {
+            book = bookRepository.findById(bookId)
+                    .orElseThrow(() -> new ResponseStatusException(
+                            HttpStatus.NOT_FOUND,
+                            "Không tìm thấy sách với id: " + bookId));
+        }
+
+        // === Tạo file ===
         String originalFilename = file.getOriginalFilename();
         String fileExtension = originalFilename != null && originalFilename.contains(".")
                 ? originalFilename.substring(originalFilename.lastIndexOf("."))
@@ -165,27 +195,28 @@ public class FileUploadsServiceImpl implements FileUploadsService {
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
         }
 
-        String contentType = file.getContentType() != null ? file.getContentType() : Files.probeContentType(filePath);
+        String contentType = file.getContentType() != null
+                ? file.getContentType()
+                : Files.probeContentType(filePath);
 
+        // === Lưu thông tin vào DB ===
         ReferenceFileV2 referenceFile = new ReferenceFileV2();
         referenceFile.setInventoryItem(inventoryItem);
+        referenceFile.setBook(book); // thêm nếu entity có trường book
         referenceFile.setFileName(uniqueFilename);
         referenceFile.setFileType(contentType);
         referenceFile.setFileSize(file.getSize());
         referenceFile.setFilePath(filePath.toAbsolutePath().toString());
         referenceFile.setAccessUrl("/api/v1/file-uploads/images/" + uniqueFilename);
 
-        referenceFile = referenceFileV2Repository.save(referenceFile);
-
-        log.info("File uploaded thành công: {}", filePath);
-        return referenceFile;
+        return referenceFileV2Repository.save(referenceFile);
     }
 
     @Override
-    public List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, String uploadDir) throws IOException {
+    public List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, Long bookId, String uploadDir) throws IOException {
         List<ReferenceFileV2> referenceFiles = new ArrayList<>();
         for (MultipartFile file : files) {
-            ReferenceFileV2 referenceFile = uploadImage(file, inventoryItemId, uploadDir);
+            ReferenceFileV2 referenceFile = uploadImage(file, inventoryItemId, bookId, uploadDir);
             referenceFiles.add(referenceFile);
         }
         return referenceFiles;
