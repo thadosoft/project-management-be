@@ -20,4 +20,6 @@ public class UpdateBookRequest {
     private Integer quantity_total;
 
     private Integer quantity_available;
+
+    private String location;;
 }

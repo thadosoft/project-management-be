@@ -147,7 +147,7 @@ public class FileUploadsServiceImpl implements FileUploadsService {
         }
 
         InventoryItem inventoryItem = inventoryItemRepository.findById(inventoryItemId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ko tìm tấy vật tư với id: " + inventoryItemId));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ko tìm thấy với id: " + inventoryItemId));
 
         String originalFilename = file.getOriginalFilename();
         String fileExtension = originalFilename != null && originalFilename.contains(".")
