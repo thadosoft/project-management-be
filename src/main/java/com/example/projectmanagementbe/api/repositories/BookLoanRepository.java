@@ -25,7 +25,7 @@ public interface BookLoanRepository extends JpaRepository<BookLoan, Long>, JpaSp
             Pageable pageable
     );
 
-    long countByBorrowerIdAndStatusIn(Long borrowerId, List<LoanStatus> statuses);
+    long countByBorrowerIdAndStatusIn(String borrowerId, List<LoanStatus> statuses);
 
     List<BookLoan> findByStatusAndDueDateBefore(LoanStatus status, Instant now);
 

@@ -73,7 +73,7 @@ public class BookLoanServiceManagement implements BookLoanService {
         BookLoan loan = new BookLoan();
         loan.setBook(book);
         loan.setBookTitle(book.getTitle());
-        loan.setApproverName(book.getAuthor()); // <-- Gán tác giả vào approver_name
+        loan.setApproverName(request.getApproverName()); // <-- Gán tác giả vào approver_name
         loan.setBorrowerName(request.getBorrowerName());
         loan.setStatus(LoanStatus.BORROWED);
         loan.setBorrowDate(LocalDateTime.now());
@@ -81,7 +81,7 @@ public class BookLoanServiceManagement implements BookLoanService {
         loan.setBorrowerId(request.getBorrowerId()); // ✅ bổ sung
         loan.setBookOwner(book.getPublisher());   // ✅ bổ sung
         loan.setBookCondition(request.getBookCondition());
-        loan.setRemarks(book.getLocation());
+        loan.setRemarks(request.getRemarks());
         loan.setDueDate(LocalDateTime.now().plusDays(14));
         bookLoanRepository.save(loan);
     }

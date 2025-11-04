@@ -32,4 +32,6 @@ public class BookResponse {
     private Integer quantity_available;
 
     private List<ReferenceFileV2> images = new ArrayList<>();
+
+    private String location;
 }
