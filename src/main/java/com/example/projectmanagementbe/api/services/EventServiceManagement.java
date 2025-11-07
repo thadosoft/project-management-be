@@ -36,26 +36,39 @@ public class EventServiceManagement implements EventService{
 
     @Override
     public Page<EventResponse> findByParams(EventRequest request, Pageable pageable) {
-        LocalDateTime startDate = parseDateToLocalDateTime(request.getStartDate(), false);
-        LocalDateTime endDate = parseDateToLocalDateTime(request.getEndDate(), true);
+        String title = request.getTitle();
+        String typeStr = request.getType();
+        String date = request.getStartDate();
+        Integer month = request.getMonth();
+        Integer quarter = request.getQuarter();
+        Integer year = request.getYear();
+
         EventType type = null;
-        if (request.getType() != null && !request.getType().isBlank()) {
+        if (typeStr != null && !typeStr.isBlank()) {
             try {
-                type = EventType.valueOf(request.getType().toUpperCase()); // parse chuỗi sang Enum
+                type = EventType.valueOf(typeStr.toUpperCase());
             } catch (IllegalArgumentException e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid event type");
             }
         }
 
-        return eventRepository
-                .findByParams(
-                        request.getTitle(),
-                        startDate,
-                        endDate,
-                        type, // truyền null nếu không có type
-                        pageable
-                )
-                .map(eventMapper::mapEventResponse);
+        // Nếu không có filter nào -> lấy tất cả
+        boolean noFilter = (title == null || title.isBlank())
+                && (type == null)
+                && (date == null || date.isBlank())
+                && (month == null)
+                && (quarter == null)
+                && (year == null);
+
+        Page<Event> result;
+
+        if (noFilter) {
+            result = eventRepository.findAll(pageable);
+        } else {
+            result = eventRepository.findByParams(title, type, date, month, quarter, year, pageable);
+        }
+
+        return result.map(eventMapper::mapEventResponse);
     }
 
     @Override

@@ -16,5 +16,10 @@ public class EventRequest {
 
     private String type;
 
+    private Integer month;   // dùng khi lọc theo tháng
+
+    private Integer quarter;    // quý (nếu lọc theo quý)
+
+    private Integer year;
 
 }

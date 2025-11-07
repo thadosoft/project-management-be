@@ -16,21 +16,31 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long>, JpaSpecificationExecutor<Event> {
 
-    @Query("""
+    @Query(value = """
         SELECT e FROM Event e
-        WHERE (:title IS NULL OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
-          AND ((:startDate IS NULL OR :endDate IS NULL) OR e.startDate BETWEEN :startDate AND :endDate)
-          AND (:type IS NULL OR e.type = :type)
-        ORDER BY e.startDate DESC
-        """)
+        WHERE 
+            (:title IS NULL OR :title = '' OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
+        AND (:type IS NULL OR e.type = :type)
+        AND (
+            (:date IS NOT NULL AND FUNCTION('DATE', e.startDate) = CAST(:date AS date))
+            OR (:date IS NULL AND (
+                (:month IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year AND FUNCTION('MONTH', e.startDate) = :month)
+                OR (:quarter IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year
+                    AND FUNCTION('MONTH', e.startDate) BETWEEN ((:quarter - 1) * 3 + 1) AND ((:quarter - 1) * 3 + 3))
+                OR (:year IS NOT NULL AND :month IS NULL AND :quarter IS NULL AND FUNCTION('YEAR', e.startDate) = :year)
+                OR (:date IS NULL AND :month IS NULL AND :quarter IS NULL AND :year IS NULL)
+            ))
+        )
+    """)
     Page<Event> findByParams(
             @Param("title") String title,
-            @Param("startDate") LocalDateTime startDate,
-            @Param("endDate") LocalDateTime endDate,
             @Param("type") EventType type,
+            @Param("date") String date,
+            @Param("month") Integer month,
+            @Param("quarter") Integer quarter,
+            @Param("year") Integer year,
             Pageable pageable
     );
-
     // Lấy tất cả event theo type
     List<Event> findByType(String type);
 
