@@ -16,6 +16,6 @@ public interface FileUploadsService {
     Long getFileSize(String fileName, String filePath);
 
     // New method for file upload
-    ReferenceFileV2 uploadImage(MultipartFile file, Long inventoryItemId, String uploadDir) throws IOException;
-    List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, String uploadDir) throws IOException;
+    ReferenceFileV2 uploadImage(MultipartFile file, Long inventoryItemId, Long bookId, String uploadDir) throws IOException;
+    List<ReferenceFileV2> uploadImages(List<MultipartFile> files, Long inventoryItemId, Long bookId, String uploadDir) throws IOException;
 }

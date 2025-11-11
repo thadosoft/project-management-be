@@ -74,7 +74,7 @@ public class BookLoanServiceManagement implements BookLoanService {
         BookLoan loan = new BookLoan();
         loan.setBook(book);
         loan.setBookTitle(book.getTitle());
-        loan.setApproverName(book.getAuthor());
+        loan.setApproverName(request.getApproverName()); // <-- Gán tác giả vào approver_name
         loan.setBorrowerName(request.getBorrowerName());
         loan.setBorrowerId(request.getBorrowerId());
         loan.setStatus(LoanStatus.BORROWED);
@@ -82,8 +82,8 @@ public class BookLoanServiceManagement implements BookLoanService {
         loan.setApprovedAt(LocalDateTime.now());
         loan.setBookOwner(book.getPublisher());
         loan.setBookCondition(request.getBookCondition());
-        loan.setRemarks(book.getLocation());
-        loan.setDueDate(LocalDateTime.now().plusDays(LOAN_DURATION_DAYS));
+        loan.setRemarks(request.getRemarks());
+        loan.setDueDate(LocalDateTime.now().plusDays(14));
         bookLoanRepository.save(loan);
 
         // ✅ Trả về thông tin đầy đủ cho FE
