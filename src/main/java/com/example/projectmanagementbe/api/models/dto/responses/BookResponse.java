@@ -31,11 +31,9 @@ public class BookResponse {
 
     private Boolean available;
 
-    private Integer quantity_total;
 
-    private Integer quantity_available;
+
 
     private List<ReferenceFileV2> images = new ArrayList<>();
 
-    private String location;
 }
