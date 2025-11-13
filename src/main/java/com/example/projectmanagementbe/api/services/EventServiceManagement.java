@@ -73,7 +73,7 @@ public class EventServiceManagement implements EventService{
 
     @Override
     @Transactional
-    public void create(CreateEventRequest request) {
+    public Long create(CreateEventRequest request) {
         Project project = null;
         if (request.getProjectId() != null) {
             project = projectRepository.findById(request.getProjectId())
@@ -91,6 +91,7 @@ public class EventServiceManagement implements EventService{
         event.setProject(project);
 
         eventRepository.save(event);
+        return event.getId();
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.projectmanagementbe.api.controllers;
 
 
+import com.example.projectmanagementbe.api.models.Event;
 import com.example.projectmanagementbe.api.models.dto.requests.*;
 import com.example.projectmanagementbe.api.models.dto.responses.BookLoanResponse;
 import com.example.projectmanagementbe.api.models.dto.responses.EventResponse;
@@ -24,9 +25,9 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateEventRequest request) {
-        eventService.create(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Long> create(@RequestBody CreateEventRequest request) {
+        Long eventId = eventService.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(eventId);
     }
 
     @GetMapping("/{id}")

@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 public interface EventService {
     Page<EventResponse> findByParams(EventRequest request, Pageable pageable);
 
-    void create(CreateEventRequest eventRequest);
+    Long create(CreateEventRequest eventRequest);
 
     EventResponse findById(Long id);
 
