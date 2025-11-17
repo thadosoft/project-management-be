@@ -17,21 +17,23 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long>, JpaSpecificationExecutor<Event> {
 
     @Query(value = """
-        SELECT e FROM Event e
-        WHERE 
-            (:title IS NULL OR :title = '' OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
-        AND (:type IS NULL OR e.type = :type)
-        AND (
-            (:date IS NOT NULL AND FUNCTION('DATE', e.startDate) = CAST(:date AS date))
-            OR (:date IS NULL AND (
-                (:month IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year AND FUNCTION('MONTH', e.startDate) = :month)
-                OR (:quarter IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year
-                    AND FUNCTION('MONTH', e.startDate) BETWEEN ((:quarter - 1) * 3 + 1) AND ((:quarter - 1) * 3 + 3))
-                OR (:year IS NOT NULL AND :month IS NULL AND :quarter IS NULL AND FUNCTION('YEAR', e.startDate) = :year)
-                OR (:date IS NULL AND :month IS NULL AND :quarter IS NULL AND :year IS NULL)
-            ))
-        )
-    """)
+                SELECT e FROM Event e
+                    LEFT JOIN EventParticipant ep ON e.id = ep.id.eventId
+                WHERE 
+                    (:title IS NULL OR :title = '' OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
+                AND (:type IS NULL OR e.type = :type)
+                AND (
+                    (:date IS NOT NULL AND FUNCTION('DATE', e.startDate) = CAST(:date AS date))
+                    OR (:date IS NULL AND (
+                        (:month IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year AND FUNCTION('MONTH', e.startDate) = :month)
+                        OR (:quarter IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year
+                            AND FUNCTION('MONTH', e.startDate) BETWEEN ((:quarter - 1) * 3 + 1) AND ((:quarter - 1) * 3 + 3))
+                        OR (:year IS NOT NULL AND :month IS NULL AND :quarter IS NULL AND FUNCTION('YEAR', e.startDate) = :year)
+                        OR (:date IS NULL AND :month IS NULL AND :quarter IS NULL AND :year IS NULL)
+                    ))
+            AND (:participantId IS NULL OR ep.id.employeeId = :participantId)
+                                                              )
+            """)
     Page<Event> findByParams(
             @Param("title") String title,
             @Param("type") EventType type,
@@ -39,8 +41,10 @@ public interface EventRepository extends JpaRepository<Event, Long>, JpaSpecific
             @Param("month") Integer month,
             @Param("quarter") Integer quarter,
             @Param("year") Integer year,
+            @Param("participantId") Long participantId,
             Pageable pageable
     );
+
     // Lấy tất cả event theo type
     List<Event> findByType(String type);
 

@@ -22,4 +22,5 @@ public class EventRequest {
 
     private Integer year;
 
+    private Long participantIds;
 }

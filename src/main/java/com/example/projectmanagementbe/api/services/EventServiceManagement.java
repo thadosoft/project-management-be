@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.example.projectmanagementbe.auth.utils.StringToLocalDateTime.parseDateToLocalDateTime;
 
@@ -42,6 +43,8 @@ public class EventServiceManagement implements EventService{
         Integer month = request.getMonth();
         Integer quarter = request.getQuarter();
         Integer year = request.getYear();
+        Long participantIds = request.getParticipantIds(); // mới
+
 
         EventType type = null;
         if (typeStr != null && !typeStr.isBlank()) {
@@ -58,14 +61,15 @@ public class EventServiceManagement implements EventService{
                 && (date == null || date.isBlank())
                 && (month == null)
                 && (quarter == null)
-                && (year == null);
+                && (year == null)
+                && (participantIds == null); // thêm participantIds
 
         Page<Event> result;
 
         if (noFilter) {
             result = eventRepository.findAll(pageable);
         } else {
-            result = eventRepository.findByParams(title, type, date, month, quarter, year, pageable);
+            result = eventRepository.findByParams(title, type, date, month, quarter, year, participantIds, pageable);
         }
 
         return result.map(eventMapper::mapEventResponse);
