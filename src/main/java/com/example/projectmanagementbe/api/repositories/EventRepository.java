@@ -17,23 +17,29 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long>, JpaSpecificationExecutor<Event> {
 
     @Query(value = """
-                SELECT e FROM Event e
-                    LEFT JOIN EventParticipant ep ON e.id = ep.id.eventId
-                WHERE 
-                    (:title IS NULL OR :title = '' OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
-                AND (:type IS NULL OR e.type = :type)
-                AND (
-                    (:date IS NOT NULL AND FUNCTION('DATE', e.startDate) = CAST(:date AS date))
-                    OR (:date IS NULL AND (
-                        (:month IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year AND FUNCTION('MONTH', e.startDate) = :month)
-                        OR (:quarter IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year
-                            AND FUNCTION('MONTH', e.startDate) BETWEEN ((:quarter - 1) * 3 + 1) AND ((:quarter - 1) * 3 + 3))
-                        OR (:year IS NOT NULL AND :month IS NULL AND :quarter IS NULL AND FUNCTION('YEAR', e.startDate) = :year)
-                        OR (:date IS NULL AND :month IS NULL AND :quarter IS NULL AND :year IS NULL)
-                    ))
-            AND (:participantId IS NULL OR ep.id.employeeId = :participantId)
-                                                              )
-            """)
+    SELECT e FROM Event e
+    WHERE 
+        (:title IS NULL OR :title = '' OR LOWER(e.title) LIKE LOWER(CONCAT('%', :title, '%')))
+        AND (:type IS NULL OR e.type = :type)
+        AND (
+            (:date IS NOT NULL AND FUNCTION('DATE', e.startDate) = CAST(:date AS date))
+            OR (:date IS NULL AND (
+                (:month IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year AND FUNCTION('MONTH', e.startDate) = :month)
+                OR (:quarter IS NOT NULL AND :year IS NOT NULL AND FUNCTION('YEAR', e.startDate) = :year
+                    AND FUNCTION('MONTH', e.startDate) BETWEEN ((:quarter - 1) * 3 + 1) AND ((:quarter - 1) * 3 + 3))
+                OR (:year IS NOT NULL AND :month IS NULL AND :quarter IS NULL AND FUNCTION('YEAR', e.startDate) = :year)
+                OR (:date IS NULL AND :month IS NULL AND :quarter IS NULL AND :year IS NULL)
+            ))
+        )
+        AND (
+            :participantId IS NULL 
+            OR EXISTS (
+                SELECT 1 FROM EventParticipant ep 
+                WHERE ep.id.eventId = e.id 
+                AND ep.id.employeeId = :participantId
+            )
+        )
+    """)
     Page<Event> findByParams(
             @Param("title") String title,
             @Param("type") EventType type,

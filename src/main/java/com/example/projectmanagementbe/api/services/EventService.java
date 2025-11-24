@@ -8,8 +8,12 @@ import com.example.projectmanagementbe.api.models.dto.responses.EventResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface EventService {
     Page<EventResponse> findByParams(EventRequest request, Pageable pageable);
+
+    List<EventResponse> findAll();
 
     Long create(CreateEventRequest eventRequest);
 

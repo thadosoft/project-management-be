@@ -76,6 +76,14 @@ public class EventServiceManagement implements EventService{
     }
 
     @Override
+    public List<EventResponse> findAll() {
+        List<Event> events = eventRepository.findAll();
+        return events.stream()
+                .map(eventMapper::mapEventResponse)
+                .toList();
+    }
+
+    @Override
     @Transactional
     public Long create(CreateEventRequest request) {
         Project project = null;
