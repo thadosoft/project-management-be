@@ -40,6 +40,7 @@ public enum ErrorCode {
   BOOK_ALREADY_EXISTS("037", "Book with the same title already exists"),
   BOOK_OUT_OF_STOCK("038", "Book is out of stock"),
   EVENT_NOT_FOUND("039", "Event not found"),
+  CAMERA_NOT_FOUND("040", "Event not found"),
           ;
 
   private final String code;
