@@ -41,6 +41,7 @@ public enum ErrorCode {
   BOOK_OUT_OF_STOCK("038", "Book is out of stock"),
   EVENT_NOT_FOUND("039", "Event not found"),
   CAMERA_NOT_FOUND("040", "Event not found"),
+  FOOD_NOT_FOUND("041", "Food not found"),
           ;
 
   private final String code;

@@ -43,6 +43,8 @@ public class SecurityConfig {
                         auth
                                 .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers("/api/v1/reference-files/**").permitAll()
+                                .requestMatchers("storage/**").permitAll()
+                                .requestMatchers("/error").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )
