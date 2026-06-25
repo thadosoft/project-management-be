@@ -12,7 +12,9 @@ import com.example.projectmanagementbe.api.repositories.BookRepository;
 import com.example.projectmanagementbe.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,9 +32,14 @@ public class BookServiceManagement implements BookService{
 
     @Override
     public Page<BookResponse> findByParams(BookRequest request, Pageable pageable) {
+        Pageable sortedPageable = PageRequest.of(
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                Sort.by(Sort.Direction.DESC, "id")
+        );
         return bookRepository
-                .findByParams(request.getTitle(), pageable).map(bookMapper::mapBookResponse);
-
+                .findByParams(request.getTitle(), request.getAuthor(), request.getPublisher(), sortedPageable)
+                .map(bookMapper::mapBookResponse);
     }
 
     @Override

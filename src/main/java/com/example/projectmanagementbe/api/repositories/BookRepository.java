@@ -16,9 +16,14 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     boolean existsByTitle(String title);
 
     @Query("SELECT r FROM Book r " +
-            "WHERE (:title IS NULL OR (LOWER(r.title) LIKE LOWER(CONCAT('%', :title, '%'))))")
+            "WHERE (:title IS NULL OR LOWER(r.title) LIKE LOWER(CONCAT('%', :title, '%'))) " +
+            "AND (:author IS NULL OR LOWER(r.author) LIKE LOWER(CONCAT('%', :author, '%'))) " +
+            "AND (:publisher IS NULL OR LOWER(r.publisher) LIKE LOWER(CONCAT('%', :publisher, '%'))) " +
+            "ORDER BY r.id DESC")
     Page<Book> findByParams(
             @Param("title") String title,
+            @Param("author") String author,
+            @Param("publisher") String publisher,
             Pageable pageable
     );
 
