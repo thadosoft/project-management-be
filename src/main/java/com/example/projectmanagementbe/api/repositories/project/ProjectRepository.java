@@ -25,7 +25,6 @@ public interface ProjectRepository extends JpaRepository<Project, String> {
     LEFT JOIN assignments a ON t.id = a.task_id
     GROUP BY p.id, p.name
     ORDER BY progressPercentage DESC
-    LIMIT 5
     """, nativeQuery = true)
   List<Object[]> fetchProjectProgress();
 
