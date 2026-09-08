@@ -22,6 +22,9 @@ public class Employee extends Auditable {
   @Column(name = "id", nullable = false)
   private Long id;
 
+  @Column(name = "user_id", columnDefinition = "CHAR(36)")
+  private String userId;
+
   @Size(max = 50)
   @Column(name = "username", length = 50)
   private String username;

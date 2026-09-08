@@ -1,23 +1,22 @@
 package com.example.projectmanagementbe.api.models.dto.requests.LeaveRequest;
 
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
 public class CreateLeaveRequest {
 
-    private Long employeeId;
+  private LocalDate startDate;
 
-    private LocalDate startDate;
+  private LocalDate endDate;
 
-    private LocalDate endDate;
+  /** 0.25, 0.5 or 1.0. Only allowed when startDate equals endDate. Defaults to 1.0. */
+  private Double dayPortion;
 
-    private String leaveType;
+  /** ANNUAL (default), UNPAID, SICK, OTHER. */
+  private String leaveType;
 
-    private String reason;
-
-    private String status;
+  private String reason;
 }

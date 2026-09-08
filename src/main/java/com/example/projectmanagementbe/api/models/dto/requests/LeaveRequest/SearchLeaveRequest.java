@@ -6,7 +6,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SearchLeaveRequest {
-    private String startDate;
 
-    private String endDate;
+  /** PENDING | APPROVED | REJECTED | CANCELLED. Null = all. */
+  private String status;
+
+  private Long employeeId;
+
+  /** ISO date (yyyy-MM-dd). Matches requests that overlap this window. */
+  private String startDate;
+
+  private String endDate;
 }

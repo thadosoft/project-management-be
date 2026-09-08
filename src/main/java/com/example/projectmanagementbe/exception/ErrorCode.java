@@ -42,6 +42,14 @@ public enum ErrorCode {
   EVENT_NOT_FOUND("039", "Event not found"),
   CAMERA_NOT_FOUND("040", "Event not found"),
   FOOD_NOT_FOUND("041", "Food not found"),
+  LEAVE_INVALID_DATE("042", "Invalid leave date range"),
+  LEAVE_DATE_OVERLAP("043", "Leave dates overlap an existing request"),
+  LEAVE_INVALID_STATUS("044", "Leave request status does not allow this action"),
+  LEAVE_BALANCE_EXCEEDED("045", "Leave balance exceeds the allowed limit (max 3 days over)"),
+  LEAVE_DECISION_NOTE_REQUIRED("046", "A note is required to reject a leave request"),
+  EMPLOYEE_NOT_LINKED_TO_USER("047", "The current account is not linked to an employee profile"),
+  LEAVE_BALANCE_NOT_FOUND("048", "Leave balance not found"),
+  NOTIFICATION_NOT_FOUND("049", "Notification not found"),
           ;
 
   private final String code;
