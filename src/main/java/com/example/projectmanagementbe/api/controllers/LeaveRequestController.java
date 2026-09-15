@@ -27,7 +27,7 @@ public class LeaveRequestController {
 
   private final LeaveRequestsService leaveRequestsService;
   @PostMapping
-  @PreAuthorize("!hasAnyAuthority('OFM','ADMIN')")
+  @PreAuthorize("!hasAuthority('ADMIN')")
   public ResponseEntity<LeaveResponse> create(@RequestBody CreateLeaveRequest request) {
     return ResponseEntity.status(HttpStatus.CREATED).body(leaveRequestsService.create(request));
   }
@@ -43,28 +43,30 @@ public class LeaveRequestController {
   }
 
   @PutMapping("/{id}")
-  @PreAuthorize("!hasAnyAuthority('OFM','ADMIN')")
+  @PreAuthorize("!hasAuthority('ADMIN')")
   public ResponseEntity<LeaveResponse> update(@PathVariable Long id,
       @RequestBody UpdateLeaveRequest request) {
     return ResponseEntity.ok(leaveRequestsService.update(id, request));
   }
 
   @PostMapping("/{id}/cancel")
-  @PreAuthorize("!hasAnyAuthority('OFM','ADMIN')")
+  @PreAuthorize("!hasAuthority('ADMIN')")
   public ResponseEntity<Void> cancel(@PathVariable Long id) {
     leaveRequestsService.cancel(id);
     return ResponseEntity.noContent().build();
   }
 
+  // OFM decides everyone else's requests; when the requester is themself OFM, only ADMIN
+  // may decide it (enforced in LeaveRequestsServiceImpl#ensureAuthorizedApprover).
   @PostMapping("/{id}/approve")
-  @PreAuthorize("hasAuthority('OFM')")
+  @PreAuthorize("hasAnyAuthority('OFM','ADMIN')")
   public ResponseEntity<LeaveResponse> approve(@PathVariable Long id,
       @RequestBody(required = false) LeaveDecisionRequest request) {
     return ResponseEntity.ok(leaveRequestsService.approve(id, request));
   }
 
   @PostMapping("/{id}/reject")
-  @PreAuthorize("hasAuthority('OFM')")
+  @PreAuthorize("hasAnyAuthority('OFM','ADMIN')")
   public ResponseEntity<LeaveResponse> reject(@PathVariable Long id,
       @RequestBody LeaveDecisionRequest request) {
     return ResponseEntity.ok(leaveRequestsService.reject(id, request));

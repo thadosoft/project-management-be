@@ -58,7 +58,9 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
   @Override
   @Transactional
   public LeaveResponse create(CreateLeaveRequest request) {
-    Employee employee = currentEmployee();
+    User currentUser = currentUserProvider.getCurrentUser();
+    Employee employee = employeeRepository.findByUserId(currentUser.getId())
+        .orElseThrow(() -> new ApiRequestException(ErrorCode.EMPLOYEE_NOT_LINKED_TO_USER));
     Duration duration = validateAndComputeDuration(
         request.getStartDate(), request.getEndDate(), request.getDayPortion());
     ensureNoOverlap(employee.getId(), request.getStartDate(), request.getEndDate(), null);
@@ -74,7 +76,8 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
     entity.setStatus(LeaveStatus.PENDING);
     leaveRequestsRepository.save(entity);
 
-    notifyOfmNewRequest(entity, employee);
+    // OFM's own request goes to ADMIN for approval; everyone else's still goes to OFM.
+    notifyApproversNewRequest(entity, employee, currentUser.getRole());
     return buildResponse(entity);
   }
 
@@ -127,10 +130,11 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
   @Transactional
   public LeaveResponse approve(Long id, LeaveDecisionRequest request) {
     LeaveRequests entity = getById(id);
+    User approver = currentUserProvider.getCurrentUser();
+    ensureAuthorizedApprover(entity, approver);
     if (entity.getStatus() != LeaveStatus.PENDING) {
       throw new ApiRequestException(ErrorCode.LEAVE_INVALID_STATUS);
     }
-    User approver = currentUserProvider.getCurrentUser();
 
     if (LeaveType.fromNullable(entity.getLeaveType()).isDeductsBalance()) {
       leaveBalanceService.applyLeave(
@@ -151,13 +155,14 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
   @Transactional
   public LeaveResponse reject(Long id, LeaveDecisionRequest request) {
     LeaveRequests entity = getById(id);
+    User approver = currentUserProvider.getCurrentUser();
+    ensureAuthorizedApprover(entity, approver);
     if (entity.getStatus() != LeaveStatus.PENDING) {
       throw new ApiRequestException(ErrorCode.LEAVE_INVALID_STATUS);
     }
     if (request == null || request.getDecisionNote() == null || request.getDecisionNote().isBlank()) {
       throw new ApiRequestException(ErrorCode.LEAVE_DECISION_NOTE_REQUIRED);
     }
-    User approver = currentUserProvider.getCurrentUser();
     entity.setStatus(LeaveStatus.REJECTED);
     entity.setApproverId(approver.getId());
     entity.setApprovedAt(LocalDateTime.now());
@@ -232,19 +237,22 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
 
   // ─── Notifications ────────────────────────────────────────────────
 
-  private void notifyOfmNewRequest(LeaveRequests entity, Employee employee) {
-    List<User> ofms = userRepository.findByRole(UserRole.OFM);
-    if (ofms.isEmpty()) {
-      log.warn("No user with role OFM found - leave request {} has no approver to notify", entity.getId());
+  private void notifyApproversNewRequest(LeaveRequests entity, Employee employee, UserRole requesterRole) {
+    // OFM approves everyone's leave except their own, which only ADMIN can decide.
+    UserRole approverRole = requesterRole == UserRole.OFM ? UserRole.ADMIN : UserRole.OFM;
+    List<User> approvers = userRepository.findByRole(approverRole);
+    if (approvers.isEmpty()) {
+      log.warn("No user with role {} found - leave request {} has no approver to notify",
+          approverRole, entity.getId());
     }
     String title = "Đơn xin nghỉ phép mới";
     String message = String.format("%s xin nghỉ %s ngày (%s - %s)",
         employee.getFullName(), entity.getNumberOfDays(), entity.getStartDate(), entity.getEndDate());
-    for (User ofm : ofms) {
+    for (User approver : approvers) {
       notificationService.notifyUser(
-          ofm.getId(), NotificationType.LEAVE_SUBMITTED, title, message, entity.getId());
+          approver.getId(), NotificationType.LEAVE_SUBMITTED, title, message, entity.getId());
     }
-    List<String> emails = ofms.stream()
+    List<String> emails = approvers.stream()
         .map(User::getEmail)
         .filter(Objects::nonNull)
         .toList();
@@ -284,6 +292,22 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
     if (!entity.getEmployeeId().equals(employee.getId())) {
       throw new ApiRequestException(ErrorCode.UNAUTHORIZED);
     }
+  }
+
+  private void ensureAuthorizedApprover(LeaveRequests entity, User approver) {
+    UserRole requiredRole = requesterRole(entity) == UserRole.OFM ? UserRole.ADMIN : UserRole.OFM;
+    if (approver.getRole() != requiredRole) {
+      throw new ApiRequestException(ErrorCode.UNAUTHORIZED);
+    }
+  }
+
+  private UserRole requesterRole(LeaveRequests entity) {
+    return employeeRepository.findById(entity.getEmployeeId())
+        .map(Employee::getUserId)
+        .filter(Objects::nonNull)
+        .flatMap(userRepository::findById)
+        .map(User::getRole)
+        .orElse(null);
   }
 
   private void ensureNoOverlap(Long employeeId, LocalDate start, LocalDate end, Long excludeId) {
@@ -364,6 +388,8 @@ public class LeaveRequestsServiceImpl implements LeaveRequestsService {
     response.setEmployeeId(entity.getEmployeeId());
     employeeRepository.findById(entity.getEmployeeId())
         .ifPresent(employee -> response.setEmployeeName(employee.getFullName()));
+    UserRole requesterRole = requesterRole(entity);
+    response.setRequesterRole(requesterRole == null ? null : requesterRole.name());
     response.setStartDate(entity.getStartDate());
     response.setEndDate(entity.getEndDate());
     response.setDayPortion(entity.getDayPortion());

@@ -15,6 +15,9 @@ public class LeaveResponse {
 
   private String employeeName;
 
+  /** Role of the requester's user account (e.g. "OFM") — tells the FE who is allowed to decide this request. */
+  private String requesterRole;
+
   private LocalDate startDate;
 
   private LocalDate endDate;
