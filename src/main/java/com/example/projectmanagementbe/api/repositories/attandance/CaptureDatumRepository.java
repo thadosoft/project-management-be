@@ -15,15 +15,21 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
 
   boolean existsByCaptureId(Long captureId);
 
+  @Query("SELECT MAX(r.captureId) FROM CaptureDatum r")
+  Long findMaxCaptureId();
+
+  @Query("SELECT MAX(r.time) FROM CaptureDatum r")
+  String findMaxTime();
+
   @Query("SELECT r FROM CaptureDatum r " +
-      "WHERE (:keyword IS NULL OR LOWER(r.personName) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
-      "AND (:startDate IS NULL OR :endDate IS NULL OR " +
-      "FUNCTION('STR_TO_DATE', r.time, '%Y-%m-%d %H:%i:%s') BETWEEN :startDate AND :endDate)")
+          "WHERE (:keyword IS NULL OR LOWER(r.personName) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
+          "AND (:startDate IS NULL OR :endDate IS NULL OR " +
+          "FUNCTION('STR_TO_DATE', r.time, '%Y-%m-%d %H:%i:%s') BETWEEN :startDate AND :endDate)")
   Page<CaptureDatum> findByParams(
-      @Param("keyword") String keyword,
-      @Param("startDate") LocalDateTime startDate,
-      @Param("endDate") LocalDateTime endDate,
-      Pageable pageable
+          @Param("keyword") String keyword,
+          @Param("startDate") LocalDateTime startDate,
+          @Param("endDate") LocalDateTime endDate,
+          Pageable pageable
   );
 
   @Query("SELECT r FROM CaptureDatum r " +
@@ -37,7 +43,7 @@ public interface CaptureDatumRepository extends JpaRepository<CaptureDatum, Long
   );
   @Procedure(procedureName = "RetriveTotalShiftDay")
   Object[] getAttendanceData(@Param("work_date_param") String startDate,
-      @Param("emp_code_param") String empCode);
+                             @Param("emp_code_param") String empCode);
 
   List<CaptureDatum> findTop4ByOrderByCreatedAtDesc();
 }
