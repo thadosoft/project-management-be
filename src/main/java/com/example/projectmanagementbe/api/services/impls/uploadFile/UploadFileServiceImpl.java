@@ -1,5 +1,6 @@
 package com.example.projectmanagementbe.api.services.impls.uploadFile;
 
+import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceFileResponse;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceFile;
 import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceProfile;
 import com.example.projectmanagementbe.api.repositories.referenceProfile.ReferenceFileRepository;
@@ -10,10 +11,12 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +29,7 @@ public class UploadFileServiceImpl implements IFileUpload {
   // ✅ Upload file theo referenceProfileId
   public void uploadFile(Long referenceProfileId, MultipartFile file) {
     ReferenceProfile profile = referenceProfileRepository.findById(referenceProfileId)
-        .orElseThrow(() -> new RuntimeException("Reference Profile không tồn tại"));
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reference Profile không tồn tại"));
 
     try {
       ReferenceFile referenceFile = new ReferenceFile();
@@ -38,18 +41,31 @@ public class UploadFileServiceImpl implements IFileUpload {
 
       referenceFileRepository.save(referenceFile);
     } catch (IOException e) {
-      throw new RuntimeException("Lỗi khi lưu file", e);
+      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Lỗi khi lưu file", e);
     }
   }
 
-  public List<ReferenceFile> getFilesByProfile(Long referenceProfileId) {
-    return referenceFileRepository.findByReferenceProfileId(referenceProfileId);
+  public List<ReferenceFileResponse> getFilesByProfile(Long referenceProfileId) {
+    return referenceFileRepository.findByReferenceProfileId(referenceProfileId).stream()
+        .map(UploadFileServiceImpl::toResponse)
+        .toList();
+  }
+
+  private static ReferenceFileResponse toResponse(ReferenceFile file) {
+    ReferenceFileResponse response = new ReferenceFileResponse();
+    response.setId(file.getId());
+    response.setReferenceProfileId(file.getReferenceProfile().getId());
+    response.setFileName(file.getFileName());
+    response.setFileType(file.getFileType());
+    response.setFileSize(file.getFileSize());
+    response.setFileUrl(file.getFileUrl());
+    return response;
   }
 
   @Override
   public ResponseEntity<byte[]> downloadFile(Long fileId) {
     ReferenceFile file = referenceFileRepository.findById(fileId)
-        .orElseThrow(() -> new RuntimeException("File not found"));
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "File not found"));
 
     // Kiểm tra MIME type
     String mimeType = (file.getFileType() != null && file.getFileType().contains("/"))

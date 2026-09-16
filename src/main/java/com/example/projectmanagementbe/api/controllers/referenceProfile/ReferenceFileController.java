@@ -1,6 +1,6 @@
 package com.example.projectmanagementbe.api.controllers.referenceProfile;
 
-import com.example.projectmanagementbe.api.models.referenceProfile.ReferenceFile;
+import com.example.projectmanagementbe.api.models.dto.responses.referenceProfile.ReferenceFileResponse;
 import com.example.projectmanagementbe.api.services.FileUploadsService;
 import com.example.projectmanagementbe.api.services.referenceProfile.IFileUpload;
 
@@ -34,8 +34,8 @@ public class ReferenceFileController {
   }
 
   @GetMapping("/profile/{referenceProfileId}")
-  public ResponseEntity<List<ReferenceFile>> getFilesByProfile(@PathVariable Long referenceProfileId) {
-    List<ReferenceFile> files = downloadFile.getFilesByProfile(referenceProfileId);
+  public ResponseEntity<List<ReferenceFileResponse>> getFilesByProfile(@PathVariable Long referenceProfileId) {
+    List<ReferenceFileResponse> files = downloadFile.getFilesByProfile(referenceProfileId);
     return ResponseEntity.ok(files);
   }
 

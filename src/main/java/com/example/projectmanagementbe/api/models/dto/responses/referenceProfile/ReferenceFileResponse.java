@@ -11,8 +11,6 @@ public class ReferenceFileResponse {
 
   private Long referenceProfileId;
 
-  private byte[] fileData;
-
   private String fileName;
 
   private String fileType;
