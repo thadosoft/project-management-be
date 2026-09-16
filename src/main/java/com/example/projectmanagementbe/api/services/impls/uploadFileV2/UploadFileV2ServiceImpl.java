@@ -9,6 +9,7 @@ import com.example.projectmanagementbe.exception.ErrorCode;
 import jakarta.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -122,7 +123,7 @@ public class UploadFileV2ServiceImpl implements IFileUploadV2 {
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.parseMediaType(mimeType));
       headers.setContentDisposition(ContentDisposition.attachment()
-              .filename(file.getFileName()).build());
+              .filename(file.getFileName(), StandardCharsets.UTF_8).build());
 
       return ResponseEntity.ok().headers(headers).body(fileData);
     } catch (IOException e) {

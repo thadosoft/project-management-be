@@ -7,6 +7,7 @@ import com.example.projectmanagementbe.api.repositories.referenceProfile.Referen
 import com.example.projectmanagementbe.api.repositories.referenceProfile.ReferenceProfileRepository;
 import com.example.projectmanagementbe.api.services.referenceProfile.IFileUpload;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ContentDisposition;
@@ -75,7 +76,7 @@ public class UploadFileServiceImpl implements IFileUpload {
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.parseMediaType(mimeType));
     headers.setContentDisposition(ContentDisposition.attachment()
-        .filename(file.getFileName()).build());
+        .filename(file.getFileName(), StandardCharsets.UTF_8).build());
 
     return ResponseEntity.ok()
         .headers(headers)
